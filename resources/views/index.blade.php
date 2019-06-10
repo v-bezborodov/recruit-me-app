@@ -23,14 +23,26 @@
             <th scope="col">COUNTRY</th>
             <th scope="col">EMAIL</th>
             <th scope="col">PHONE</th>
-            <th scope="col">LAST DOWNLOADED</th>
+            <th scope="col">REGISTERED</th>
+            <th scope="col">LAST VISITED</th>
+            <th scope="col">ACTION</th>
         </tr>
-
     </thead>
 
     <tbody>
-
-
+        @foreach($recruitments as $recruitment)
+            <tr>
+                <td>{{$recruitment->id}}</td>
+                <td>{{$recruitment->name}}</td>
+                <td>{{$recruitment->company}}</td>
+                <td>{{$recruitment->country}}</td>
+                <td>{{$recruitment->email}}</td>
+                <td>{{$recruitment->phone}}</td>
+                <td>{{$recruitment->created_at}}</td>
+                <td>{{$recruitment->updated_at}}</td>
+                <td>{{'action'}}</td>
+            </tr>
+        @endforeach
     </tbody>
 
 </table>
