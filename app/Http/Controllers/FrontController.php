@@ -18,7 +18,7 @@ class FrontController extends Controller
 //        return DataTables::eloquent($model)
 //            ->addColumn('intro', 'Hi {{$name}}!')
 //            ->toJson()
-
-        return view('index',  compact('recruitments','actions'));
+        $test='testdata';
+        return view('index',  compact('recruitments','actions','test'));
     }
 }

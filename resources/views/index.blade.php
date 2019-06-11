@@ -8,14 +8,7 @@
 {{--        <title>App Name - @yield('title')</title>--}}
 </head>
 <body>
-{{--@section('sidebar')--}}
-{{--    This is the master sidebar.--}}
-{{--@show--}}
-
-{{--<div class="container">--}}
-{{--    @yield('content')--}}
-{{--</div>--}}
-<section id="table-recruitment">
+<section>
     <table class="table table-hover">
         <thead class="thead-dark">
             <tr>
@@ -51,23 +44,25 @@
 
 
 
-
 </section>
-
-<div>
-    <div id="app"><example-component></example-component></div>
-
-</div>
-
-<script src="/js/app.js"></script>
-
-
-</body>
+            <div id="table-app">
+{{--                @{{ array.length }}--}}
+                <div v-for="item in array">
+                    @{{ item.name }}
+                </div>
+{{--                <table-component v-bind:data_recruitment="array">--}}
+{{--                </table-component>--}}
+            </div>
 </html>
 
 
+<script>
+    window.data = {!! json_encode($recruitments) !!};
+</script>
 
+<script src="{{ asset('js/app.js') }}"></script>
 
+</body>
 
 <script>
 

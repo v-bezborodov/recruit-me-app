@@ -20,7 +20,7 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
+Vue.component('table-component', require('./components/TableComponent.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -34,7 +34,21 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
+window.onload = function () {
+    const app = new Vue({
+        el: '#app',
+    });
 
-const app = new Vue({
-    el: '#app',
-});
+    console.log(window.data);
+
+    const app_table = new Vue({
+        el: '#table-app',
+        data: {
+            // recruitment_data: '',
+            array: window.data
+        },
+    });
+}
+
+
+
