@@ -35,18 +35,22 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
 window.onload = function () {
+
     const app = new Vue({
         el: '#app',
     });
 
-    console.log(window.data);
+    // console.log(window.data);
 
     const app_table = new Vue({
         el: '#table-app',
-        data: {
-            // recruitment_data: '',
-            array: window.data
-        },
+        // components: {
+        //     TableComponent
+        // }
+        // data: {
+        //     // recruitment_data: '',
+        //     array: window.data
+        // },
     });
 }
 
