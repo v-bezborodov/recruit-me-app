@@ -8,6 +8,8 @@
 {{--        <title>App Name - @yield('title')</title>--}}
 </head>
 <body>
+        {{--including header--}}
+        @include('layouts.header')
 {{--<section>--}}
 {{--    <table class="table table-hover">--}}
 {{--        <thead class="thead-dark">--}}

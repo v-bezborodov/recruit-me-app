@@ -11,14 +11,9 @@ class FrontController extends Controller
     public function index(){
         $recruitments=Recruitment::get();
         $actions=view('layouts.actions._actions');
-
-
-//        DataTables::eloquent('App\Recruitment')->addColumn('action', 'layouts.actions._actions');
-
-//        return DataTables::eloquent($model)
-//            ->addColumn('intro', 'Hi {{$name}}!')
-//            ->toJson()
-        $test='testdata';
-        return view('index',  compact('recruitments','actions','test'));
+        return view('index',  compact('recruitments','actions'));
+    }
+    public function download(){
+        return view('download');
     }
 }

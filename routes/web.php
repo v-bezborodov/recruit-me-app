@@ -18,3 +18,4 @@
 //});
 
 Route::get('/', 'FrontController@index')->name('home');
+Route::get('/download', 'FrontController@download')->name('download');

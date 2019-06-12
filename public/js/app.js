@@ -1776,6 +1776,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   // components: "table-component",
   // name: "table-component",
@@ -1803,22 +1834,22 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         key: 'country',
         sortable: true
-      }, {
-        key: 'email',
-        sortable: true
-      }, {
+      }, // {key: 'email', sortable: true},
+      {
         key: 'phone',
         sortable: true
-      }, {
-        key: 'created_at',
-        sortable: true
-      }, {
+      }, // {key: 'created_at', sortable: true},
+      {
         key: 'updated_at',
         sortable: true
       }, {
         key: 'actions',
         label: 'Actions'
       }],
+      filter: null,
+      footClone: true,
+      hover: true,
+      borderless: true,
       infoModal: {
         id: 'info-modal',
         title: '',
@@ -65931,42 +65962,131 @@ var render = function() {
       _c(
         "div",
         [
-          _c("b-table", {
-            attrs: {
-              id: "table-transition-example",
-              items: _vm.items,
-              fields: _vm.fields,
-              striped: "",
-              "primary-key": "id",
-              "tbody-transition-props": _vm.transProps
-            },
-            scopedSlots: _vm._u([
-              {
-                key: "actions",
-                fn: function(row) {
-                  return [
-                    _c(
-                      "b-button",
-                      {
-                        staticClass: "mr-1",
-                        attrs: { size: "sm" },
-                        on: {
-                          click: function($event) {
-                            return _vm.htinfo(
-                              row.item,
-                              row.index,
-                              $event.target
-                            )
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                { staticClass: "my-1", attrs: { md: "6" } },
+                [
+                  _c(
+                    "b-form-group",
+                    {
+                      staticClass: "mb-0",
+                      attrs: { "label-cols-sm": "3", label: "Filter" }
+                    },
+                    [
+                      _c(
+                        "b-input-group",
+                        [
+                          _c("b-form-input", {
+                            attrs: { placeholder: "Type to Search" },
+                            model: {
+                              value: _vm.filter,
+                              callback: function($$v) {
+                                _vm.filter = $$v
+                              },
+                              expression: "filter"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "b-input-group-append",
+                            [
+                              _c(
+                                "b-button",
+                                {
+                                  attrs: { disabled: !_vm.filter },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.filter = ""
+                                    }
+                                  }
+                                },
+                                [_vm._v("Clear")]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-table",
+            {
+              attrs: {
+                id: "table-transition-example",
+                items: _vm.items,
+                fields: _vm.fields,
+                filter: _vm.filter,
+                "foot-clone": _vm.footClone,
+                hover: _vm.hover,
+                borderless: _vm.borderless,
+                striped: "",
+                "primary-key": "id",
+                "tbody-transition-props": _vm.transProps,
+                "caption-top": ""
+              },
+              scopedSlots: _vm._u([
+                {
+                  key: "actions",
+                  fn: function(row) {
+                    return [
+                      _c(
+                        "b-button",
+                        {
+                          staticClass: "btn btn-action btn-success",
+                          attrs: { size: "sm" },
+                          on: {
+                            click: function($event) {
+                              return _vm.info(
+                                row.item,
+                                row.index,
+                                $event.target
+                              )
+                            }
                           }
-                        }
-                      },
-                      [_vm._v("\n                    Show\n                ")]
-                    )
-                  ]
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Show\n                    "
+                          )
+                        ]
+                      )
+                    ]
+                  }
+                },
+                {
+                  key: "empty",
+                  fn: function(scope) {
+                    return [_c("h4", [_vm._v(_vm._s(scope.emptyText))])]
+                  }
+                },
+                {
+                  key: "emptyfiltered",
+                  fn: function(scope) {
+                    return [_c("h4", [_vm._v(_vm._s(scope.emptyFilteredText))])]
+                  }
                 }
-              }
-            ])
-          })
+              ])
+            },
+            [
+              _c("template", { slot: "table-caption" }, [
+                _vm._v("List of all recrutations")
+              ])
+            ],
+            2
+          )
         ],
         1
       ),
@@ -65981,7 +66101,42 @@ var render = function() {
           },
           on: { hide: _vm.resetInfoModal }
         },
-        [_c("pre", [_vm._v(_vm._s(_vm.infoModal.content))])]
+        [
+          _c("p", [
+            _vm._v("Name:"),
+            _c("strong", [_vm._v(_vm._s(_vm.infoModal.content.name))])
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v("Company:"),
+            _c("strong", [_vm._v(_vm._s(_vm.infoModal.content.company))])
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v("Country:"),
+            _c("strong", [_vm._v(_vm._s(_vm.infoModal.content.country))])
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v("Email:"),
+            _c("strong", [_vm._v(_vm._s(_vm.infoModal.content.email))])
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v("Phone:"),
+            _c("strong", [_vm._v(_vm._s(_vm.infoModal.content.phone))])
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v("Created: "),
+            _c("strong", [_vm._v(_vm._s(_vm.infoModal.content.created_at))])
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v("Last updated: "),
+            _c("strong", [_vm._v(_vm._s(_vm.infoModal.content.updated_at))])
+          ])
+        ]
       )
     ],
     1
