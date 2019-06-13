@@ -15,6 +15,6 @@
     @include('layouts.footer')
 
 
-{{--@yield('script')--}}
+    @yield('script')
 </body>
 </html>

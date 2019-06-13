@@ -10,13 +10,13 @@
                     <a class="nav-link" href="https://slawek.dev">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Recrutation</a>
+                    <a class="nav-link" href="{{route('recrutation')}}">Recrutation</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('download')}}">Download CV</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About me</a>
+                    <a class="nav-link" href="{{route('about')}}">About APP</a>
                 </li>
 
     {{--            <li class="nav-item">--}}

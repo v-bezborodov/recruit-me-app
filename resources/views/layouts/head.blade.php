@@ -5,6 +5,7 @@
 <meta name="description" content="@yield('meta_description')" />
 <script src="/js/app.js"></script>
 <link href="/css/app.css" rel="stylesheet">
+{{--<script src="{{ asset('js/app.js') }}"></script>--}}
 
 
 

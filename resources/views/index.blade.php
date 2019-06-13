@@ -1,7 +1,7 @@
 @extends('layouts.root')
 
 @section('meta_title')
-   Recruitment Slawek
+   Recruitment process- web developer Slawek.dev
 @stop
 
 
@@ -63,12 +63,13 @@
             </div>
 @stop
 
+{{--@section('script')--}}
+{{--<script>--}}
+{{--    --}}{{--window.data = {!! json_encode($recruitments) !!};--}}
+{{--    <script src="{{ asset('js/app.js') }}"></script>--}}
+{{--</script>--}}
+{{--@stop--}}
 
-<script>
-    {{--window.data = {!! json_encode($recruitments) !!};--}}
-</script>
-
-{{--<script src="{{ asset('js/app.js') }}"></script>--}}
 
 
 

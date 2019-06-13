@@ -17,5 +17,8 @@
 //
 //});
 
-Route::get('/', 'FrontController@index')->name('home');
+Route::get('/recrutation', 'FrontController@index')->name('recrutation');
 Route::get('/download', 'FrontController@download')->name('download');
+Route::get('/about', function(){
+    return view('about');
+})->name('about');
