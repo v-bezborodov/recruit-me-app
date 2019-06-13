@@ -13,16 +13,12 @@
                     </b-form-group>
                 </b-col>
             </b-row>
-    <!--        hjhhj-->
-    <!--        <div v-for="item in items">-->
-    <!--            @{{item.id}}<br>-->
-    <!--        </div>-->
+
             <b-table
                     id="table-transition-example"
                     :items="items"
                     :fields="fields"
                     :filter="filter"
-                    :foot-clone="footClone"
                     :hover="hover"
                     :borderless="borderless"
                     striped
@@ -92,7 +88,6 @@
 
                 ],
                 filter: null,
-                footClone: true,
                 hover: true,
                 borderless: true,
                 infoModal: {
@@ -107,7 +102,11 @@
                 this.infoModal.title = `Profile: ${index}`
                 this.infoModal.content = item
                 this.$root.$emit('bv::show::modal', this.infoModal.id, button)
-            }
+            },
+            resetInfoModal() {
+                this.infoModal.title = ''
+                this.infoModal.content = ''
+            },
         }
     }
 </script>

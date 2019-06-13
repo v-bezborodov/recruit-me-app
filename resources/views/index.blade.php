@@ -1,15 +1,27 @@
-<!doctype html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        @include('layouts.head')
-        <title>Recruit Me - Home page</title>
+@extends('layouts.root')
+
+@section('meta_title')
+   Recruitment Slawek
+@stop
+
+
+@section('meta_description')
+    Recruitment List of Slawek Bezborodov
+@stop
+
+
+{{--<!doctype html>--}}
+{{--    <head>--}}
+{{--        <meta charset="utf-8">--}}
+{{--        <meta name="viewport" content="width=device-width, initial-scale=1">--}}
+{{--        <meta name="csrf-token" content="{{ csrf_token() }}">--}}
+{{--        @include('layouts.head')--}}
+{{--        <title>Recruit Me - Home page</title>--}}
 {{--        <title>App Name - @yield('title')</title>--}}
-</head>
-<body>
+{{--</head>--}}
+{{--<body>--}}
         {{--including header--}}
-        @include('layouts.header')
+{{--        @include('layouts.header')--}}
 {{--<section>--}}
 {{--    <table class="table table-hover">--}}
 {{--        <thead class="thead-dark">--}}
@@ -43,27 +55,24 @@
 {{--        </tbody>--}}
 {{--    </table>--}}
 {{--</section>--}}
-{{--{{ dd($recruitments->toArray()) }};--}}
+
+
+@section('content')
             <div id="table-app">
                 <table-component data="{{ $recruitments }}"></table-component>
-
             </div>
-</body>
-</html>
+@stop
 
 
 <script>
     {{--window.data = {!! json_encode($recruitments) !!};--}}
 </script>
 
-<script src="{{ asset('js/app.js') }}"></script>
-
-</body>
-
-<script>
+{{--<script src="{{ asset('js/app.js') }}"></script>--}}
 
 
 
 
 
-</script>
+
+

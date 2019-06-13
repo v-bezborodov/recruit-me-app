@@ -1803,10 +1803,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   // components: "table-component",
   // name: "table-component",
@@ -1847,7 +1843,6 @@ __webpack_require__.r(__webpack_exports__);
         label: 'Actions'
       }],
       filter: null,
-      footClone: true,
       hover: true,
       borderless: true,
       infoModal: {
@@ -1862,6 +1857,10 @@ __webpack_require__.r(__webpack_exports__);
       this.infoModal.title = "Profile: ".concat(index);
       this.infoModal.content = item;
       this.$root.$emit('bv::show::modal', this.infoModal.id, button);
+    },
+    resetInfoModal: function resetInfoModal() {
+      this.infoModal.title = '';
+      this.infoModal.content = '';
     }
   }
 });
@@ -66029,7 +66028,6 @@ var render = function() {
                 items: _vm.items,
                 fields: _vm.fields,
                 filter: _vm.filter,
-                "foot-clone": _vm.footClone,
                 hover: _vm.hover,
                 borderless: _vm.borderless,
                 striped: "",
@@ -78334,19 +78332,11 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('table-component', __webpac
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
 window.onload = function () {
-  var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
-    el: '#app'
-  }); // console.log(window.data);
-
+  // const app = new Vue({
+  //     el: '#app',
+  // });
   var app_table = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
-    el: '#table-app' // components: {
-    //     TableComponent
-    // }
-    // data: {
-    //     // recruitment_data: '',
-    //     array: window.data
-    // },
-
+    el: '#table-app'
   });
 };
 
@@ -78483,15 +78473,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************************!*\
   !*** ./resources/js/components/TableComponent.vue ***!
   \****************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TableComponent_vue_vue_type_template_id_8554570c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TableComponent.vue?vue&type=template&id=8554570c& */ "./resources/js/components/TableComponent.vue?vue&type=template&id=8554570c&");
 /* harmony import */ var _TableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TableComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/TableComponent.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _TableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _TableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _TableComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TableComponent.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/TableComponent.vue?vue&type=style&index=0&lang=css&");
+/* empty/unused harmony star reexport *//* harmony import */ var _TableComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TableComponent.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/TableComponent.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -78523,7 +78512,7 @@ component.options.__file = "resources/js/components/TableComponent.vue"
 /*!*****************************************************************************!*\
   !*** ./resources/js/components/TableComponent.vue?vue&type=script&lang=js& ***!
   \*****************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
