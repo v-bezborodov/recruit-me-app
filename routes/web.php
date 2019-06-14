@@ -16,9 +16,13 @@
 //
 //
 //});
-
-Route::get('/recrutation', 'FrontController@index')->name('recrutation');
-Route::get('/download', 'FrontController@download')->name('download');
+Route::get('/', 'RecruitmentController@index');
+Route::get('/recrutation', 'RecruitmentController@index')->name('recrutation');
+Route::get('/download', 'RecruitmentController@download')->name('download');
 Route::get('/about', function(){
     return view('about');
 })->name('about');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

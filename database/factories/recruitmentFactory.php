@@ -4,15 +4,17 @@
 
 use App\Model;
 use Faker\Generator as Faker;
+use App\Recruitment;
+use App\Users;
 
-$factory->define(App\Recruitment::class, function (Faker $faker) {
+$factory->define(Recruitment::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
+        'user_id'=>Users::all()->random()->id,
+        'position' => $faker->jobTitle,
+        'description' => $faker->text,
         'company' => $faker->company,
-        'country' => $faker->country,
-        'email' => $faker->unique()->safeEmail,
-        'phone' => $faker->phoneNumber,
         'created_at' => $faker->dateTimeThisYear,
         'updated_at'=>$faker->dateTimeThisMonth
     ];
 });
+

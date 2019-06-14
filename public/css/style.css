@@ -1,3 +1,9 @@
+body {
+
+}
+p, td, button{
+    font-size:1rem;
+}
 .card img{
     margin: 1rem auto;
 }

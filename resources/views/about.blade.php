@@ -1,7 +1,7 @@
 @extends('layouts.root')
 
 @section('meta_title')
-    About App - web developer Slawek.dev
+    {{ config('app.name') }} - About
 @stop
 
 
