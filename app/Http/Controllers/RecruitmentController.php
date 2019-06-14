@@ -11,6 +11,7 @@ class RecruitmentController extends Controller
         $recruitments=Recruitment::get();
 
         $actions=view('layouts.actions._actions');
+
         return view('index',  compact('recruitments','actions'));
     }
     public function download(){

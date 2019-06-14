@@ -9,6 +9,10 @@
     Recruitment List of Slawek Bezborodov
 @stop
 
+{{--{{print_r($recruitments)--}}
+@foreach($recruitments as $t)
+{{print_r($t->email)}}
+@endforeach
 @section('content')
             <div id="table-app">
                 <table-component data="{{ $recruitments }}"></table-component>
