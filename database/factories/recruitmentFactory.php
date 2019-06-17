@@ -5,11 +5,11 @@
 use App\Model;
 use Faker\Generator as Faker;
 use App\Recruitment;
-use App\Users;
+use App\User;
 
 $factory->define(Recruitment::class, function (Faker $faker) {
     return [
-        'user_id'=>Users::all()->random()->id,
+        'user_id'=>User::all()->random()->id,
         'position' => $faker->jobTitle,
         'description' => $faker->text,
         'company' => $faker->company,

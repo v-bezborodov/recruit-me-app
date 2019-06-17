@@ -11,7 +11,8 @@ class Recruitment extends Model
      *
      * @var array
      */
-    protected $fillable = ['id', 'user_id', 'position', 'description', 'company', 'attached', 'status'];
+//    protected $fillable = ['id', 'user_id', 'position', 'description', 'company', 'attached', 'status'];
+    protected $guarded = [];
 
     protected $with = ['user'];
 

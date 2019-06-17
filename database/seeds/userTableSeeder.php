@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\User;
 
 class userTableSeeder extends Seeder
 {
@@ -11,6 +12,6 @@ class userTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Users::class, 20)->create();
+        factory(User::class, 20)->create();
     }
 }

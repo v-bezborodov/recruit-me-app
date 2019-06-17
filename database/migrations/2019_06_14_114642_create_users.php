@@ -17,6 +17,11 @@ class CreateUsers extends Migration
             $table->bigIncrements('id');
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('position_name')->nullable();
+            $table->string('website')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('facebook')->nullable();
+            $table->unsignedSmallInteger('ranking')->nullable();
             $table->string('email')->unique();
             $table->string('phone');
             $table->string('country');
