@@ -45,7 +45,73 @@
                     </div>
                     <div class="col-md-2">
                         <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+
+                        <div id="modal-edit">
+                            <b-button id="show-btn" @click="$bvModal.show('bv-modal-example')">Open Modal</b-button>
+
+                            <b-modal id="bv-modal-example" hide-footer>
+                                <template slot="modal-title">
+                                    Using <code>$bvModal</code> Methods
+
+                                    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+                                        <b-form-group
+                                                id="input-group-1"
+                                                label="Email address:"
+                                                label-for="input-1"
+                                                description="We'll never share your email with anyone else."
+                                        >
+                                            <b-form-input
+                                                    id="input-1"
+                                                    v-model="form.email"
+                                                    type="email"
+                                                    required
+                                                    placeholder="Enter email"
+                                            ></b-form-input>
+                                        </b-form-group>
+
+                                        <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
+                                            <b-form-input
+                                                    id="input-2"
+                                                    v-model="form.name"
+                                                    required
+                                                    placeholder="Enter name"
+                                            ></b-form-input>
+                                        </b-form-group>
+
+                                        <b-form-group id="input-group-3" label="Food:" label-for="input-3">
+                                            <b-form-select
+                                                    id="input-3"
+                                                    v-model="form.food"
+                                                    :options="foods"
+                                                    required
+                                            ></b-form-select>
+                                        </b-form-group>
+
+                                        <b-form-group id="input-group-4">
+                                            <b-form-checkbox-group v-model="form.checked" id="checkboxes-4">
+                                                <b-form-checkbox value="me">Check me out</b-form-checkbox>
+                                                <b-form-checkbox value="that">Check that out</b-form-checkbox>
+                                            </b-form-checkbox-group>
+                                        </b-form-group>
+
+                                        <b-button type="submit" variant="primary">Submit</b-button>
+                                        <b-button type="reset" variant="danger">Reset</b-button>
+                                    </b-form>
+
+
+
+                                </template>
+                                <div class="d-block text-center">
+                                    <h3>Hello From This Modal!</h3>
+                                </div>
+                                <b-button class="mt-3" block @click="$bvModal.hide('bv-modal-example')">Close Me</b-button>
+                            </b-modal>
+                        </div>
+
+
                     </div>
+
+
                 </div>
                 <div class="row">
                     <div class="col-md-4">
@@ -54,15 +120,6 @@
                             {!!Auth::user()->website ?'<a href="'.Auth::user()->website.'""<a>Website Link</a><br/>':''!!}
                             {!!Auth::user()->facebook ?'<a href="'.Auth::user()->facebook.'""<a>Facebook Link</a><br/>':''!!}
                             {!!Auth::user()->linkedin ?'<a href="'.Auth::user()->website.'""<a>Linkedin Link</a><br/>':''!!}
-{{--                            <a href="">Website Link</a><br/>--}}
-{{--                            <a href="">Bootsnipp Profile</a><br/>--}}
-{{--                            <a href="">Bootply Profile</a>--}}
-{{--                            <p>SKILLS</p>--}}
-{{--                            <a href="">Web Designer</a><br/>--}}
-{{--                            <a href="">Web Developer</a><br/>--}}
-{{--                            <a href="">WordPress</a><br/>--}}
-{{--                            <a href="">WooCommerce</a><br/>--}}
-{{--                            <a href="">PHP, .Net</a><br/>--}}
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -73,7 +130,7 @@
                                         <label>User Id</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>Kshiti123</p>
+                                        <p>{{Auth::user()->id}}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -81,7 +138,7 @@
                                         <label>Name</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>Kshiti Ghelani</p>
+                                        <p>{{Auth::user()->first_name.' '.Auth::user()->last_name}}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -89,7 +146,7 @@
                                         <label>Email</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>kshitighelani@gmail.com</p>
+                                        <p>{{Auth::user()->email}}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -97,7 +154,7 @@
                                         <label>Phone</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>123 456 7890</p>
+                                        <p>{{Auth::user()->phone}}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -105,55 +162,49 @@
                                         <label>Profession</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>Web Developer and Designer</p>
+                                        <p>{{Auth::user()->position_name}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Company</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{Auth::user()->company}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Country</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{Auth::user()->country}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Active campanies</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{\App\Recruitment::where('user_id', Auth::user()->id)->count()}}</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label>Experience</label>
+                                        <label>Profile created</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>Expert</p>
+                                        <p>{{Auth::user()->created_at}}</p>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label>Hourly Rate</label>
+                                        <label>Last visit</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>10$/hr</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Total Projects</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>230</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>English Level</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>Expert</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Availability</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>6 months</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label>Your Bio</label><br/>
-                                        <p>Your detail description</p>
+                                        <p>{{Auth::user()->updated_at}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -165,12 +216,46 @@
     </section>
 
 @stop
+<script src="{{ asset('js/app.js') }}"></script>
 
 
 
 
 
-
-
+<script>
+    export default {
+        data() {
+            return {
+                form: {
+                    email: '',
+                    name: '',
+                    food: null,
+                    checked: []
+                },
+                foods: [{ text: 'Select One', value: null }, 'Carrots', 'Beans', 'Tomatoes', 'Corn'],
+                show: true
+            }
+        },
+        methods: {
+            onSubmit(evt) {
+                evt.preventDefault()
+                alert(JSON.stringify(this.form))
+            },
+            onReset(evt) {
+                evt.preventDefault()
+                // Reset our form values
+                this.form.email = ''
+                this.form.name = ''
+                this.form.food = null
+                this.form.checked = []
+                // Trick to reset/clear native browser form validation state
+                this.show = false
+                this.$nextTick(() => {
+                    this.show = true
+                })
+            }
+        }
+    }
+</script>
 
 

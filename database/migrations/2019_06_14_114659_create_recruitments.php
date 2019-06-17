@@ -18,7 +18,7 @@ class CreateRecruitments extends Migration
             $table->unsignedBigInteger('user_id')->onDelete('cascade')->onUpdate('cascade');
             $table->string('position');
             $table->string('description');
-            $table->string('company');
+//            $table->string('company');
             $table->string('attached')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();

@@ -21,6 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('table-component', require('./components/TableComponent.vue').default);
+// Vue.component('modal-component', require('./components/modalComponent.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -43,6 +44,10 @@ window.onload = function () {
 
     const app_table = new Vue({
         el: '#table-app',
+    });
+
+    const app_modal = new Vue({
+        el: '#modal-edit',
     });
 }
 

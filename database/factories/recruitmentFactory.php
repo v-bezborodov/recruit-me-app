@@ -12,7 +12,7 @@ $factory->define(Recruitment::class, function (Faker $faker) {
         'user_id'=>User::all()->random()->id,
         'position' => $faker->jobTitle,
         'description' => $faker->text,
-        'company' => $faker->company,
+//        'company' => $faker->company,
         'created_at' => $faker->dateTimeThisYear,
         'updated_at'=>$faker->dateTimeThisMonth
     ];
