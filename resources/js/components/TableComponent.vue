@@ -28,7 +28,7 @@
             >
                 <template slot="table-caption">List of all recrutations</template>
                 <template slot="actions" slot-scope="row">
-                    <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="btn btn-action btn-success">
+                    <b-button size="sm" @click="info(row.item, $event.target)" class="btn btn-action btn-success">
                         Show
                     </b-button>
                 </template>
@@ -43,12 +43,13 @@
 
         <!-- Info modal -->
         <b-modal :id="infoModal.id" :title="infoModal.title" ok-only @hide="resetInfoModal">
-<!--            <pre>{{ infoModal.content }}</pre>-->
-            <p>Name:<strong>{{ infoModal.content.name }}</strong></p>
+<!--            <pre>{{ infoModal.content}}</pre>-->
+<!--            <pre>{{ infoModal.user.id}}</pre>-->
+            <p>Name:<strong>{{infoModal.user.first_name + ' ' + infoModal.user.last_name }}</strong></p>
             <p>Company:<strong>{{ infoModal.content.company }}</strong></p>
-            <p>Country:<strong>{{ infoModal.content.country}}</strong></p>
-            <p>Email:<strong>{{ infoModal.content.email }}</strong></p>
-            <p>Phone:<strong>{{ infoModal.content.phone }}</strong></p>
+            <p>Email:<strong>{{ infoModal.user.email }}</strong></p>
+            <p>Phone:<strong>{{ infoModal.user.phone }}</strong></p>
+            <p>Country:<strong>{{ infoModal.user.country }}</strong></p>
             <p>Created: <strong>{{ infoModal.content.created_at }}</strong></p>
             <p>Last updated: <strong>{{ infoModal.content.updated_at }}</strong></p>
         </b-modal>
@@ -66,6 +67,7 @@
         props: ['data'],
         computed: {
             items: function () {
+                // console.log(this.data)
                 return JSON.parse(this.data)
             }
         },
@@ -77,11 +79,12 @@
                 },
                 fields: [
                     {key: 'id', sortable: true},
-                    {key: 'name', sortable: true},
-                    {key: 'company', sortable: true},
-                    {key: 'country', sortable: true},
+                    {key: 'user.last_name', sortable: true, label: 'Last Name'},
+                    {key: 'user.first_name', sortable: true, label: 'First name'},
+                    {key: 'company', sortable: true, label: 'Company name'},
+                    {key: 'user.country', sortable: true, label: 'Country'},
                     // {key: 'email', sortable: true},
-                    {key: 'phone', sortable: true},
+                    {key: 'user.phone', sortable: true, label: 'Phone'},
                     // {key: 'created_at', sortable: true},
                     {key: 'updated_at', sortable: true},
                     {key: 'actions', label: 'Actions'},
@@ -93,14 +96,16 @@
                 infoModal: {
                     id: 'info-modal',
                     title: '',
-                    content: ''
+                    content: '',
+                    user: ''
                 }
             }
         },
         methods: {
-            info(item, index, button) {
-                this.infoModal.title = `Profile: ${index}`
+            info(item, button) {
+                this.infoModal.title = `Profile: ${item.user.first_name+' '+item.user.last_name}`
                 this.infoModal.content = item
+                this.infoModal.user = item.user
                 this.$root.$emit('bv::show::modal', this.infoModal.id, button)
             },
             resetInfoModal() {

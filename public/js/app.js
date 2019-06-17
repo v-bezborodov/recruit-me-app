@@ -1803,12 +1803,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   // components: "table-component",
   // name: "table-component",
   props: ['data'],
   computed: {
     items: function items() {
+      // console.log(this.data)
       return JSON.parse(this.data);
     }
   },
@@ -1822,18 +1824,26 @@ __webpack_require__.r(__webpack_exports__);
         key: 'id',
         sortable: true
       }, {
-        key: 'name',
-        sortable: true
+        key: 'user.last_name',
+        sortable: true,
+        label: 'Last Name'
+      }, {
+        key: 'user.first_name',
+        sortable: true,
+        label: 'First name'
       }, {
         key: 'company',
-        sortable: true
+        sortable: true,
+        label: 'Company name'
       }, {
-        key: 'country',
-        sortable: true
+        key: 'user.country',
+        sortable: true,
+        label: 'Country'
       }, // {key: 'email', sortable: true},
       {
-        key: 'phone',
-        sortable: true
+        key: 'user.phone',
+        sortable: true,
+        label: 'Phone'
       }, // {key: 'created_at', sortable: true},
       {
         key: 'updated_at',
@@ -1848,14 +1858,16 @@ __webpack_require__.r(__webpack_exports__);
       infoModal: {
         id: 'info-modal',
         title: '',
-        content: ''
+        content: '',
+        user: ''
       }
     };
   },
   methods: {
-    info: function info(item, index, button) {
-      this.infoModal.title = "Profile: ".concat(index);
+    info: function info(item, button) {
+      this.infoModal.title = "Profile: ".concat(item.user.first_name + ' ' + item.user.last_name);
       this.infoModal.content = item;
+      this.infoModal.user = item.user;
       this.$root.$emit('bv::show::modal', this.infoModal.id, button);
     },
     resetInfoModal: function resetInfoModal() {
@@ -66047,11 +66059,7 @@ var render = function() {
                           attrs: { size: "sm" },
                           on: {
                             click: function($event) {
-                              return _vm.info(
-                                row.item,
-                                row.index,
-                                $event.target
-                              )
+                              return _vm.info(row.item, $event.target)
                             }
                           }
                         },
@@ -66102,7 +66110,15 @@ var render = function() {
         [
           _c("p", [
             _vm._v("Name:"),
-            _c("strong", [_vm._v(_vm._s(_vm.infoModal.content.name))])
+            _c("strong", [
+              _vm._v(
+                _vm._s(
+                  _vm.infoModal.user.first_name +
+                    " " +
+                    _vm.infoModal.user.last_name
+                )
+              )
+            ])
           ]),
           _vm._v(" "),
           _c("p", [
@@ -66111,18 +66127,18 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("p", [
-            _vm._v("Country:"),
-            _c("strong", [_vm._v(_vm._s(_vm.infoModal.content.country))])
-          ]),
-          _vm._v(" "),
-          _c("p", [
             _vm._v("Email:"),
-            _c("strong", [_vm._v(_vm._s(_vm.infoModal.content.email))])
+            _c("strong", [_vm._v(_vm._s(_vm.infoModal.user.email))])
           ]),
           _vm._v(" "),
           _c("p", [
             _vm._v("Phone:"),
-            _c("strong", [_vm._v(_vm._s(_vm.infoModal.content.phone))])
+            _c("strong", [_vm._v(_vm._s(_vm.infoModal.user.phone))])
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v("Country:"),
+            _c("strong", [_vm._v(_vm._s(_vm.infoModal.user.country))])
           ]),
           _vm._v(" "),
           _c("p", [
@@ -78473,14 +78489,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************************!*\
   !*** ./resources/js/components/TableComponent.vue ***!
   \****************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TableComponent_vue_vue_type_template_id_8554570c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TableComponent.vue?vue&type=template&id=8554570c& */ "./resources/js/components/TableComponent.vue?vue&type=template&id=8554570c&");
 /* harmony import */ var _TableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TableComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/TableComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _TableComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TableComponent.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/TableComponent.vue?vue&type=style&index=0&lang=css&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _TableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _TableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _TableComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TableComponent.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/TableComponent.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -78512,7 +78529,7 @@ component.options.__file = "resources/js/components/TableComponent.vue"
 /*!*****************************************************************************!*\
   !*** ./resources/js/components/TableComponent.vue?vue&type=script&lang=js& ***!
   \*****************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
