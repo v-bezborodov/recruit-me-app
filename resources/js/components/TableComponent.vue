@@ -43,7 +43,7 @@
 
         <!-- Info modal -->
         <b-modal :id="infoModal.id" :title="infoModal.title" ok-only @hide="resetInfoModal">
-<!--            <pre>{{ infoModal.content}}</pre>-->
+            <pre>{{ infoModal.content}}</pre>
 <!--            <pre>{{ infoModal.user.id}}</pre>-->
             <p>Name:<strong>{{infoModal.user.first_name + ' ' + infoModal.user.last_name }}</strong></p>
             <p>Company:<strong>{{ infoModal.content.company }}</strong></p>
@@ -81,7 +81,7 @@
                     {key: 'id', sortable: true},
                     {key: 'user.last_name', sortable: true, label: 'Last Name'},
                     {key: 'user.first_name', sortable: true, label: 'First name'},
-                    {key: 'company', sortable: true, label: 'Company name'},
+                    {key: 'user.company', sortable: true, label: 'Company name'},
                     {key: 'user.country', sortable: true, label: 'Country'},
                     // {key: 'email', sortable: true},
                     {key: 'user.phone', sortable: true, label: 'Phone'},

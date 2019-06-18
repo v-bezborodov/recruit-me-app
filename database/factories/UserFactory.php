@@ -8,6 +8,7 @@ use Faker\Generator as Faker;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
+
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
         'email' => $faker->unique()->safeEmail,
@@ -19,7 +20,7 @@ $factory->define(User::class, function (Faker $faker) {
         'ranking'=>$faker->numberBetween(0,10),
         'fee'=>$faker->numberBetween(10,20),
         'phone' => $faker->phoneNumber,
-        'country' => \DB::table('countries')->get()->random()->id,
+        'country_id' => \DB::table('countries')->get()->random()->id,
 //        'company' => $faker->company,
         'password'=>$faker->password,
         'created_at' => $faker->dateTimeThisYear,
