@@ -19,7 +19,7 @@ $factory->define(User::class, function (Faker $faker) {
         'ranking'=>$faker->numberBetween(0,10),
         'fee'=>$faker->numberBetween(10,20),
         'phone' => $faker->phoneNumber,
-        'country' => $faker->country,
+        'country' => \DB::table('countries')->get()->random()->id,
 //        'company' => $faker->company,
         'password'=>$faker->password,
         'created_at' => $faker->dateTimeThisYear,

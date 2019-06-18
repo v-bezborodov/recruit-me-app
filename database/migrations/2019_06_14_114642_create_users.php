@@ -26,7 +26,7 @@ class CreateUsers extends Migration
             $table->unsignedInteger('fee')->nullable();
             $table->string('email')->unique();
             $table->string('phone');
-            $table->string('country');
+            $table->unsignedInteger('country');
             $table->string('avatar')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

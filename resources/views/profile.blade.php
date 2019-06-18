@@ -13,18 +13,18 @@
     <section>
 
         <div class="container emp-profile">
-            <form method="post">
+
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-                            <div class="file btn btn-lg btn-primary">
+                            <img class="w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                            <div class="file btn btn-lg btn-primary w-100">
                                 Change Photo
                                 <input type="file" name="file"/>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-7">
                         <div class="profile-head">
                             <h5>
                                 {{Auth::user()->first_name.' '.Auth::user()->last_name}}
@@ -44,67 +44,76 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+{{--                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>--}}
 
                         <div id="modal-edit">
-                            <b-button id="show-btn" @click="$bvModal.show('bv-modal-example')">Open Modal</b-button>
+                            <b-button id="show-btn" @click="$bvModal.show('bv-modal-example')">Edit Profile</b-button>
 
                             <b-modal id="bv-modal-example" hide-footer>
                                 <template slot="modal-title">
-                                    Using <code>$bvModal</code> Methods
+                                    Edit profile
+                                </template>
 
-                                    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-                                        <b-form-group
-                                                id="input-group-1"
-                                                label="Email address:"
-                                                label-for="input-1"
-                                                description="We'll never share your email with anyone else."
+                                <div class="d-block text-left">
+
+                                    <b-form data="{{ Auth::user() }}" @submit="" @reset="" v-if="">
+                                        @csrf
+                                        <!-- Default input first name -->
+                                        <label for="defaultFormCardNameEx" class="grey-text font-weight-light">First name</label>
+                                        <b-form-input type="text" id="defaultFormCardNameEx" class="form-control"
+                                                      value={{Auth::user()->first_name}}
+                                                      placeholder="Enter your First Name"
+                                         ></b-form-input>
+                                        <br>
+                                        <!-- Default input last name -->
+                                        <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Last name</label>
+                                        <b-form-input type="text" id="defaultFormCardNameEx" class="form-control"
+                                                      value="{{Auth::user()->last_name}}"
+                                                      placeholder="Enter your First Name"
+                                        ></b-form-input>
+                                        <br>
+                                        <!-- input email -->
+                                        <label for="defaultFormCardEmailEx" class="grey-text font-weight-light">Your email</label>
+                                        <b-form-input type="email" id="defaultFormCardEmailEx" class="form-control"
+                                                      value="{{Auth::user()->email}}">
+                                        </b-form-input>
+                                        <br>
+                                        <!-- Position -->
+                                        <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Profession</label>
+                                        <b-form-input type="text" id="defaultFormCardNameEx" class="form-control"
+                                                      value="{{Auth::user()->position_name}}"
+                                                      placeholder="Enter your First Name"
+                                        ></b-form-input>
+                                        <br>
+                                        <!-- Company -->
+                                        <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Company name</label>
+                                        <b-form-input type="text" id="defaultFormCardNameEx" class="form-control"
+                                                      value="{{Auth::user()->company}}"
+                                                      placeholder="Enter your First Name"
+                                        ></b-form-input>
+                                        <br>
+                                        <b-form-select
+                                                class="mb-2 mr-sm-2 mb-sm-0"
+{{--                                                :value="{{Auth::user()->country}}"--}}
+                                                :value="2"
+                                                :options="{ '1': 'Russia', '2': 'Poland', '3': 'Germany' }"
+                                                id="inline-form-custom-select-pref"
                                         >
-                                            <b-form-input
-                                                    id="input-1"
-                                                    v-model="form.email"
-                                                    type="email"
-                                                    required
-                                                    placeholder="Enter email"
-                                            ></b-form-input>
-                                        </b-form-group>
+                                            <option slot="first" :value="null">Choose country</option>
+                                        </b-form-select>
+                                        <br>
 
-                                        <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
-                                            <b-form-input
-                                                    id="input-2"
-                                                    v-model="form.name"
-                                                    required
-                                                    placeholder="Enter name"
-                                            ></b-form-input>
-                                        </b-form-group>
 
-                                        <b-form-group id="input-group-3" label="Food:" label-for="input-3">
-                                            <b-form-select
-                                                    id="input-3"
-                                                    v-model="form.food"
-                                                    :options="foods"
-                                                    required
-                                            ></b-form-select>
-                                        </b-form-group>
-
-                                        <b-form-group id="input-group-4">
-                                            <b-form-checkbox-group v-model="form.checked" id="checkboxes-4">
-                                                <b-form-checkbox value="me">Check me out</b-form-checkbox>
-                                                <b-form-checkbox value="that">Check that out</b-form-checkbox>
-                                            </b-form-checkbox-group>
-                                        </b-form-group>
-
-                                        <b-button type="submit" variant="primary">Submit</b-button>
-                                        <b-button type="reset" variant="danger">Reset</b-button>
+                                        <div class="text-center py-4 mt-3">
+                                            <b-button type="submit" variant="primary">Submit</b-button>
+{{--                                            <button class="btn btn-outline-purple" type="submit">Send<i class="far fa-paper-plane ml-2"></i></button>--}}
+                                        </div>
                                     </b-form>
 
 
 
-                                </template>
-                                <div class="d-block text-center">
-                                    <h3>Hello From This Modal!</h3>
                                 </div>
-                                <b-button class="mt-3" block @click="$bvModal.hide('bv-modal-example')">Close Me</b-button>
+                                <b-button class="mt-3" block @click="$bvModal.hide('bv-modal-example')">Close</b-button>
                             </b-modal>
                         </div>
 
@@ -114,15 +123,15 @@
 
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="profile-work">
+                    <div class="col-md-3">
+                        <div class="profile-work mt-4">
                             <p>WORK LINK</p>
                             {!!Auth::user()->website ?'<a href="'.Auth::user()->website.'""<a>Website Link</a><br/>':''!!}
                             {!!Auth::user()->facebook ?'<a href="'.Auth::user()->facebook.'""<a>Facebook Link</a><br/>':''!!}
                             {!!Auth::user()->linkedin ?'<a href="'.Auth::user()->website.'""<a>Linkedin Link</a><br/>':''!!}
                         </div>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                         <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <div class="row">
@@ -211,12 +220,12 @@
                         </div>
                     </div>
                 </div>
-            </form>
+
         </div>
     </section>
 
 @stop
-<script src="{{ asset('js/app.js') }}"></script>
+{{--<script src="{{ asset('js/app.js') }}"></script>--}}
 
 
 
@@ -224,16 +233,19 @@
 
 <script>
     export default {
+
+        props: ['data'],
+        computed: {
+            items: function () {
+                 console.log(this.data)
+                return JSON.parse(this.data)
+            }
+        },
         data() {
             return {
-                form: {
-                    email: '',
-                    name: '',
-                    food: null,
-                    checked: []
-                },
-                foods: [{ text: 'Select One', value: null }, 'Carrots', 'Beans', 'Tomatoes', 'Corn'],
-                show: true
+
+
+                // show: true
             }
         },
         methods: {
