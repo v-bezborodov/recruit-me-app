@@ -17,6 +17,7 @@ class User extends Authenticatable
      */
     protected $guarded = [];
 
+    protected $with = ['country'];
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -34,4 +35,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function country()
+    {
+        return $this->belongsTo('App\Country');
+    }
 }

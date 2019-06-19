@@ -11,19 +11,14 @@ class Recruitment extends Model
      *
      * @var array
      */
-//    protected $fillable = ['id', 'user_id', 'position', 'description', 'company', 'attached', 'status'];
     protected $guarded = [];
 
-    protected $with = ['user', 'country'];
+    protected $with = ['user'];
 
     public function user()
     {
         return $this->belongsTo('App\User');
     }
 
-    public function country()
-    {
-        return $this->belongsTo('App\Countries');
-    }
 
 }

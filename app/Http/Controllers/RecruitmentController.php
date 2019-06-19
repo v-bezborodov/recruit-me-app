@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Recruitment;
+use App\Country;
 
 use App\User;
 use Illuminate\Http\Request;
@@ -10,7 +11,9 @@ use Illuminate\Http\Request;
 class RecruitmentController extends Controller
 {
     public function index(){
-        $recruitments=Recruitment::all();
+        $recruitments=Recruitment::get()->toArray();
+        $country=Country::get()->toArray();
+        dd($recruitments);
         $actions=view('layouts.actions._actions');
         return view('index',  compact('recruitments','actions'));
     }
