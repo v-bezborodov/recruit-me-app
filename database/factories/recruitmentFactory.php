@@ -9,7 +9,7 @@ use App\User;
 
 $factory->define(Recruitment::class, function (Faker $faker) {
     return [
-        'user_id'=>User::all()->random()->id,
+        'user_id'=>User::all()->where('admin', '!=', 1)->random()->id,
         'position' => $faker->jobTitle,
         'description' => $faker->text,
         'created_at' => $faker->dateTimeThisYear,

@@ -30,6 +30,7 @@ class CreateUsers extends Migration
             $table->string('avatar')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->unsignedSmallInteger('admin');
             $table->rememberToken();
             $table->timestamps();
         });

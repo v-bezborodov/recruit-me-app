@@ -1804,6 +1804,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   // components: "table-component",
   // name: "table-component",
@@ -1836,7 +1840,7 @@ __webpack_require__.r(__webpack_exports__);
         sortable: true,
         label: 'Company name'
       }, {
-        key: 'user.country',
+        key: 'user.country.long_name',
         sortable: true,
         label: 'Country'
       }, // {key: 'email', sortable: true},
@@ -1859,7 +1863,8 @@ __webpack_require__.r(__webpack_exports__);
         id: 'info-modal',
         title: '',
         content: '',
-        user: ''
+        user: '',
+        country: ''
       }
     };
   },
@@ -1868,6 +1873,7 @@ __webpack_require__.r(__webpack_exports__);
       this.infoModal.title = "Profile: ".concat(item.user.first_name + ' ' + item.user.last_name);
       this.infoModal.content = item;
       this.infoModal.user = item.user;
+      this.infoModal.country = item.user.country;
       this.$root.$emit('bv::show::modal', this.infoModal.id, button);
     },
     resetInfoModal: function resetInfoModal() {
@@ -33771,7 +33777,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\ntable#table-transition-example .flip-list-move {\n    transition: transform 1s;\n}\n", ""]);
+exports.push([module.i, "\ntable#table-transition-example .flip-list-move {\n    transition: transform 1s;\n}\n.avatar{\n    width:50%;\n}\n", ""]);
 
 // exports
 
@@ -66108,10 +66114,23 @@ var render = function() {
           on: { hide: _vm.resetInfoModal }
         },
         [
-          _c("pre", [_vm._v(_vm._s(_vm.infoModal.content))]),
+          _c("div", [
+            _c("img", {
+              staticClass: "avatar d-block mx-auto",
+              attrs: {
+                src: _vm.infoModal.user.avatar,
+                alt: _vm.infoModal.user.first_name
+              }
+            })
+          ]),
           _vm._v(" "),
           _c("p", [
-            _vm._v("Name:"),
+            _vm._v("Offered position: "),
+            _c("strong", [_vm._v(_vm._s(_vm.infoModal.content.position))])
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v("Name: "),
             _c("strong", [
               _vm._v(
                 _vm._s(
@@ -66124,23 +66143,28 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("p", [
-            _vm._v("Company:"),
-            _c("strong", [_vm._v(_vm._s(_vm.infoModal.content.company))])
+            _vm._v("Email: "),
+            _c("strong", [_vm._v(_vm._s(_vm.infoModal.user.position_name))])
           ]),
           _vm._v(" "),
           _c("p", [
-            _vm._v("Email:"),
+            _vm._v("Company: "),
+            _c("strong", [_vm._v(_vm._s(_vm.infoModal.user.company))])
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v("Email: "),
             _c("strong", [_vm._v(_vm._s(_vm.infoModal.user.email))])
           ]),
           _vm._v(" "),
           _c("p", [
-            _vm._v("Phone:"),
+            _vm._v("Phone: "),
             _c("strong", [_vm._v(_vm._s(_vm.infoModal.user.phone))])
           ]),
           _vm._v(" "),
           _c("p", [
-            _vm._v("Country:"),
-            _c("strong", [_vm._v(_vm._s(_vm.infoModal.user.country))])
+            _vm._v("Country: "),
+            _c("strong", [_vm._v(_vm._s(_vm.infoModal.country.long_name))])
           ]),
           _vm._v(" "),
           _c("p", [

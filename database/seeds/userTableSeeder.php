@@ -14,9 +14,9 @@ class userTableSeeder extends Seeder
     {
 
         DB::table('users')->insert([
-            'first_name' => 'slawek',
-            'last_name'=>'B',
-            'position_name'=>'developer',
+            'first_name' => 'Slawek',
+            'last_name'=>'Bezborodow',
+            'position_name'=>'developer/admin',
             'company'=>'self-employed',
             'website'=>'slawek.dev',
             'linkedin'=>'wwwlinkedin.com/slawek',
@@ -27,7 +27,8 @@ class userTableSeeder extends Seeder
             'phone'=>'097852097',
             'country_id'=>1,
             'avatar'=>'no_avatar.jpg',
-            'password'=>'$2y$10$38q5agyEgDBrV2XIskbbJe1Vl9K0ggwsiafKTdw07enms4VcjnHki'
+            'password'=>'$2y$10$38q5agyEgDBrV2XIskbbJe1Vl9K0ggwsiafKTdw07enms4VcjnHki',
+            'admin'=>1
         ]);
 
 

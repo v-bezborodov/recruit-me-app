@@ -24,7 +24,9 @@ $factory->define(User::class, function (Faker $faker) {
 //        'company' => $faker->company,
         'password'=>$faker->password,
         'created_at' => $faker->dateTimeThisYear,
-        'updated_at'=>$faker->dateTimeThisMonth
+        'updated_at'=>$faker->dateTimeThisMonth,
+        'admin'=>0,
+        'avatar'=>'/img/no-avatar.png'
     ];
 });
 

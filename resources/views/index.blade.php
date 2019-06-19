@@ -8,7 +8,7 @@
 @section('meta_description')
     Recruitment List of Slawek Bezborodov
 @stop
-{{ $recruitments }}
+{{--{{ $recruitments }}--}}
 {{--{{print_r($recruitments)}}--}}
 {{--@foreach($recruitments as $t)--}}
 {{--{{$t->user->email}}--}}

@@ -11,9 +11,8 @@ use Illuminate\Http\Request;
 class RecruitmentController extends Controller
 {
     public function index(){
-        $recruitments=Recruitment::get()->toArray();
-        $country=Country::get()->toArray();
-        dd($recruitments);
+        $recruitments=Recruitment::get();
+//        dd($recruitments);
         $actions=view('layouts.actions._actions');
         return view('index',  compact('recruitments','actions'));
     }

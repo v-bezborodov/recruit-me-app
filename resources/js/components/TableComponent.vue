@@ -43,13 +43,17 @@
 
         <!-- Info modal -->
         <b-modal :id="infoModal.id" :title="infoModal.title" ok-only @hide="resetInfoModal">
-            <pre>{{ infoModal.content}}</pre>
+<!--            <pre>{{ infoModal.content}}</pre>-->
 <!--            <pre>{{ infoModal.user.id}}</pre>-->
-            <p>Name:<strong>{{infoModal.user.first_name + ' ' + infoModal.user.last_name }}</strong></p>
-            <p>Company:<strong>{{ infoModal.content.company }}</strong></p>
-            <p>Email:<strong>{{ infoModal.user.email }}</strong></p>
-            <p>Phone:<strong>{{ infoModal.user.phone }}</strong></p>
-            <p>Country:<strong>{{ infoModal.user.country }}</strong></p>
+            <div><img class="avatar d-block mx-auto" :src="infoModal.user.avatar" :alt="infoModal.user.first_name">
+            </div>
+            <p>Offered position: <strong>{{ infoModal.content.position }}</strong></p>
+            <p>Name: <strong>{{infoModal.user.first_name + ' ' + infoModal.user.last_name }}</strong></p>
+            <p>Email: <strong>{{ infoModal.user.position_name }}</strong></p>
+            <p>Company: <strong>{{ infoModal.user.company }}</strong></p>
+            <p>Email: <strong>{{ infoModal.user.email }}</strong></p>
+            <p>Phone: <strong>{{ infoModal.user.phone }}</strong></p>
+            <p>Country: <strong>{{infoModal.country.long_name}}</strong></p>
             <p>Created: <strong>{{ infoModal.content.created_at }}</strong></p>
             <p>Last updated: <strong>{{ infoModal.content.updated_at }}</strong></p>
         </b-modal>
@@ -82,7 +86,7 @@
                     {key: 'user.last_name', sortable: true, label: 'Last Name'},
                     {key: 'user.first_name', sortable: true, label: 'First name'},
                     {key: 'user.company', sortable: true, label: 'Company name'},
-                    {key: 'user.country', sortable: true, label: 'Country'},
+                    {key: 'user.country.long_name', sortable: true, label: 'Country'},
                     // {key: 'email', sortable: true},
                     {key: 'user.phone', sortable: true, label: 'Phone'},
                     // {key: 'created_at', sortable: true},
@@ -97,7 +101,8 @@
                     id: 'info-modal',
                     title: '',
                     content: '',
-                    user: ''
+                    user: '',
+                    country: ''
                 }
             }
         },
@@ -106,6 +111,7 @@
                 this.infoModal.title = `Profile: ${item.user.first_name+' '+item.user.last_name}`
                 this.infoModal.content = item
                 this.infoModal.user = item.user
+                this.infoModal.country = item.user.country
                 this.$root.$emit('bv::show::modal', this.infoModal.id, button)
             },
             resetInfoModal() {
@@ -119,5 +125,8 @@
 <style>
     table#table-transition-example .flip-list-move {
         transition: transform 1s;
+    }
+    .avatar{
+        width:50%;
     }
 </style>
