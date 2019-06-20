@@ -11,35 +11,46 @@
             <b-form>
 <!--                @csrf-->
                 <!-- Default input first name -->
-                <label for="defaultFormCardNameEx" class="grey-text font-weight-light">First name</label>
-                <b-form-input type="text"  class="form-control"
-                              :v-model="first_name"
+                <label for="FormCardFirstName" class="grey-text font-weight-light">First name</label>
+                <b-form-input type="text"
+                              id="FormCardFirstName"
+                              class="form-control"
+                              v-model="first_name"
                               placeholder="Enter your First Name"
                 ></b-form-input>
                 <br>
                 <!-- Default input last name -->
-                <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Last name</label>
+                <label for="FormCardLastName" class="grey-text font-weight-light">Last name</label>
                 <b-form-input type="text"  class="form-control"
+                              id="FormCardLastName"
+                              v-model="last_name"
                               placeholder="Enter your First Name"
                 ></b-form-input>
                 <br>
                 <!-- input email -->
-                <label for="defaultFormCardEmailEx" class="grey-text font-weight-light">Your email</label>
+                <label for="FormCardEmail" class="grey-text font-weight-light">Your email</label>
                 <b-form-input type="email"
+                              id="FormCardEmail"
+                              v-model="email"
                               class="form-control"
+                              >
                 </b-form-input>
                 <br>
                 <!-- Position -->
-                <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Profession</label>
+                <label for="FormCardProfession" class="grey-text font-weight-light">Profession</label>
                 <b-form-input type="text"
+                              id="FormCardProfession"
+                              v-model="position"
                               class="form-control"
                               placeholder="Enter your First Name"
                 ></b-form-input>
                 <br>
                 <!-- Company -->
-                <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Company name</label>
+                <label for="FormCardCompany" class="grey-text font-weight-light">Company name</label>
                 <b-form-input
                         type="text"
+                        id="FormCardCompany"
+                        v-model="company"
                         class="form-control"
                         placeholder="Enter your First Name"
                 ></b-form-input>
@@ -72,19 +83,7 @@
 
     export default {
         name: "modalComponent",
-        props: ['data'],
-        data() {
-            return {
-                first_name:'',
-                user: {}
-            }
-        },
-        // components:{
-        //     'b-modal': bModal,
-        // },
-        // directives: {
-        //     'b-modal': bModalDirective
-        // },
+        props: ['data','countries'],
         methods: {
             formSubmit() {
                 console.log('formSubmit')
@@ -100,12 +99,34 @@
                 //     });
             },
             fetchUser () {
-                console.log('fetchUser')
+                console.log('fetchUser', this.data)
+                console.log('fetchUser', this.countries)
+
                 // axios.get('/api/user')...
+            }
+        },
+        data() {
+            return {
+                first_name:this.data.first_name,
+                last_name:this.data.last_name,
+                email:this.data.email,
+                position:this.data.position_name,
+                company:this.data.company,
+                country:this.data.country,
+
+                // user: {}
             }
         },
         created() {
             this.fetchUser()
+        },
+        mounted (){
+            return {
+                // first_name:'test2',
+                // last_name:this.data.id,
+                // user: {}
+            }
+
         }
     }
 </script>

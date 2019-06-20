@@ -49,7 +49,7 @@
                         {{--Vue component--}}
                         <div id="modal-edit">
                             <b-button id="show-btn" @click="$bvModal.show('bv-modal-example')">Edit Profile</b-button>
-                                <modal-component data="{{ Auth::user()}}"></modal-component>
+                                <modal-component :data="{{ Auth::user()}}" :countries="{{\App\Country::get(['long_name'])}}"></modal-component>
                         </div>
 
 

@@ -16,7 +16,7 @@ class CreateRecruitments extends Migration
         Schema::create('recruitments', function (Blueprint $table) {
             $table->bigIncrements('id')->unique()->unsigned();
             $table->unsignedBigInteger('user_id')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('position');
+            $table->string('offered_position');
             $table->string('description');
 //            $table->string('company');
             $table->string('attached')->nullable();

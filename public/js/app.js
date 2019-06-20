@@ -1965,22 +1965,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "modalComponent",
-  props: ['data'],
-  data: function data() {
-    return {
-      first_name: '',
-      user: {}
-    };
-  },
-  // components:{
-  //     'b-modal': bModal,
-  // },
-  // directives: {
-  //     'b-modal': bModalDirective
-  // },
+  props: ['data', 'countries'],
   methods: {
     formSubmit: function formSubmit() {
       console.log('formSubmit'); // e.preventDefault();
@@ -1995,11 +1994,29 @@ __webpack_require__.r(__webpack_exports__);
       //     });
     },
     fetchUser: function fetchUser() {
-      console.log('fetchUser'); // axios.get('/api/user')...
+      console.log('fetchUser', this.data);
+      console.log('fetchUser', this.countries); // axios.get('/api/user')...
     }
+  },
+  data: function data() {
+    return {
+      first_name: this.data.first_name,
+      last_name: this.data.last_name,
+      email: this.data.email,
+      position: this.data.position_name,
+      company: this.data.company,
+      country: this.data.country // user: {}
+
+    };
   },
   created: function created() {
     this.fetchUser();
+  },
+  mounted: function mounted() {
+    return {// first_name:'test2',
+      // last_name:this.data.id,
+      // user: {}
+    };
   }
 });
 
@@ -66343,7 +66360,7 @@ var render = function() {
                 "label",
                 {
                   staticClass: "grey-text font-weight-light",
-                  attrs: { for: "defaultFormCardNameEx" }
+                  attrs: { for: "FormCardFirstName" }
                 },
                 [_vm._v("First name")]
               ),
@@ -66352,8 +66369,15 @@ var render = function() {
                 staticClass: "form-control",
                 attrs: {
                   type: "text",
-                  "v-model": _vm.first_name,
+                  id: "FormCardFirstName",
                   placeholder: "Enter your First Name"
+                },
+                model: {
+                  value: _vm.first_name,
+                  callback: function($$v) {
+                    _vm.first_name = $$v
+                  },
+                  expression: "first_name"
                 }
               }),
               _vm._v(" "),
@@ -66363,14 +66387,25 @@ var render = function() {
                 "label",
                 {
                   staticClass: "grey-text font-weight-light",
-                  attrs: { for: "defaultFormCardNameEx" }
+                  attrs: { for: "FormCardLastName" }
                 },
                 [_vm._v("Last name")]
               ),
               _vm._v(" "),
               _c("b-form-input", {
                 staticClass: "form-control",
-                attrs: { type: "text", placeholder: "Enter your First Name" }
+                attrs: {
+                  type: "text",
+                  id: "FormCardLastName",
+                  placeholder: "Enter your First Name"
+                },
+                model: {
+                  value: _vm.last_name,
+                  callback: function($$v) {
+                    _vm.last_name = $$v
+                  },
+                  expression: "last_name"
+                }
               }),
               _vm._v(" "),
               _c("br"),
@@ -66379,10 +66414,22 @@ var render = function() {
                 "label",
                 {
                   staticClass: "grey-text font-weight-light",
-                  attrs: { for: "defaultFormCardEmailEx" }
+                  attrs: { for: "FormCardEmail" }
                 },
                 [_vm._v("Your email")]
               ),
+              _vm._v(" "),
+              _c("b-form-input", {
+                staticClass: "form-control",
+                attrs: { type: "email", id: "FormCardEmail" },
+                model: {
+                  value: _vm.email,
+                  callback: function($$v) {
+                    _vm.email = $$v
+                  },
+                  expression: "email"
+                }
+              }),
               _vm._v(" "),
               _c("br"),
               _vm._v(" "),
@@ -66390,14 +66437,25 @@ var render = function() {
                 "label",
                 {
                   staticClass: "grey-text font-weight-light",
-                  attrs: { for: "defaultFormCardNameEx" }
+                  attrs: { for: "FormCardProfession" }
                 },
                 [_vm._v("Profession")]
               ),
               _vm._v(" "),
               _c("b-form-input", {
                 staticClass: "form-control",
-                attrs: { type: "text", placeholder: "Enter your First Name" }
+                attrs: {
+                  type: "text",
+                  id: "FormCardProfession",
+                  placeholder: "Enter your First Name"
+                },
+                model: {
+                  value: _vm.position,
+                  callback: function($$v) {
+                    _vm.position = $$v
+                  },
+                  expression: "position"
+                }
               }),
               _vm._v(" "),
               _c("br"),
@@ -66406,14 +66464,25 @@ var render = function() {
                 "label",
                 {
                   staticClass: "grey-text font-weight-light",
-                  attrs: { for: "defaultFormCardNameEx" }
+                  attrs: { for: "FormCardCompany" }
                 },
                 [_vm._v("Company name")]
               ),
               _vm._v(" "),
               _c("b-form-input", {
                 staticClass: "form-control",
-                attrs: { type: "text", placeholder: "Enter your First Name" }
+                attrs: {
+                  type: "text",
+                  id: "FormCardCompany",
+                  placeholder: "Enter your First Name"
+                },
+                model: {
+                  value: _vm.company,
+                  callback: function($$v) {
+                    _vm.company = $$v
+                  },
+                  expression: "company"
+                }
               }),
               _vm._v(" "),
               _c("br"),
