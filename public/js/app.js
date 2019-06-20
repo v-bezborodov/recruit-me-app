@@ -1976,6 +1976,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "modalComponent",
@@ -2005,7 +2006,28 @@ __webpack_require__.r(__webpack_exports__);
       email: this.data.email,
       position: this.data.position_name,
       company: this.data.company,
-      country: this.data.country // user: {}
+      country: this.data.country,
+      selected: null,
+      options: [// {this.countries},
+      {
+        value: null,
+        text: 'Please select an option'
+      }, {
+        value: 'a',
+        text: 'This is First option'
+      }, {
+        value: 'b',
+        text: 'Selected Option'
+      }, {
+        value: {
+          C: '3PO'
+        },
+        text: 'This is an option with object value'
+      }, {
+        value: 'd',
+        text: 'This one is disabled',
+        disabled: true
+      }] // user: {}
 
     };
   },
@@ -66491,23 +66513,24 @@ var render = function() {
                 "b-form-select",
                 {
                   staticClass: "mb-2 mr-sm-2 mb-sm-0",
-                  attrs: {
-                    value: 2,
-                    options: { "1": "Russia", "2": "Poland", "3": "Germany" },
-                    id: "inline-form-custom-select-pref"
+                  model: {
+                    value: _vm.selected,
+                    callback: function($$v) {
+                      _vm.selected = $$v
+                    },
+                    expression: "selected"
                   }
                 },
-                [
-                  _c(
-                    "option",
-                    {
-                      attrs: { slot: "first" },
-                      domProps: { value: null },
-                      slot: "first"
-                    },
-                    [_vm._v("Choose country")]
-                  )
-                ]
+                _vm._l(_vm.options, function(item, key) {
+                  return _c("option", { domProps: { value: key } }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(item) +
+                        "\n                    "
+                    )
+                  ])
+                }),
+                0
               ),
               _vm._v(" "),
               _c("br"),
@@ -79058,8 +79081,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/developer/WEB_PROJECTS/recruitme/recruit_app/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/developer/WEB_PROJECTS/recruitme/recruit_app/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

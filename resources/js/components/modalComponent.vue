@@ -57,11 +57,12 @@
                 <br>
                 <b-form-select
                         class="mb-2 mr-sm-2 mb-sm-0"
-                        :value="2"
-                        :options="{ '1': 'Russia', '2': 'Poland', '3': 'Germany' }"
-                        id="inline-form-custom-select-pref"
+                        v-model="selected"
                 >
-                    <option slot="first" :value="null">Choose country</option>
+                    <option v-for="(item, key) in options" :value="key">
+                        {{item}}
+                    </option>
+                    <!--<option slot="first" :value="null">Choose country</option>-->
                 </b-form-select>
                 <br>
 
@@ -114,9 +115,20 @@
                 company:this.data.company,
                 country:this.data.country,
 
+
+                selected: null,
+                options: [
+                    // {this.countries},
+                    { value: null, text: 'Please select an option' },
+                    { value: 'a', text: 'This is First option' },
+                    { value: 'b', text: 'Selected Option' },
+                    { value: { C: '3PO' }, text: 'This is an option with object value' },
+                    { value: 'd', text: 'This one is disabled', disabled: true }
+                ]
                 // user: {}
             }
         },
+
         created() {
             this.fetchUser()
         },
