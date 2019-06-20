@@ -13,6 +13,7 @@
 {{--@foreach($recruitments as $t)--}}
 {{--{{$t->user->email}}--}}
 {{--@endforeach--}}
+{{links_}}
 @section('content')
             <div id="table-app">
                 <table-component data="{{ $recruitments }}"></table-component>
