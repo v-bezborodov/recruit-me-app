@@ -59,8 +59,8 @@
                         class="mb-2 mr-sm-2 mb-sm-0"
                         v-model="selected"
                 >
-                    <option v-for="(item, key) in options" :value="key">
-                        {{item}}
+                    <option v-for="item in options" :value="item.id" :key="`state-${item.id}`">
+                        {{item.long_name}}
                     </option>
                     <!--<option slot="first" :value="null">Choose country</option>-->
                 </b-form-select>
@@ -100,8 +100,8 @@
                 //     });
             },
             fetchUser () {
-                console.log('fetchUser', this.data)
-                console.log('fetchUser', this.countries)
+                // console.log('fetchUser', this.data)
+                // console.log('fetchUser', this.countries)
 
                 // axios.get('/api/user')...
             }
@@ -117,15 +117,21 @@
 
 
                 selected: null,
-                options: [
-                    // {this.countries},
-                    { value: null, text: 'Please select an option' },
-                    { value: 'a', text: 'This is First option' },
-                    { value: 'b', text: 'Selected Option' },
-                    { value: { C: '3PO' }, text: 'This is an option with object value' },
-                    { value: 'd', text: 'This one is disabled', disabled: true }
-                ]
+                // options: [
+                //     // {this.countries},
+                //     { value: null, text: 'Please select an option' },
+                //     { value: 'a', text: 'This is First option' },
+                //     { value: 'b', text: 'Selected Option' },
+                //     { value: { C: '3PO' }, text: 'This is an option with object value' },
+                //     { value: 'd', text: 'This one is disabled', disabled: true }
+                // ]
                 // user: {}
+            }
+        },
+        computed: {
+            options: function () {
+                console.log(this.countries)
+                return this.countries
             }
         },
 

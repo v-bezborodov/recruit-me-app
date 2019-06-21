@@ -1994,9 +1994,9 @@ __webpack_require__.r(__webpack_exports__);
       //         console.log(error);
       //     });
     },
-    fetchUser: function fetchUser() {
-      console.log('fetchUser', this.data);
-      console.log('fetchUser', this.countries); // axios.get('/api/user')...
+    fetchUser: function fetchUser() {// console.log('fetchUser', this.data)
+      // console.log('fetchUser', this.countries)
+      // axios.get('/api/user')...
     }
   },
   data: function data() {
@@ -2007,29 +2007,23 @@ __webpack_require__.r(__webpack_exports__);
       position: this.data.position_name,
       company: this.data.company,
       country: this.data.country,
-      selected: null,
-      options: [// {this.countries},
-      {
-        value: null,
-        text: 'Please select an option'
-      }, {
-        value: 'a',
-        text: 'This is First option'
-      }, {
-        value: 'b',
-        text: 'Selected Option'
-      }, {
-        value: {
-          C: '3PO'
-        },
-        text: 'This is an option with object value'
-      }, {
-        value: 'd',
-        text: 'This one is disabled',
-        disabled: true
-      }] // user: {}
+      selected: null // options: [
+      //     // {this.countries},
+      //     { value: null, text: 'Please select an option' },
+      //     { value: 'a', text: 'This is First option' },
+      //     { value: 'b', text: 'Selected Option' },
+      //     { value: { C: '3PO' }, text: 'This is an option with object value' },
+      //     { value: 'd', text: 'This one is disabled', disabled: true }
+      // ]
+      // user: {}
 
     };
+  },
+  computed: {
+    options: function options() {
+      console.log(this.countries);
+      return this.countries;
+    }
   },
   created: function created() {
     this.fetchUser();
@@ -66521,14 +66515,18 @@ var render = function() {
                     expression: "selected"
                   }
                 },
-                _vm._l(_vm.options, function(item, key) {
-                  return _c("option", { domProps: { value: key } }, [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(item) +
-                        "\n                    "
-                    )
-                  ])
+                _vm._l(_vm.options, function(item) {
+                  return _c(
+                    "option",
+                    { key: "state-" + item.id, domProps: { value: item.id } },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(item.long_name) +
+                          "\n                    "
+                      )
+                    ]
+                  )
                 }),
                 0
               ),
@@ -78998,14 +78996,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************************!*\
   !*** ./resources/js/components/modalComponent.vue ***!
   \****************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modalComponent_vue_vue_type_template_id_6ca5bbdb_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modalComponent.vue?vue&type=template&id=6ca5bbdb&scoped=true& */ "./resources/js/components/modalComponent.vue?vue&type=template&id=6ca5bbdb&scoped=true&");
 /* harmony import */ var _modalComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modalComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/modalComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _modalComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _modalComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -79035,7 +79034,7 @@ component.options.__file = "resources/js/components/modalComponent.vue"
 /*!*****************************************************************************!*\
   !*** ./resources/js/components/modalComponent.vue?vue&type=script&lang=js& ***!
   \*****************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -79081,8 +79080,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/developer/WEB_PROJECTS/recruitme/recruit_app/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/developer/WEB_PROJECTS/recruitme/recruit_app/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
