@@ -89,8 +89,14 @@
             formSubmit(e) {
                 console.log('formsubmit')
                 e.preventDefault();
-                axios.post('/formsubmit', {
-                    id: this.data.id
+                axios.post('./formsubmit', {
+                    id: this.data.id,
+                    first_name:this.first_name,
+                    last_name:this.last_name,
+                    email:this.email,
+                    position:this.position_name,
+                    company:this.company,
+                    country:this.country
                 })
                     .then(function (response) {
                         console.log(response.data);

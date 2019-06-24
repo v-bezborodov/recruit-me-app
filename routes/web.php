@@ -23,7 +23,7 @@ Route::get('/about', function(){
     return view('about');
 })->name('about')->middleware('auth');;
 Route::get('/profile', 'RecruitmentController@profile')->name('profile')->middleware('auth');
-Route::post('/formSubmit', 'UserController@update')->middleware('auth');
+Route::post('/formsubmit', 'UserController@update')->middleware('auth');
 
 
 Auth::routes();
