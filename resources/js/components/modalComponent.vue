@@ -86,18 +86,18 @@
         name: "modalComponent",
         props: ['data','countries'],
         methods: {
-            formSubmit() {
-                console.log('formSubmit')
-                // e.preventDefault();
-                // axios.post('/formSubmit', {
-                //     name: this.first_name
-                // })
-                //     .then(function (response) {
-                //         console.log(response.data);
-                //     })
-                //     .catch(function (error) {
-                //         console.log(error);
-                //     });
+            formSubmit(e) {
+                console.log('formsubmit')
+                e.preventDefault();
+                axios.post('/formsubmit', {
+                    id: this.data.id
+                })
+                    .then(function (response) {
+                        console.log(response.data);
+                    })
+                    .catch(function (error) {
+                        console.log('testerror', error);
+                    });
             },
             fetchUser () {
                 // console.log('fetchUser', this.data)
@@ -116,16 +116,8 @@
                 country:this.data.country,
 
 
-                selected: null,
-                // options: [
-                //     // {this.countries},
-                //     { value: null, text: 'Please select an option' },
-                //     { value: 'a', text: 'This is First option' },
-                //     { value: 'b', text: 'Selected Option' },
-                //     { value: { C: '3PO' }, text: 'This is an option with object value' },
-                //     { value: 'd', text: 'This one is disabled', disabled: true }
-                // ]
-                // user: {}
+                selected: this.data.id,
+
             }
         },
         computed: {

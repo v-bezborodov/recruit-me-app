@@ -11,7 +11,7 @@
 
 
 @section('content')
-    <container>
+    <section>
         <div class="container d-flex justify-content-center">
             <div class="card card-download" style="width: 18rem;">
                 <img src="./img/document-download.png" class="card-img-top" alt="download document">
@@ -23,7 +23,7 @@
             </div>
 
         </div>
-    </container>
+    </section>
 
 @stop
 

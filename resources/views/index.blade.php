@@ -15,9 +15,9 @@
 {{--@endforeach--}}
 
 @section('content')
-            <div id="table-app">
+{{--            <div id="app">--}}
                 <table-component data="{{ $recruitments }}"></table-component>
-            </div>
+{{--            </div>--}}
 @stop
 
 {{--@section('script')--}}
@@ -27,7 +27,9 @@
 {{--</script>--}}
 {{--@stop--}}
 
-
+{{--@section('script')--}}
+{{--    <script src="{{ asset('js/app.js') }}"></script>--}}
+{{--@stop--}}
 
 
 

@@ -35,20 +35,24 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
+
 window.onload = function () {
 
-    // const app = new Vue({
-    //     el: '#app',
+    const app = new Vue({
+        el: '#app',
+    });
+
+
+    // const app_table = new Vue({
+    //     el: '#table-app',
+    //     data: {
+    //         currentActivity: '#table-app'
+    //     }
     // });
-
-
-    const app_table = new Vue({
-        el: '#table-app',
-    });
-
-    const app_modal = new Vue({
-        el: '#modal-edit',
-    });
+    //
+    // const app_modal = new Vue({
+    //     el: '#modal-edit',
+    // });
 }
 
 

@@ -1982,17 +1982,16 @@ __webpack_require__.r(__webpack_exports__);
   name: "modalComponent",
   props: ['data', 'countries'],
   methods: {
-    formSubmit: function formSubmit() {
-      console.log('formSubmit'); // e.preventDefault();
-      // axios.post('/formSubmit', {
-      //     name: this.first_name
-      // })
-      //     .then(function (response) {
-      //         console.log(response.data);
-      //     })
-      //     .catch(function (error) {
-      //         console.log(error);
-      //     });
+    formSubmit: function formSubmit(e) {
+      console.log('formsubmit');
+      e.preventDefault();
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/formsubmit', {
+        id: this.data.id
+      }).then(function (response) {
+        console.log(response.data);
+      })["catch"](function (error) {
+        console.log('testerror', error);
+      });
     },
     fetchUser: function fetchUser() {// console.log('fetchUser', this.data)
       // console.log('fetchUser', this.countries)
@@ -2007,16 +2006,7 @@ __webpack_require__.r(__webpack_exports__);
       position: this.data.position_name,
       company: this.data.company,
       country: this.data.country,
-      selected: null // options: [
-      //     // {this.countries},
-      //     { value: null, text: 'Please select an option' },
-      //     { value: 'a', text: 'This is First option' },
-      //     { value: 'b', text: 'Selected Option' },
-      //     { value: { C: '3PO' }, text: 'This is an option with object value' },
-      //     { value: 'd', text: 'This one is disabled', disabled: true }
-      // ]
-      // user: {}
-
+      selected: this.data.id
     };
   },
   computed: {
@@ -78765,15 +78755,18 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('modal-component', __webpac
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
 window.onload = function () {
-  // const app = new Vue({
-  //     el: '#app',
+  var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
+    el: '#app'
+  }); // const app_table = new Vue({
+  //     el: '#table-app',
+  //     data: {
+  //         currentActivity: '#table-app'
+  //     }
   // });
-  var app_table = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
-    el: '#table-app'
-  });
-  var app_modal = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
-    el: '#modal-edit'
-  });
+  //
+  // const app_modal = new Vue({
+  //     el: '#modal-edit',
+  // });
 };
 
 /***/ }),
@@ -78996,15 +78989,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************************!*\
   !*** ./resources/js/components/modalComponent.vue ***!
   \****************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modalComponent_vue_vue_type_template_id_6ca5bbdb_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modalComponent.vue?vue&type=template&id=6ca5bbdb&scoped=true& */ "./resources/js/components/modalComponent.vue?vue&type=template&id=6ca5bbdb&scoped=true&");
 /* harmony import */ var _modalComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modalComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/modalComponent.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _modalComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _modalComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -79034,7 +79026,7 @@ component.options.__file = "resources/js/components/modalComponent.vue"
 /*!*****************************************************************************!*\
   !*** ./resources/js/components/modalComponent.vue?vue&type=script&lang=js& ***!
   \*****************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

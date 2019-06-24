@@ -47,10 +47,10 @@
 {{--                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>--}}
 
                         {{--Vue component--}}
-                        <div id="modal-edit">
+{{--                        <div id="app">--}}
                             <b-button id="show-btn" @click="$bvModal.show('bv-modal-example')">Edit Profile</b-button>
                                 <modal-component :data="{{ Auth::user()}}" :countries="{{\App\Country::get(['id','long_name'])}}"></modal-component>
-                        </div>
+{{--                        </div>--}}
 
 
                     </div>
@@ -122,7 +122,7 @@
                                         <label>Country</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>{{Auth::user()->country}}</p>
+                                        <p>{{Auth::user()->country->long_name}}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -189,5 +189,6 @@
 {{--        }--}}
 {{--    }--}}
 {{--</script>--}}
-
-
+{{--@section('script')--}}
+{{--    <script src="{{ asset('js/app.js') }}"></script>--}}
+{{--@stop--}}

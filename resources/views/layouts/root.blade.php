@@ -6,12 +6,17 @@
 {{--    @yield('style')--}}
 </head>
 <body>
-    @include('layouts.header')
 
-    @yield('content')
+        @include('layouts.header')
+    <div id="app">
+        @yield('content')
 
-    @include('layouts.footer')
+        @include('layouts.footer')
 
-    @yield('script')
+        @yield('script')
+    </div>
+
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
 </body>
 </html>
