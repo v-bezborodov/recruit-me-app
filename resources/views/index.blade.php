@@ -20,6 +20,7 @@
 {{--            </div>--}}
 @stop
 
+
 {{--@section('script')--}}
 {{--<script>--}}
 {{--    --}}{{--window.data = {!! json_encode($recruitments) !!};--}}

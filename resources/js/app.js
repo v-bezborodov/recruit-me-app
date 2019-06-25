@@ -28,6 +28,14 @@ Vue.component('modal-component', require('./components/modalComponent.vue').defa
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+// register the plugin on vue
+import Toasted from 'vue-toasted';
+
+Vue.use(Toasted);
+
+// you can also pass options, check options reference below
+// Vue.use(Toasted, Options)
+
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
 
@@ -35,6 +43,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
+
 
 window.onload = function () {
 

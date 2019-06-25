@@ -28,7 +28,8 @@ class userTableSeeder extends Seeder
             'country_id'=>223,
             'avatar'=>'no_avatar.jpg',
             'password'=>'$2y$10$38q5agyEgDBrV2XIskbbJe1Vl9K0ggwsiafKTdw07enms4VcjnHki',
-            'admin'=>1
+            'admin'=>1,
+            'created_at'=>'2017-03-25 14:58:43'
         ]);
 
 

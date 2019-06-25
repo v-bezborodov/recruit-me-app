@@ -17,6 +17,7 @@
                               class="form-control"
                               v-model="first_name"
                               placeholder="Enter your First Name"
+                              required
                 ></b-form-input>
                 <br>
                 <!-- Default input last name -->
@@ -24,7 +25,8 @@
                 <b-form-input type="text"  class="form-control"
                               id="FormCardLastName"
                               v-model="last_name"
-                              placeholder="Enter your First Name"
+                              placeholder="Enter your Last Name"
+                              required
                 ></b-form-input>
                 <br>
                 <!-- input email -->
@@ -33,6 +35,8 @@
                               id="FormCardEmail"
                               v-model="email"
                               class="form-control"
+                              placeholder="Enter your email"
+                              required
                               >
                 </b-form-input>
                 <br>
@@ -42,7 +46,7 @@
                               id="FormCardProfession"
                               v-model="position"
                               class="form-control"
-                              placeholder="Enter your First Name"
+                              placeholder="Enter your position"
                 ></b-form-input>
                 <br>
                 <!-- Company -->
@@ -52,12 +56,14 @@
                         id="FormCardCompany"
                         v-model="company"
                         class="form-control"
-                        placeholder="Enter your First Name"
+                        placeholder="Enter your Company Name"
+                        required
                 ></b-form-input>
                 <br>
                 <b-form-select
                         class="mb-2 mr-sm-2 mb-sm-0"
                         v-model="selected"
+                        placeholder="Chose Country"
                 >
                     <option v-for="item in options" :value="item.id" :key="`state-${item.id}`">
                         {{item.long_name}}
@@ -69,13 +75,14 @@
 
                 <div class="text-center py-4 mt-3">
                     <b-button @click="formSubmit" variant="primary">Submit</b-button>
+                    <b-button @click="$bvModal.hide('bv-modal-example')">Close</b-button>
                 </div>
             </b-form>
 
 
 
         </div>
-        <b-button class="mt-3" block @click="$bvModal.hide('bv-modal-example')">Close</b-button>
+
     </b-modal>
 </template>
 
@@ -100,9 +107,36 @@
                 })
                     .then(function (response) {
                         console.log(response.data);
+
+                        // this.$toasted.show('hello billo')
+
+                        Vue.toasted.success('Succesfully saved!', {
+                            icon : 'check',
+                            theme: "bubble",
+                            position: "bottom-right",
+                            duration : 5000,
+                            action : {
+                                text : 'OK',
+                                onClick : (e, toastObject) => {
+                                    toastObject.goAway(0);
+                                }
+                            }
+                        });
+
+                        // window.location = './profiletest';
+                        setTimeout("location.href = '/profile';", 1500);
+
                     })
                     .catch(function (error) {
                         console.log('testerror', error);
+                        Vue.toasted.error('Something went wrong',{
+                            action : {
+                                text : 'OK',
+                                onClick : (e, toastObject) => {
+                                    toastObject.goAway(0);
+                                }
+                            }
+                        });
                     });
             },
             fetchUser () {

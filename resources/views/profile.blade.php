@@ -44,13 +44,9 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-{{--                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>--}}
 
-                        {{--Vue component--}}
-{{--                        <div id="app">--}}
-                            <b-button id="show-btn" @click="$bvModal.show('bv-modal-example')">Edit Profile</b-button>
-                                <modal-component :data="{{ Auth::user()}}" :countries="{{\App\Country::get(['id','long_name'])}}"></modal-component>
-{{--                        </div>--}}
+
+
 
 
                     </div>
@@ -59,12 +55,19 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                        <div class="profile-work mt-4">
-                            <p>WORK LINK</p>
-                            {!!Auth::user()->website ?'<a href="'.Auth::user()->website.'""<a>Website Link</a><br/>':''!!}
-                            {!!Auth::user()->facebook ?'<a href="'.Auth::user()->facebook.'""<a>Facebook Link</a><br/>':''!!}
-                            {!!Auth::user()->linkedin ?'<a href="'.Auth::user()->website.'""<a>Linkedin Link</a><br/>':''!!}
+                        {{--Vue component--}}
+                        <div class="mt-2 text-center">
+                            <b-button id="show-btn" @click="$bvModal.show('bv-modal-example')">Edit Profile</b-button>
+                            <modal-component :data="{{ Auth::user()}}" :countries="{{\App\Country::get(['id','long_name'])}}"></modal-component>
                         </div>
+
+                        <div class="profile-work mt-4">
+                            <p>LINKS</p>
+                            {!!Auth::user()->website ?'<a href="'.Auth::user()->website.'">Website Link</a><br/>':''!!}
+                            {!!Auth::user()->facebook ?'<a href="'.Auth::user()->facebook.'">Facebook Link</a><br/>':''!!}
+                            {!!Auth::user()->linkedin ?'<a href="'.Auth::user()->website.'">Linkedin Link</a><br/>':''!!}
+                        </div>
+{{--                        {{dd(Auth::user())}}--}}
                     </div>
                     <div class="col-md-9">
                         <div class="tab-content profile-tab" id="myTabContent">

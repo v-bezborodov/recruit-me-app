@@ -25,6 +25,7 @@
     "dependencies": {
         "bootstrap-vue": "^2.0.0-rc.22",
         "portal-vue": "^2.1.5",
-        "vue-template-compiler": "^2.6.10"
+        "vue-template-compiler": "^2.6.10",
+        "vue-toasted": "^1.1.27"
     }
 }
