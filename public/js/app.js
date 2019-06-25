@@ -1999,7 +1999,8 @@ __webpack_require__.r(__webpack_exports__);
         email: this.email,
         position: this.position_name,
         company: this.company,
-        country: this.country
+        country: this.country,
+        updated_at: this.time
       }).then(function (response) {
         console.log(response.data); // this.$toasted.show('hello billo')
 
@@ -2014,9 +2015,7 @@ __webpack_require__.r(__webpack_exports__);
               toastObject.goAway(0);
             }
           }
-        }); // window.location = './profiletest';
-
-        setTimeout("location.href = '/profile';", 1500);
+        }); // setTimeout("location.href = '/profile';", 1500);
       })["catch"](function (error) {
         console.log('testerror', error);
         Vue.toasted.error('Something went wrong', {
@@ -2047,8 +2046,19 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     options: function options() {
-      console.log(this.countries);
+      // console.log(this.countries)
       return this.countries;
+    },
+    time: function time() {
+      var date = new Date();
+      var day = date.getDate();
+      var month = date.getMonth();
+      var year = date.getFullYear();
+      var hours = date.getHours();
+      var minutes = date.getMinutes();
+      var seconds = date.getSeconds(); // console.log(year+'-'+month+'-'+day+' '+minutes);
+
+      return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
     }
   },
   created: function created() {
@@ -79133,8 +79143,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/developer/WEB_PROJECTS/recruitme/recruit_app/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/developer/WEB_PROJECTS/recruitme/recruit_app/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

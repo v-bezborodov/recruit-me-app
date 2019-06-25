@@ -103,7 +103,9 @@
                     email:this.email,
                     position:this.position_name,
                     company:this.company,
-                    country:this.country
+                    country:this.country,
+                    updated_at:this.time,
+
                 })
                     .then(function (response) {
                         console.log(response.data);
@@ -123,8 +125,8 @@
                             }
                         });
 
-                        // window.location = './profiletest';
-                        setTimeout("location.href = '/profile';", 1500);
+
+                        // setTimeout("location.href = '/profile';", 1500);
 
                     })
                     .catch(function (error) {
@@ -162,9 +164,22 @@
         },
         computed: {
             options: function () {
-                console.log(this.countries)
+                // console.log(this.countries)
                 return this.countries
-            }
+            },
+            time:function(){
+
+                var date = new Date();
+                var day = date.getDate();
+                var month = date.getMonth();
+                var year = date.getFullYear();
+                var hours = date.getHours();
+                var minutes = date.getMinutes();
+                var seconds = date.getSeconds();
+
+                // console.log(year+'-'+month+'-'+day+' '+minutes);
+                return year+'-'+month+'-'+day+' '+hours+':'+minutes+':'+seconds;
+    }
         },
 
         created() {
