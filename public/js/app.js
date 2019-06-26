@@ -2050,15 +2050,17 @@ __webpack_require__.r(__webpack_exports__);
       return this.countries;
     },
     time: function time() {
-      var date = new Date();
-      var day = date.getDate();
-      var month = date.getMonth();
-      var year = date.getFullYear();
-      var hours = date.getHours();
-      var minutes = date.getMinutes();
-      var seconds = date.getSeconds(); // console.log(year+'-'+month+'-'+day+' '+minutes);
+      var date = new Date(); // var day = date.getDate();
+      // var month = date.getMonth();
+      // var year = date.getFullYear();
+      // var hours = date.getHours();
+      // var minutes = date.getMinutes();
+      // var seconds = date.getSeconds();
 
-      return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+      var OffsetInMinutes = date.getTimezoneOffset(); // console.log(OffsetInHours);
+      // return year+'-'+month+'-'+day+' '+hours+':'+minutes+':'+seconds;
+
+      return OffsetInMinutes;
     }
   },
   created: function created() {
@@ -79143,8 +79145,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/developer/WEB_PROJECTS/recruitme/recruit_app/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/developer/WEB_PROJECTS/recruitme/recruit_app/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

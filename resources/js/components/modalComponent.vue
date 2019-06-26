@@ -170,15 +170,17 @@
             time:function(){
 
                 var date = new Date();
-                var day = date.getDate();
-                var month = date.getMonth();
-                var year = date.getFullYear();
-                var hours = date.getHours();
-                var minutes = date.getMinutes();
-                var seconds = date.getSeconds();
+                // var day = date.getDate();
+                // var month = date.getMonth();
+                // var year = date.getFullYear();
+                // var hours = date.getHours();
+                // var minutes = date.getMinutes();
+                // var seconds = date.getSeconds();
+                var OffsetInMinutes = date.getTimezoneOffset();
 
-                // console.log(year+'-'+month+'-'+day+' '+minutes);
-                return year+'-'+month+'-'+day+' '+hours+':'+minutes+':'+seconds;
+                // console.log(OffsetInHours);
+                // return year+'-'+month+'-'+day+' '+hours+':'+minutes+':'+seconds;
+                return OffsetInMinutes;
     }
         },
 
