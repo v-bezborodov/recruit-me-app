@@ -11,10 +11,7 @@ class UserController extends Controller
     public function update( Request $request){
         $profile= User::findOrFail($request->id);
         $dt =Carbon::now();
-//        $dt = Carbon\Carbon::now();
-        $time=$request->updated_at>0() $dt->addMinutes($request->updated_at)? $dt->subMinutes($request->updated_at);
-//        $dt->addMinutes($request->updated_at);
-dd($dt->toDateTimeString());
+        $time=($request->updated_at>0)?$dt->addMinutes($request->updated_at): $dt->subMinutes($request->updated_at);
 
         User::where('id', $request->id)
             ->update([

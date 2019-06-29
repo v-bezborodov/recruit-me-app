@@ -7,6 +7,7 @@ use App\Country;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RecruitmentController extends Controller
 {
@@ -20,7 +21,9 @@ class RecruitmentController extends Controller
         return view('download');
     }
     public function profile(){
-        $profile=User::all();
-        return view('profile');
+//        $profile=User::all();
+//        dd(Auth::user()->id);
+        $recruitment=Recruitment::where('user_id', 1)->get();
+        return view('profile', ['recruitment'=>$recruitment]);
     }
 }

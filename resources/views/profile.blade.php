@@ -11,7 +11,6 @@
 
 @section('content')
     <section>
-
         <div class="container emp-profile">
 
                 <div class="row">
@@ -35,22 +34,20 @@
                             <p class="proile-rating">RANKINGS : <span>{!!Auth::user()->ranking ? Auth::user()->ranking .'/10':'<span class="text-secondary">Not rated yet<span>'!!}</span></p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Your Profile</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#recrutation" role="tab" aria-controls="profile" aria-selected="false">Recrutation</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-2">
 
-
-
-
-
                     </div>
-
 
                 </div>
                 <div class="row">
@@ -155,6 +152,21 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="tab-pane fade" id="recrutation" role="tabpanel" aria-labelledby="profile-tab">
+
+                                <div class="row">
+{{--{{dd($recruitment)}}--}}
+                                    @if($recruitment->count())
+                                        <table-component-profile data="{{ $recruitment }}">
+                                        </table-component-profile>
+                                    @else
+                                        <p class="text-center">You have not submitted application yet</p>
+                                    @endif
+
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>

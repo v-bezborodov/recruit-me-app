@@ -15,9 +15,8 @@
 {{--@endforeach--}}
 
 @section('content')
-{{--            <div id="app">--}}
+
                 <table-component data="{{ $recruitments }}"></table-component>
-{{--            </div>--}}
 @stop
 
 

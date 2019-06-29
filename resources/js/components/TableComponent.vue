@@ -68,7 +68,11 @@
     export default {
         // components: "table-component",
         // name: "table-component",
-        props: ['data'],
+        props: {
+            data: {
+                require:true
+            }
+        },
         computed: {
             items: function () {
                 // console.log(this.data)
