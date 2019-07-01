@@ -134,6 +134,18 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="tab-pane fade" id="recrutation" role="tabpanel" aria-labelledby="recrutation-tab">
+                                <div class="row">
+                                    @if($recruitment->count())
+                                        <table-component-profile data="{{ $recruitment }}">
+                                        </table-component-profile>
+                                    @else
+                                        <p class="text-center">You have not submitted application yet</p>
+                                    @endif
+                                </div>
+                            </div>
+
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -153,19 +165,6 @@
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade" id="recrutation" role="tabpanel" aria-labelledby="profile-tab">
-
-                                <div class="row">
-{{--{{dd($recruitment)}}--}}
-                                    @if($recruitment->count())
-                                        <table-component-profile data="{{ $recruitment }}">
-                                        </table-component-profile>
-                                    @else
-                                        <p class="text-center">You have not submitted application yet</p>
-                                    @endif
-
-                                </div>
-                            </div>
 
                         </div>
                     </div>
