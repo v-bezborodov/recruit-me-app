@@ -58,11 +58,11 @@
                 <b-form-input type="text"
                               id="FormCardFirstName"
                               class="form-control"
-                              v-model="editModal.content.position"
+                              v-model=editModal.content.offered_position
                               placeholder="Position"
                               required
                 ></b-form-input>
-                {{ editModal.content.position}}
+                {{ editModal.content.offered_position}}
                 <br>
 
                 <br>
@@ -91,6 +91,9 @@
             },
             dataModal:{
                 require:true
+            },
+            routes:{
+                require:true
             }
         },
         computed: {
@@ -102,7 +105,7 @@
         data() {
             return {
                 fields: [
-                    {key: 'position',label: ''},
+                    {key: 'offered_position',label: ''},
                     {key: 'created_at', label: ''},
                     {key: 'actions', label: ''},
 
@@ -121,13 +124,13 @@
                     id: 'editModal',
                     content: '',
                 },
-                // position_name:this.data.editModal,
+                // position_name:edit.editModal.content,
 
 
             }
         },
         mounted(){
-            console.log('123', this.data);
+            console.log(this.data);
         },
         methods: {
             info(item, button) {
@@ -151,7 +154,7 @@
             },
             formSubmit(e) {
                 e.preventDefault();
-                axios.post('./formsubmit', {
+                axios.post(${this.routes.recruitUpdate}/${id}, {
                     // id: this.data.id,
                     position:this.first_name,
                 })

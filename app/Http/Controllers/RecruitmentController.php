@@ -24,6 +24,14 @@ class RecruitmentController extends Controller
 //        $profile=User::all();
 //        dd(Auth::user()->id);
         $recruitment=Recruitment::where('user_id', 1)->get();
-        return view('profile', ['recruitment'=>$recruitment]);
+        return view('profile', ['recruitment'=>$recruitment,
+                                    'routes' => $this->routes]);
     }
+    public function update(Request $request){
+    Recruitment::where('id', $request->id)
+        ->update([
+            'offered_position'=>$request->position,
+
+        ]);
+}
 }

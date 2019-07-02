@@ -55,7 +55,11 @@
                         {{--Vue component--}}
                         <div class="mt-2 text-center">
                             <b-button id="show-btn" @click="$bvModal.show('bv-modal-example')">Edit Profile</b-button>
-                            <modal-component :data="{{ Auth::user()}}" :countries="{{\App\Country::get(['id','long_name'])}}"></modal-component>
+                            <modal-component
+                                    :routes="{{ $routes }}"
+                                    :data="{{ Auth::user()}}"
+                                    :countries="{{\App\Country::get(['id','long_name'])}}"
+                            ></modal-component>
                         </div>
 
                         <div class="profile-work mt-4">
@@ -138,7 +142,10 @@
                             <div class="tab-pane fade" id="recrutation" role="tabpanel" aria-labelledby="recrutation-tab">
                                 <div class="row">
                                     @if($recruitment->count())
-                                        <table-component-profile data="{{ $recruitment }}">
+                                        <table-component-profile
+                                                :routes="{{ $routes }}"
+                                                data="{{ $recruitment }}"
+                                        >
                                         </table-component-profile>
                                     @else
                                         <p class="text-center">You have not submitted application yet</p>

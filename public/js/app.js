@@ -1894,193 +1894,9 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/TableComponentProfile.vue?vue&type=script&lang=js& ***!
   \********************************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    data: {
-      require: true
-    },
-    dataModal: {
-      require: true
-    }
-  },
-  computed: {
-    items: function items() {
-      // console.log(this.data)
-      return JSON.parse(this.data);
-    }
-  },
-  data: function data() {
-    return {
-      fields: [{
-        key: 'position',
-        label: ''
-      }, {
-        key: 'created_at',
-        label: ''
-      }, {
-        key: 'actions',
-        label: ''
-      }],
-      hover: true,
-      borderless: true,
-      infoModal: {
-        id: 'showModal',
-        title: '',
-        content: '',
-        user: '',
-        country: ''
-      },
-      editModal: {
-        id: 'editModal',
-        content: ''
-      } // position_name:this.data.editModal,
-
-    };
-  },
-  mounted: function mounted() {
-    console.log('123', this.data);
-  },
-  methods: {
-    info: function info(item, button) {
-      this.infoModal.title = "Profile: ".concat(item.user.first_name + ' ' + item.user.last_name);
-      this.infoModal.content = item;
-      this.infoModal.user = item.user;
-      this.infoModal.country = item.user.country;
-      this.$root.$emit('bv::show::modal', 'showModal', button);
-    },
-    resetInfoModal: function resetInfoModal() {
-      this.infoModal.title = '';
-      this.infoModal.content = '';
-    },
-    edit: function edit(item, button) {
-      this.editModal.content = item;
-      this.$root.$emit('bv::show::modal', 'editModal', button);
-    },
-    resetEditModal: function resetEditModal() {
-      this.editModal.title = '';
-      this.editModal.content = '';
-    },
-    formSubmit: function formSubmit(e) {
-      e.preventDefault();
-      axios.post('./formsubmit', {
-        // id: this.data.id,
-        position: this.first_name
-      }).then(function (response) {
-        Vue.toasted.success('Succesfully saved!', {
-          icon: 'check',
-          theme: "bubble",
-          position: "bottom-right",
-          duration: 5000,
-          action: {
-            text: 'OK',
-            onClick: function onClick(e, toastObject) {
-              toastObject.goAway(0);
-            }
-          }
-        }); // setTimeout("location.href = '/profile';", 1500);
-      })["catch"](function (error) {
-        console.log('testerror', error);
-        Vue.toasted.error('Something went wrong', {
-          action: {
-            text: 'OK',
-            onClick: function onClick(e, toastObject) {
-              toastObject.goAway(0);
-            }
-          }
-        });
-      });
-    }
-  }
-});
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/resources/js/components/TableComponentProfile.vue: Unexpected token, expected \",\" (157:24)\n\n\u001b[0m \u001b[90m 155 | \u001b[39m        formSubmit(e) {\u001b[0m\n\u001b[0m \u001b[90m 156 | \u001b[39m            e\u001b[33m.\u001b[39mpreventDefault()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 157 | \u001b[39m            axios\u001b[33m.\u001b[39mpost(${\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mroutes\u001b[33m.\u001b[39mrecruitUpdate}\u001b[33m/\u001b[39m${id}\u001b[33m,\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m     | \u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 158 | \u001b[39m                \u001b[90m// id: this.data.id,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 159 | \u001b[39m                position\u001b[33m:\u001b[39m\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mfirst_name\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 160 | \u001b[39m            })\u001b[0m\n    at Parser.raise (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:6344:17)\n    at Parser.unexpected (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:7659:16)\n    at Parser.expect (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:7645:28)\n    at Parser.parseCallExpressionArguments (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:8605:14)\n    at Parser.parseSubscript (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:8515:29)\n    at Parser.parseSubscripts (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:8434:19)\n    at Parser.parseExprSubscripts (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:8423:17)\n    at Parser.parseMaybeUnary (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:8393:21)\n    at Parser.parseExprOps (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:8280:23)\n    at Parser.parseMaybeConditional (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:8253:23)\n    at Parser.parseMaybeAssign (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:8200:21)\n    at Parser.parseExpression (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:8148:23)\n    at Parser.parseStatementContent (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:9917:23)\n    at Parser.parseStatement (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:9788:17)\n    at Parser.parseBlockOrModuleBlockBody (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:10364:25)\n    at Parser.parseBlockBody (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:10351:10)\n    at Parser.parseBlock (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:10335:10)\n    at Parser.parseFunctionBody (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:9408:24)\n    at Parser.parseFunctionBodyAndFinish (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:9378:10)\n    at Parser.parseMethod (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:9332:10)\n    at Parser.parseObjectMethod (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:9248:19)\n    at Parser.parseObjPropValue (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:9290:23)\n    at Parser.parseObjectMember (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:9214:10)\n    at Parser.parseObj (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:9138:25)\n    at Parser.parseExprAtom (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:8774:21)\n    at Parser.parseExprSubscripts (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:8413:23)\n    at Parser.parseMaybeUnary (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:8393:21)\n    at Parser.parseExprOps (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:8280:23)\n    at Parser.parseMaybeConditional (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:8253:23)\n    at Parser.parseMaybeAssign (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:8200:21)\n    at Parser.parseObjectProperty (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:9265:101)\n    at Parser.parseObjPropValue (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:9290:101)\n    at Parser.parseObjectMember (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:9214:10)\n    at Parser.parseObj (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:9138:25)\n    at Parser.parseExprAtom (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:8774:21)\n    at Parser.parseExprSubscripts (/home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/node_modules/@babel/parser/lib/index.js:8413:23)");
 
 /***/ }),
 
@@ -2186,12 +2002,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "modalComponent",
-  props: ['data', 'countries'],
+  props: {
+    data: {
+      require: true
+    },
+    countries: {
+      require: true
+    },
+    routes: {
+      require: true
+    }
+  },
   methods: {
     formSubmit: function formSubmit(e) {
       console.log('formsubmit');
       e.preventDefault();
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('./formsubmit', {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.routes.user, {
         id: this.data.id,
         first_name: this.first_name,
         last_name: this.last_name,
@@ -2201,8 +2027,6 @@ __webpack_require__.r(__webpack_exports__);
         country: this.country,
         updated_at: this.time
       }).then(function (response) {
-        console.log(response.data); // this.$toasted.show('hello billo')
-
         Vue.toasted.success('Succesfully saved!', {
           icon: 'check',
           theme: "bubble",
@@ -2214,9 +2038,9 @@ __webpack_require__.r(__webpack_exports__);
               toastObject.goAway(0);
             }
           }
-        }); // setTimeout("location.href = '/profile';", 1500);
+        });
+        setTimeout("location.href = '/profile';", 1500);
       })["catch"](function (error) {
-        console.log('testerror', error);
         Vue.toasted.error('Something went wrong', {
           action: {
             text: 'OK',
@@ -2266,10 +2090,7 @@ __webpack_require__.r(__webpack_exports__);
     this.fetchUser();
   },
   mounted: function mounted() {
-    return {// first_name:'test2',
-      // last_name:this.data.id,
-      // user: {}
-    };
+    console.log(this.routes.user);
   }
 });
 
@@ -66766,16 +66587,16 @@ var render = function() {
                   required: ""
                 },
                 model: {
-                  value: _vm.editModal.content.position,
+                  value: _vm.editModal.content.offered_position,
                   callback: function($$v) {
-                    _vm.$set(_vm.editModal.content, "position", $$v)
+                    _vm.$set(_vm.editModal.content, "offered_position", $$v)
                   },
-                  expression: "editModal.content.position"
+                  expression: "editModal.content.offered_position"
                 }
               }),
               _vm._v(
                 "\n            " +
-                  _vm._s(_vm.editModal.content.position) +
+                  _vm._s(_vm.editModal.content.offered_position) +
                   "\n            "
               ),
               _c("br"),
@@ -79661,8 +79482,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/developer/WEB_PROJECTS/recruitme/recruit_app/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/developer/WEB_PROJECTS/recruitme/recruit_app/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

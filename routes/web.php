@@ -17,13 +17,16 @@
 //
 //});
 Route::get('/', 'RecruitmentController@index')->middleware('auth');
-Route::get('/recrutation', 'RecruitmentController@index')->name('recrutation')->middleware('auth');
+//Route::get('/recrutation', 'RecruitmentController@index')->name('recrutation')->middleware('auth');
 Route::get('/download', 'RecruitmentController@download')->name('download')->middleware('auth');
 Route::get('/about', function(){
     return view('about');
-})->name('about')->middleware('auth');;
+})->name('about')->middleware('auth');
+
+Route::resource('/recruitment', 'RecruitmentController');
+//Route::resource('/categories', 'CategoryController');
 Route::get('/profile', 'RecruitmentController@profile')->name('profile')->middleware('auth');
-Route::post('/formsubmit', 'UserController@update')->middleware('auth');
+Route::post('/formsubmit', 'UserController@update')->name('updateUser')->middleware('auth');
 
 
 Auth::routes();
