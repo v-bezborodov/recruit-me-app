@@ -17,7 +17,7 @@
 //
 //});
 Route::get('/', 'RecruitmentController@index')->middleware('auth');
-//Route::get('/recrutation', 'RecruitmentController@index')->name('recrutation')->middleware('auth');
+Route::get('/recrutation', 'RecruitmentController@index')->name('recrutation')->middleware('auth');
 Route::get('/download', 'RecruitmentController@download')->name('download')->middleware('auth');
 Route::get('/about', function(){
     return view('about');

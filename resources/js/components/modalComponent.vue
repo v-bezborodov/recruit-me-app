@@ -106,7 +106,7 @@
             formSubmit(e) {
                 console.log('formsubmit')
                 e.preventDefault();
-                axios.post(this.routes.user, {
+                axios.post('./formsubmit', {
                     id: this.data.id,
                     first_name:this.first_name,
                     last_name:this.last_name,
@@ -118,6 +118,10 @@
 
                 })
                     .then(function (response) {
+                        console.log(response.data);
+
+                        // this.$toasted.show('hello billo')
+
                         Vue.toasted.success('Succesfully saved!', {
                             icon : 'check',
                             theme: "bubble",
@@ -131,10 +135,12 @@
                             }
                         });
 
-                        setTimeout("location.href = '/profile';", 1500);
+
+                        // setTimeout("location.href = '/profile';", 1500);
 
                     })
                     .catch(function (error) {
+                        console.log('testerror', error);
                         Vue.toasted.error('Something went wrong',{
                             action : {
                                 text : 'OK',
@@ -192,7 +198,12 @@
             this.fetchUser()
         },
         mounted (){
-            console.log(this.routes.user);
+            return {
+                // first_name:'test2',
+                // last_name:this.data.id,
+                // user: {}
+            }
+
         }
     }
 </script>

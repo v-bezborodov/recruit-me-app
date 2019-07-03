@@ -15,7 +15,7 @@
                         More
                     </b-button>
                     <b-button size="sm" @click="edit(row.item, $event.target)" class="btn btn-action btn-warning">
-                        {{row}}
+                        {{row.item}}
                         Edit
                     </b-button>
                 </template>
@@ -62,7 +62,8 @@
                               placeholder="Position"
                               required
                 ></b-form-input>
-                {{ editModal.content.offered_position}}
+
+                dd
                 <br>
 
                 <br>
@@ -130,10 +131,14 @@
             }
         },
         mounted(){
-            console.log(this.data);
+            this.$root.$on('editModal', function () {
+                console.log(123);
+            })
+            // console.log(this.editModal);
         },
         methods: {
-            info(item, button) {
+           info(item, button) {
+
                 this.infoModal.title = `Profile: ${item.user.first_name+' '+item.user.last_name}`
                 this.infoModal.content = item
                 this.infoModal.user = item.user
@@ -153,11 +158,11 @@
                 this.editModal.content = ''
             },
             formSubmit(e) {
-                e.preventDefault();
-                axios.post(${this.routes.recruitUpdate}/${id}, {
-                    // id: this.data.id,
-                    position:this.first_name,
-                })
+                // e.preventDefault();
+                console.log(this.editModal);
+                var id=3;
+                axios.put(`/recruitment/${this.id}`)
+
                     .then(function (response) {
                         Vue.toasted.success('Succesfully saved!', {
                             icon : 'check',
