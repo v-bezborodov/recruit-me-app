@@ -19,7 +19,7 @@ class CreateRecruitments extends Migration
             $table->string('offered_position');
             $table->string('description');
 //            $table->string('company');
-            $table->string('attached')->nullable();
+            $table->string('attached_files')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
 

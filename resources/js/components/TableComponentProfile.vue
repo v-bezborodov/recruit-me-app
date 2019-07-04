@@ -15,7 +15,7 @@
                         More
                     </b-button>
                     <b-button size="sm" @click="edit(row.item, $event.target)" class="btn btn-action btn-warning">
-                        {{row.item}}
+<!--                        {{row.item}}-->
                         Edit
                     </b-button>
                 </template>
@@ -30,11 +30,10 @@
 
         <!-- Info modal -->
         <b-modal id="showModal" :title="infoModal.title" ok-only @hide="resetInfoModal">
-            <!--            <pre>{{ infoModal.content}}</pre>-->
+<!--                        <pre>{{ infoModal.content}}</pre>-->
             <!--            <pre>{{ infoModal.user.id}}</pre>-->
-            <div><img class="avatar d-block mx-auto" :src="infoModal.user.avatar" :alt="infoModal.user.first_name">
-            </div>
-            <p>Offered position: <strong>{{ infoModal.content.position }}</strong></p>
+            <div><img class="avatar d-block mx-auto" :src="infoModal.user.avatar" :alt="infoModal.user.first_name"></div>
+            <p>Offered position: <strong>{{ infoModal.content.offered_position}}</strong></p>
             <p>Name: <strong>{{infoModal.user.first_name + ' ' + infoModal.user.last_name }}</strong></p>
             <p>Email: <strong>{{ infoModal.user.position_name }}</strong></p>
             <p>Company: <strong>{{ infoModal.user.company }}</strong></p>
@@ -47,28 +46,38 @@
 
 
 
-
         <!-- Edit modal -->
         <b-modal id="editModal"
                  @hide="resetEditModal"
         >
             <b-form>
+
+
+                <b-form-input type="hidden"
+                              value=@{{ editModal.content.id }}
+                ></b-form-input>
+
+
                 <!-- Default input position name -->
-                <label for="FormCardFirstName" class="grey-text font-weight-light">Position recruiting for</label>
+                <label for="FormCardPositionName" class="grey-text font-weight-light">Position recruit for</label>
                 <b-form-input type="text"
-                              id="FormCardFirstName"
+                              id="FormCardPositionName"
                               class="form-control"
                               v-model=editModal.content.offered_position
                               placeholder="Position"
                               required
                 ></b-form-input>
-
-                dd
                 <br>
-
+                <!-- Default input position name -->
+                <label for="FormCardDescription" class="grey-text font-weight-light">Position description</label>
+                <b-form-textarea type="text"
+                              id="FormCardDescription"
+                              class="form-control"
+                              v-model=editModal.content.description
+                              placeholder="Short description"
+                              required
+                ></b-form-textarea>
                 <br>
-
-
                 <div class="text-center py-4 mt-3">
                     <b-button @click="formSubmit" variant="primary">Submit</b-button>
                     <b-button @click="$bvModal.hide('bv-modal-example')">Close</b-button>
@@ -99,12 +108,12 @@
         },
         computed: {
             items: function () {
-                // console.log(this.data)
                 return JSON.parse(this.data)
             }
         },
         data() {
             return {
+                test:'',
                 fields: [
                     {key: 'offered_position',label: ''},
                     {key: 'created_at', label: ''},
@@ -124,17 +133,13 @@
                 editModal: {
                     id: 'editModal',
                     content: '',
-                },
-                // position_name:edit.editModal.content,
-
-
+                }
             }
         },
         mounted(){
             this.$root.$on('editModal', function () {
                 console.log(123);
             })
-            // console.log(this.editModal);
         },
         methods: {
            info(item, button) {
@@ -159,9 +164,15 @@
             },
             formSubmit(e) {
                 // e.preventDefault();
-                console.log(this.editModal);
+                var position=document.getElementById('FormCardPositionName').value;
+                var description=document.getElementById('FormCardDescription').value;
+                // var position=document.getElementById('FormCardPositionName').value;
+                // var position=document.getElementById('FormCardPositionName').value;
+                console.log(this.routes.recruitUpdate);
+                // console.log(this.test);
+
                 var id=3;
-                axios.put(`/recruitment/${this.id}`)
+                axios.put(this.routes.recruitUpdate+`${this.id}`)
 
                     .then(function (response) {
                         Vue.toasted.success('Succesfully saved!', {
@@ -197,3 +208,11 @@
     }
 </script>
 
+<style>
+
+    .avatar{
+        /*width:50%*/
+        height:150px;
+        border: 1px solid lightgray;
+    }
+</style>
