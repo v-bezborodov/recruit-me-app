@@ -27,11 +27,18 @@ class RecruitmentController extends Controller
         return view('profile', ['recruitment'=>$recruitment,
                                     'routes' => $this->routes]);
     }
-    public function update(Request $request){
-    Recruitment::where('id', $request->id)
-        ->update([
-            'offered_position'=>$request->position,
+    public function update(Request $request, $id){
+//        dd($id);
+//dd($request->content['offered_position']);
+        if($request->content){
+            Recruitment::where('id', $id)
+                ->update([
+                    'offered_position'=>$request->content['offered_position'],
+                    'description'=>$request->content['description'],
 
-        ]);
+                ]);
+
+        }
+
 }
 }

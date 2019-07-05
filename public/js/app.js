@@ -1987,19 +1987,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {
-      require: true
-    },
-    datamodal: {
       require: true
     },
     routes: {
@@ -2013,7 +2003,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      datamodal: this.datamodal,
       fields: [{
         key: 'offered_position',
         label: ''
@@ -2035,16 +2024,12 @@ __webpack_require__.r(__webpack_exports__);
       },
       editModal: {
         id: 'editModal',
+        test: '',
         content: ''
       }
     };
   },
-  mounted: function mounted() {
-    // ,this.$root.$on('editModal', function () {
-    console.log(123);
-    console.log(this.datamodal); // console.log(this.infoModal.content);
-    // })
-  },
+  mounted: function mounted() {},
   methods: {
     info: function info(item, button) {
       this.infoModal.title = "Profile: ".concat(item.user.first_name + ' ' + item.user.last_name);
@@ -2058,6 +2043,7 @@ __webpack_require__.r(__webpack_exports__);
       this.infoModal.content = '';
     },
     edit: function edit(item, button) {
+      this.editModal.test = item.id;
       this.editModal.content = item;
       this.$root.$emit('bv::show::modal', 'editModal', button);
     },
@@ -2067,15 +2053,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     formSubmit: function formSubmit(e) {
       // e.preventDefault();
-      var position = document.getElementById('FormCardPositionName').value;
-      var description = document.getElementById('FormCardDescription').value; // var id=document.getElementById('FormCardId').value;
-      // var position=document.getElementById('FormCardPositionName').value;
-      // console.log(this.routes.recruitUpdate);
-      // console.log(id);
-      // var id=3;
-
-      console.log(this.datamodal);
-      axios.put(this.routes.recruitUpdate).then(function (response) {
+      axios.put(this.routes.recruitUpdate + '/' + this.editModal.content.id, {
+        content: this.editModal.content
+      }).then(function (response) {
         Vue.toasted.success('Succesfully saved!', {
           icon: 'check',
           theme: "bubble",
@@ -66732,18 +66712,6 @@ var render = function() {
                     )
                   ]
                 }
-              },
-              {
-                key: "empty",
-                fn: function(scope) {
-                  return [_c("h4", [_vm._v(_vm._s(scope.emptyText))])]
-                }
-              },
-              {
-                key: "emptyfiltered",
-                fn: function(scope) {
-                  return [_c("h4", [_vm._v(_vm._s(scope.emptyFilteredText))])]
-                }
               }
             ])
           })
@@ -66828,17 +66796,13 @@ var render = function() {
       _c(
         "b-modal",
         {
-          attrs: { id: "editModal", datamodal: _vm.editModal.content },
+          attrs: { id: "editModal", datamodal: "editModal.content" },
           on: { hide: _vm.resetEditModal }
         },
         [
           _c(
             "b-form",
             [
-              _vm._v(
-                "\n\n" + _vm._s(_vm.editModal.content) + "\n                "
-              ),
-              _vm._v(" "),
               _c(
                 "label",
                 {
@@ -79792,8 +79756,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/developer/WEB_PROJECTS/recruitme/recruit_app/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/developer/WEB_PROJECTS/recruitme/recruit_app/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -19,12 +19,12 @@
                         Edit
                     </b-button>
                 </template>
-                <template slot="empty" slot-scope="scope">
-                    <h4>{{ scope.emptyText }}</h4>
-                </template>
-                <template slot="emptyfiltered" slot-scope="scope">
-                    <h4>{{ scope.emptyFilteredText }}</h4>
-                </template>
+<!--                <template slot="empty" slot-scope="scope">-->
+<!--                    <h4>{{ scope.emptyText }}</h4>-->
+<!--                </template>-->
+<!--                <template slot="emptyfiltered" slot-scope="scope">-->
+<!--                    <h4>{{ scope.emptyFilteredText }}</h4>-->
+<!--                </template>-->
             </b-table>
         </div>
 
@@ -49,16 +49,9 @@
         <!-- Edit modal -->
         <b-modal id="editModal"
                  @hide="resetEditModal"
-                 :datamodal=editModal.content
+                 datamodal=editModal.content
         >
             <b-form>
-
-
-                <!--<b-form-input id="FormCardId" type="text"-->
-                              <!--value=editModal.content.offered_position-->
-                <!--&gt;</b-form-input>-->
-
-{{editModal.content}}
                 <!-- Default input position name -->
                 <label for="FormCardPositionName" class="grey-text font-weight-light">Position recruit for</label>
                 <b-form-input type="text"
@@ -100,9 +93,6 @@
             data:{
                 require:true
             },
-            datamodal:{
-                require:true
-            },
             routes:{
                 require:true
             }
@@ -114,7 +104,6 @@
         },
         data() {
             return {
-                datamodal:this.datamodal,
                 fields: [
                     {key: 'offered_position',label: ''},
                     {key: 'created_at', label: ''},
@@ -132,16 +121,13 @@
                 },
                 editModal: {
                     id: 'editModal',
+                    test: '',
                     content: '',
                 }
             }
         },
         mounted(){
-            // ,this.$root.$on('editModal', function () {
-                console.log(123);
-                console.log(this.datamodal);
-                // console.log(this.infoModal.content);
-            // })
+
         },
         methods: {
            info(item, button) {
@@ -156,7 +142,7 @@
                 this.infoModal.content = ''
             },
             edit(item, button) {
-
+                this.editModal.test = item.id
                 this.editModal.content = item
                 this.$root.$emit('bv::show::modal', 'editModal', button)
             },
@@ -166,17 +152,8 @@
             },
             formSubmit(e) {
                 // e.preventDefault();
-                var position=document.getElementById('FormCardPositionName').value;
-                var description=document.getElementById('FormCardDescription').value;
-                // var id=document.getElementById('FormCardId').value;
-                // var position=document.getElementById('FormCardPositionName').value;
-                // console.log(this.routes.recruitUpdate);
-                // console.log(id);
-
-                // var id=3;
-                console.log(this.datamodal);
-                axios.put(this.routes.recruitUpdate)
-
+                axios.put(this.routes.recruitUpdate+'/'+this.editModal.content.id, {
+                    content:this.editModal.content})
                     .then(function (response) {
                         Vue.toasted.success('Succesfully saved!', {
                             icon : 'check',
@@ -190,10 +167,7 @@
                                 }
                             }
                         });
-
-
                         // setTimeout("location.href = '/profile';", 1500);
-
                     })
                     .catch(function (error) {
                         console.log('testerror', error);
