@@ -1986,7 +1986,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {
@@ -66688,7 +66687,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                        More\n                    "
+                          "\n                        Summary\n                    "
                         )
                       ]
                     ),
@@ -66796,7 +66795,7 @@ var render = function() {
       _c(
         "b-modal",
         {
-          attrs: { id: "editModal", datamodal: "editModal.content" },
+          attrs: { id: "editModal", "hide-footer": "" },
           on: { hide: _vm.resetEditModal }
         },
         [
@@ -66877,7 +66876,7 @@ var render = function() {
                     {
                       on: {
                         click: function($event) {
-                          return _vm.$bvModal.hide("bv-modal-example")
+                          return _vm.$bvModal.hide("editModal")
                         }
                       }
                     },

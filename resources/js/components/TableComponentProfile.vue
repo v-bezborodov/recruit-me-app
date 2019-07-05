@@ -12,10 +12,9 @@
             >
                 <template slot="actions" slot-scope="row">
                     <b-button size="sm" @click="info(row.item, $event.target)" class="btn btn-action btn-info">
-                        More
+                        Summary
                     </b-button>
                     <b-button size="sm" @click="edit(row.item, $event.target)" class="btn btn-action btn-warning">
-<!--                        {{row.item}}-->
                         Edit
                     </b-button>
                 </template>
@@ -49,7 +48,7 @@
         <!-- Edit modal -->
         <b-modal id="editModal"
                  @hide="resetEditModal"
-                 datamodal=editModal.content
+                 hide-footer
         >
             <b-form>
                 <!-- Default input position name -->
@@ -74,7 +73,7 @@
                 <br>
                 <div class="text-center py-4 mt-3">
                     <b-button @click="formSubmit" variant="primary">Submit</b-button>
-                    <b-button @click="$bvModal.hide('bv-modal-example')">Close</b-button>
+                    <b-button @click="$bvModal.hide('editModal')">Close</b-button>
                 </div>
             </b-form>
 
