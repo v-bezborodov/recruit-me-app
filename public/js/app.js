@@ -1993,12 +1993,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {
       require: true
     },
-    dataModal: {
+    datamodal: {
       require: true
     },
     routes: {
@@ -2012,7 +2013,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      test: '',
+      datamodal: this.datamodal,
       fields: [{
         key: 'offered_position',
         label: ''
@@ -2039,9 +2040,10 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.$root.$on('editModal', function () {
-      console.log(123);
-    });
+    // ,this.$root.$on('editModal', function () {
+    console.log(123);
+    console.log(this.datamodal); // console.log(this.infoModal.content);
+    // })
   },
   methods: {
     info: function info(item, button) {
@@ -2066,13 +2068,14 @@ __webpack_require__.r(__webpack_exports__);
     formSubmit: function formSubmit(e) {
       // e.preventDefault();
       var position = document.getElementById('FormCardPositionName').value;
-      var description = document.getElementById('FormCardDescription').value; // var position=document.getElementById('FormCardPositionName').value;
+      var description = document.getElementById('FormCardDescription').value; // var id=document.getElementById('FormCardId').value;
       // var position=document.getElementById('FormCardPositionName').value;
+      // console.log(this.routes.recruitUpdate);
+      // console.log(id);
+      // var id=3;
 
-      console.log(this.routes.recruitUpdate); // console.log(this.test);
-
-      var id = 3;
-      axios.put(this.routes.recruitUpdate + "".concat(this.id)).then(function (response) {
+      console.log(this.datamodal);
+      axios.put(this.routes.recruitUpdate).then(function (response) {
         Vue.toasted.success('Succesfully saved!', {
           icon: 'check',
           theme: "bubble",
@@ -66824,19 +66827,17 @@ var render = function() {
       _vm._v(" "),
       _c(
         "b-modal",
-        { attrs: { id: "editModal" }, on: { hide: _vm.resetEditModal } },
+        {
+          attrs: { id: "editModal", datamodal: _vm.editModal.content },
+          on: { hide: _vm.resetEditModal }
+        },
         [
           _c(
             "b-form",
             [
-              _c("b-form-input", {
-                attrs: {
-                  type: "hidden",
-                  value: "@{{",
-                  "editModal.content.id": "",
-                  "}}": ""
-                }
-              }),
+              _vm._v(
+                "\n\n" + _vm._s(_vm.editModal.content) + "\n                "
+              ),
               _vm._v(" "),
               _c(
                 "label",
@@ -79791,8 +79792,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/developer/WEB_PROJECTS/recruitme/recruit_app/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/developer/WEB_PROJECTS/recruitme/recruit_app/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

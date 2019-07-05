@@ -49,15 +49,16 @@
         <!-- Edit modal -->
         <b-modal id="editModal"
                  @hide="resetEditModal"
+                 :datamodal=editModal.content
         >
             <b-form>
 
 
-                <b-form-input type="hidden"
-                              value=@{{ editModal.content.id }}
-                ></b-form-input>
+                <!--<b-form-input id="FormCardId" type="text"-->
+                              <!--value=editModal.content.offered_position-->
+                <!--&gt;</b-form-input>-->
 
-
+{{editModal.content}}
                 <!-- Default input position name -->
                 <label for="FormCardPositionName" class="grey-text font-weight-light">Position recruit for</label>
                 <b-form-input type="text"
@@ -99,7 +100,7 @@
             data:{
                 require:true
             },
-            dataModal:{
+            datamodal:{
                 require:true
             },
             routes:{
@@ -113,14 +114,13 @@
         },
         data() {
             return {
-                test:'',
+                datamodal:this.datamodal,
                 fields: [
                     {key: 'offered_position',label: ''},
                     {key: 'created_at', label: ''},
                     {key: 'actions', label: ''},
 
                 ],
-
                 hover: true,
                 borderless: true,
                 infoModal: {
@@ -137,13 +137,14 @@
             }
         },
         mounted(){
-            this.$root.$on('editModal', function () {
+            // ,this.$root.$on('editModal', function () {
                 console.log(123);
-            })
+                console.log(this.datamodal);
+                // console.log(this.infoModal.content);
+            // })
         },
         methods: {
            info(item, button) {
-
                 this.infoModal.title = `Profile: ${item.user.first_name+' '+item.user.last_name}`
                 this.infoModal.content = item
                 this.infoModal.user = item.user
@@ -155,6 +156,7 @@
                 this.infoModal.content = ''
             },
             edit(item, button) {
+
                 this.editModal.content = item
                 this.$root.$emit('bv::show::modal', 'editModal', button)
             },
@@ -166,13 +168,14 @@
                 // e.preventDefault();
                 var position=document.getElementById('FormCardPositionName').value;
                 var description=document.getElementById('FormCardDescription').value;
+                // var id=document.getElementById('FormCardId').value;
                 // var position=document.getElementById('FormCardPositionName').value;
-                // var position=document.getElementById('FormCardPositionName').value;
-                console.log(this.routes.recruitUpdate);
-                // console.log(this.test);
+                // console.log(this.routes.recruitUpdate);
+                // console.log(id);
 
-                var id=3;
-                axios.put(this.routes.recruitUpdate+`${this.id}`)
+                // var id=3;
+                console.log(this.datamodal);
+                axios.put(this.routes.recruitUpdate)
 
                     .then(function (response) {
                         Vue.toasted.success('Succesfully saved!', {
