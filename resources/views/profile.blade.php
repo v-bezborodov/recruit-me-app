@@ -11,10 +11,11 @@
 
 @section('content')
     <section>
-        <div class="container emp-profile">
+        <div class="emp-profile">
 
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-3">
+
                         <div class="profile-img">
                             <img class="w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
                             <div class="file btn btn-lg btn-primary w-100">
@@ -22,57 +23,52 @@
                                 <input type="file" name="file"/>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="profile-head">
-                            <h5>
-                                {{Auth::user()->first_name.' '.Auth::user()->last_name}}
-                            </h5>
-                            <h6>
-                                {!!Auth::user()->position_name??'<p class="text-secondary">Position name<p>'!!}
-                            </h6>
-                            <p class="proile-rating">RANKINGS : <span>{!!Auth::user()->ranking ? Auth::user()->ranking .'/10':'<span class="text-secondary">Not rated yet<span>'!!}</span></p>
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Your Profile</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#recrutation" role="tab" aria-controls="profile" aria-selected="false">Recrutation</a>
-                                </li>
-                            </ul>
+
+                        <h5>
+                            {{Auth::user()->first_name.' '.Auth::user()->last_name}}
+                        </h5>
+                        <h6>
+                            {!!Auth::user()->position_name??'<p class="text-secondary">Position name<p>'!!}
+                        </h6>
+                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+                            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+                            <a class="nav-link" id="v-pills-recrutation-tab" data-toggle="pill" href="#v-pills-recrutation" role="tab" aria-controls="v-pills-recrutation" aria-selected="false">Recrutation</a>
+                            <a class="nav-link" id="v-pills-timeline-tab" data-toggle="pill" href="#v-pills-timeline" role="tab" aria-controls="v-pills-timeline" aria-selected="false">Timeline</a>
+
+{{--                            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="true">Messages</a>--}}
+{{--                            <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>--}}
                         </div>
                     </div>
-                    <div class="col-md-2">
 
-                    </div>
+                    {{--  pills content --}}
+                    <div class="col-9">
+                        <div class="tab-content" id="v-pills-tabContent">
+                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
 
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        {{--Vue component--}}
-                        <div class="mt-2 text-center">
-                            <b-button id="show-btn" @click="$bvModal.show('bv-modal-example')">Edit Profile</b-button>
-                            <modal-component
-                                    :routes="{{ $routes }}"
-                                    :data="{{ Auth::user()}}"
-                                    :countries="{{\App\Country::get(['id','long_name'])}}"
-                            ></modal-component>
-                        </div>
 
-                        <div class="profile-work mt-4">
-                            <p>LINKS</p>
-                            {!!Auth::user()->website ?'<a href="'.Auth::user()->website.'">Website Link</a><br/>':''!!}
-                            {!!Auth::user()->facebook ?'<a href="'.Auth::user()->facebook.'">Facebook Link</a><br/>':''!!}
-                            {!!Auth::user()->linkedin ?'<a href="'.Auth::user()->website.'">Linkedin Link</a><br/>':''!!}
-                        </div>
-{{--                        {{dd(Auth::user())}}--}}
-                    </div>
-                    <div class="col-md-9">
-                        <div class="tab-content profile-tab" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+
+                                {{--Vue component--}}
+                                <div class="mt-2 text-center">
+                                    <b-button id="show-btn" @click="$bvModal.show('bv-modal-example')">Edit Profile</b-button>
+                                    <modal-component
+                                            :routes="{{ $routes }}"
+                                            :data="{{ Auth::user()}}"
+                                            :countries="{{\App\Country::get(['id','long_name'])}}"
+                                    ></modal-component>
+                                </div>
+
+                                <div class="profile-work mt-4">
+                                    <p>LINKS</p>
+                                    {!!Auth::user()->website ?'<a href="'.Auth::user()->website.'">Website Link</a><br/>':''!!}
+                                    {!!Auth::user()->facebook ?'<a href="'.Auth::user()->facebook.'">Facebook Link</a><br/>':''!!}
+                                    {!!Auth::user()->linkedin ?'<a href="'.Auth::user()->website.'">Linkedin Link</a><br/>':''!!}
+                                </div>
+
+                                <p class="proile-rating">RANKINGS : <span>{!!Auth::user()->ranking ? Auth::user()->ranking .'/10':'<span class="text-secondary">Not rated yet<span>'!!}</span></p>
+
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label>User Id</label>
@@ -137,9 +133,11 @@
                                         <p>{{\App\Recruitment::where('user_id', Auth::user()->id)->count()}}</p>
                                     </div>
                                 </div>
+
                             </div>
 
-                            <div class="tab-pane fade" id="recrutation" role="tabpanel" aria-labelledby="recrutation-tab">
+                            <div class="tab-pane fade" id="v-pills-recrutation" role="tabpanel" aria-labelledby="v-pills-recrutation-tab">
+
                                 <div class="row">
                                     @if($recruitment->count())
                                         <table-component-profile
@@ -151,9 +149,10 @@
                                         <p class="text-center">You have not submitted application yet</p>
                                     @endif
                                 </div>
-                            </div>
 
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-timeline" role="tabpanel" aria-labelledby="v-pills-timeline-tab">
+
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label>Profile created</label>
@@ -170,12 +169,15 @@
                                         <p>{{Auth::user()->updated_at}}</p>
                                     </div>
                                 </div>
+
                             </div>
-
-
+{{--                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>--}}
                         </div>
                     </div>
+                    {{--  end pills content --}}
+
                 </div>
+
 
         </div>
     </section>
