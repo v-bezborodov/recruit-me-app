@@ -9,8 +9,11 @@
 <link href="{{asset('css/app.css')}}" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset(elixir('css/style.css', '')) }}" />
 <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-{{--Vue Toasted plugin--}}
-{{--<script src="https://unpkg.com/vue-toasted"></script>--}}
+
+<link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+<link href="{{asset('css/fonts/font-awesome/FontAwesome.otf')}}" rel="stylesheet">
+
 
 
 

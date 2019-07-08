@@ -7,8 +7,7 @@
                     :items="items"
                     :fields="fields"
                     :hover="hover"
-                    :borderless="borderless"
-                    striped
+                    :outlined="outlined"
             >
                 <template slot="actions" slot-scope="row">
                     <b-button size="sm" @click="info(row.item, $event.target)" class="btn btn-action btn-info">
@@ -97,20 +96,24 @@
             }
         },
         computed: {
-            items: function () {
+            items () {
                 return JSON.parse(this.data)
-            }
+            },
+            // status (){
+            //     return 1
+            // },
         },
         data() {
             return {
                 fields: [
-                    {key: 'offered_position',label: ''},
-                    {key: 'created_at', label: ''},
+                    {key: 'offered_position', sortable:true,  outlined:true, label: 'Offered position'},
+                    {key: 'created_at', label: 'Offer date'},
+                    {key: 'status', label: 'Status'},
                     {key: 'actions', label: ''},
 
                 ],
                 hover: true,
-                borderless: true,
+
                 infoModal: {
                     id: 'showModal',
                     title: '',
@@ -126,9 +129,13 @@
             }
         },
         mounted(){
-
+            // console.log(this.status);
         },
         methods: {
+
+            // status(){
+            //     return "test"
+            // },
            info(item, button) {
                 this.infoModal.title = `Profile: ${item.user.first_name+' '+item.user.last_name}`
                 this.infoModal.content = item
@@ -186,9 +193,8 @@
 
 <style>
 
-    .avatar{
-        /*width:50%*/
-        height:150px;
-        border: 1px solid lightgray;
+    thead{
+        border: 1px solid #dee2e6;
+        background-color: pink;
     }
 </style>

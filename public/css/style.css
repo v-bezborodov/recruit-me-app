@@ -34,3 +34,39 @@ card-download img{
     line-height: 0.7rem;
     margin-top: 2px;
 }
+
+.profile-header{
+    height:350px;
+    overflow:hidden;
+    position:relative;
+    background: url("../img/header.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.profile-header .profile-background{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.profile-header .profile-img {
+    width:150px;
+    height:150px;
+    /*border-radius:50%;*/
+    /*z-index: 2;*/
+    margin:  3% auto;
+    position: relative;
+}
+.profile-header .profile-img:hover .profile-update-avatar{
+    background:lightgray;
+
+}
+.profile-header .profile-img img{
+    border-radius:50%;
+}
+.profile-update-avatar{
+    position:absolute;
+    bottom:-20px;
+    left:0;
+}

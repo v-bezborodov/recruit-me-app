@@ -20,7 +20,7 @@ class CreateRecruitments extends Migration
             $table->string('description');
 //            $table->string('company');
             $table->string('attached_files')->nullable();
-            $table->string('status')->nullable();
+            $table->unsignedTinyInteger('status')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

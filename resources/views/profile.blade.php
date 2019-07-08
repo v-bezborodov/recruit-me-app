@@ -10,11 +10,22 @@
 
 
 @section('content')
+    <section class="profile-header" role="header">
+{{--            <img class="profile-background w-100" src="./img/header.jpg">--}}
+        <i class="fas fa-american-sign-language-interpreting"></i>
+            <div class="profile-img">
+                <img class="w-100" src="./img/slawek.jpeg" alt="avatar"/>
+                <div class="profile-update-avatar file btn btn-lg w-100">
+                    Change Photo<i class="far fa-edit"></i>
+{{--                    <input type="file" name="file"/>--}}
+                </div>
+            </div>
+    </section>
     <section>
         <div class="emp-profile">
 
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-2">
 
                         <div class="profile-img">
                             <img class="w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
@@ -31,7 +42,7 @@
                             {!!Auth::user()->position_name??'<p class="text-secondary">Position name<p>'!!}
                         </h6>
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+{{--                            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>--}}
                             <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
                             <a class="nav-link" id="v-pills-recrutation-tab" data-toggle="pill" href="#v-pills-recrutation" role="tab" aria-controls="v-pills-recrutation" aria-selected="false">Recrutation</a>
                             <a class="nav-link" id="v-pills-timeline-tab" data-toggle="pill" href="#v-pills-timeline" role="tab" aria-controls="v-pills-timeline" aria-selected="false">Timeline</a>
@@ -42,14 +53,16 @@
                     </div>
 
                     {{--  pills content --}}
-                    <div class="col-9">
+                    <div class="col-10">
+
+
                         <div class="tab-content" id="v-pills-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+{{--                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">--}}
 
 
-                            </div>
-                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-
+{{--                            </div>--}}
+                            <div class="tab-pane fade active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                            Profile summary
                                 {{--Vue component--}}
                                 <div class="mt-2 text-center">
                                     <b-button id="show-btn" @click="$bvModal.show('bv-modal-example')">Edit Profile</b-button>
