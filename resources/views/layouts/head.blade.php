@@ -12,7 +12,9 @@
 
 <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
 
-<link href="{{asset('css/fonts/font-awesome/FontAwesome.otf')}}" rel="stylesheet">
+<link  href="http://127.0.0.1:8000/fonts/font-awesome/fontawesome.css" rel="stylesheet">
+<link  href="http://127.0.0.1:8000/fonts/font-awesome/brands.css" rel="stylesheet">
+<link  href="http://127.0.0.1:8000/fonts/font-awesome/solid.css" rel="stylesheet">
 
 
 

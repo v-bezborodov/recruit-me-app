@@ -10,6 +10,11 @@
 
 
 @section('content')
+    <i class="fas fa-fish"></i>
+    <i class="fas fa-app-store"></i>
+    <i class="fas fa-vimeo"></i>
+    <i class="fas fa-500px"></i>
+    <i class="fas fa-chrome"></i>
     <section class="profile-header" role="header">
 {{--            <img class="profile-background w-100" src="./img/header.jpg">--}}
         <i class="fas fa-american-sign-language-interpreting"></i>

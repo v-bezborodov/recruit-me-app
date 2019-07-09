@@ -8,9 +8,13 @@
 @import '~bootstrap/scss/bootstrap';
 
 //Font awesome
-@import "node_modules/font-awesome/scss/font-awesome";
+@import "node_modules/font-awesome/scss/font-awesome.scss";
 @import "node_modules/font-awesome/css/font-awesome";
-@import "~font-awesome/scss/font-awesome.scss";
+@import "~font-awesome/scss/font-awesome";
 $fa-font-path: '/fonts/font-awesome';
 //@import '~@fortawesome/fontawesome-free/css/all.min.css';
 
+//@import 'node_modules/font-awesome/scss/fontawesome';
+//@import 'node_modules/font-awesome/scss/regular';
+//@import 'node_modules/font-awesome/scss/solid';
+//@import 'node_modules/font-awesome/scss/brands';
