@@ -1,4 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/fonts/vendor/font-awesome/font-awesome.css": "/fonts/vendor/font-awesome/font-awesome.css",
+    "/fonts/vendor/font-awesome/font-awesome.css.map": "/fonts/vendor/font-awesome/font-awesome.css.map",
+    "/fonts/vendor/font-awesome/font-awesome.min.css": "/fonts/vendor/font-awesome/font-awesome.min.css"
 }

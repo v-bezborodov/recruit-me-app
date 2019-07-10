@@ -10,18 +10,18 @@
 
 
 @section('content')
-    <i class="fas fa-fish"></i>
-    <i class="fas fa-app-store"></i>
-    <i class="fas fa-vimeo"></i>
-    <i class="fas fa-500px"></i>
-    <i class="fas fa-chrome"></i>
+    <i class="fa fa-fish"></i>
+    <i class="fa fa-app-store"></i>
+    <i class="fa fa-vimeo"></i>
+    <i class="fa fa-500px"></i>
+    <i class="fa fa-chrome"></i>
     <section class="profile-header" role="header">
 {{--            <img class="profile-background w-100" src="./img/header.jpg">--}}
         <i class="fas fa-american-sign-language-interpreting"></i>
             <div class="profile-img">
                 <img class="w-100" src="./img/slawek.jpeg" alt="avatar"/>
-                <div class="profile-update-avatar file btn btn-lg w-100">
-                    Change Photo<i class="far fa-edit"></i>
+                <div class="profile-update-avatar">
+                    <i class="fa fa-edit"></i>
 {{--                    <input type="file" name="file"/>--}}
                 </div>
             </div>
