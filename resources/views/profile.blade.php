@@ -15,7 +15,8 @@
 {{--            <img class="profile-background w-100" src="./img/header.jpg">--}}
         <i class="fas fa-american-sign-language-interpreting"></i>
             <div class="profile-img">
-                <img class="w-100" src="./img/slawek.jpeg" alt="avatar"/>
+{{--                @if()--}}
+                <img class="w-100" src="./img/profiles/{{Auth::user()->id}}/slawek.jpeg" alt="avatar"/>
                 <div class="profile-update-avatar">
 {{--                    <i class="fa fa-edit"></i>--}}
 {{--                    <input type="file" name="file"/>--}}
@@ -24,7 +25,7 @@
                     {{--Modal that changes avatar--}}
                     <b-modal id="avatar-profile-header-modal">
                             <avatar-component-profile>
-                                fff
+
                             </avatar-component-profile>
 
                     </b-modal>

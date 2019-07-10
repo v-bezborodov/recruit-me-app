@@ -66,8 +66,6 @@
 
 <script>
     export default {
-        // components: "table-component",
-        // name: "table-component",
         props: {
             data: {
                 require:true

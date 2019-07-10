@@ -1764,8 +1764,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  // components: "table-component",
-  // name: "table-component",
   props: {
     data: {
       require: true
@@ -79284,16 +79282,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(bootstrap_vue__WEBPACK_IMPORTED_M
 window.onload = function () {
   var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
     el: '#app'
-  }); // const app_table = new Vue({
-  //     el: '#table-app',
-  //     data: {
-  //         currentActivity: '#table-app'
-  //     }
-  // });
-  //
-  // const app_modal = new Vue({
-  //     el: '#modal-edit',
-  // });
+  });
 };
 
 /***/ }),
