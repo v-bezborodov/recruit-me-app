@@ -106,13 +106,14 @@
         data() {
             return {
                 fields: [
-                    {key: 'offered_position', sortable:true,  outlined:true, label: 'Offered position'},
+                    {key: 'offered_position', sortable:true,  label: 'Offered position'},
                     {key: 'created_at', label: 'Offer date'},
                     {key: 'status', label: 'Status'},
                     {key: 'actions', label: ''},
 
                 ],
                 hover: true,
+                outlined:true,
 
                 infoModal: {
                     id: 'showModal',

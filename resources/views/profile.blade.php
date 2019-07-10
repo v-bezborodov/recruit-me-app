@@ -10,20 +10,30 @@
 
 
 @section('content')
-    <i class="fa fa-fish"></i>
-    <i class="fa fa-app-store"></i>
-    <i class="fa fa-vimeo"></i>
-    <i class="fa fa-500px"></i>
-    <i class="fa fa-chrome"></i>
+
     <section class="profile-header" role="header">
 {{--            <img class="profile-background w-100" src="./img/header.jpg">--}}
         <i class="fas fa-american-sign-language-interpreting"></i>
             <div class="profile-img">
                 <img class="w-100" src="./img/slawek.jpeg" alt="avatar"/>
                 <div class="profile-update-avatar">
-                    <i class="fa fa-edit"></i>
+{{--                    <i class="fa fa-edit"></i>--}}
 {{--                    <input type="file" name="file"/>--}}
+                    <div v-b-modal.avatar-profile-header-modal><i class="fa fa-edit"></i></div>
+
+                    {{--Modal that changes avatar--}}
+                    <b-modal id="avatar-profile-header-modal">
+                            <avatar-component-profile>
+                                fff
+                            </avatar-component-profile>
+
+                    </b-modal>
+                    {{--End modal that changes avatar--}}
+
                 </div>
+                <h5>
+                    {{Auth::user()->first_name.' '.Auth::user()->last_name}}
+                </h5>
             </div>
     </section>
     <section>
