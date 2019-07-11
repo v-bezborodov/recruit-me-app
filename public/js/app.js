@@ -2085,7 +2085,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-// import VueAvatar from "vue-avatar-editor-improved";
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "avatar-component-profile",
@@ -2095,7 +2118,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       rotation: 0,
-      scale: 1
+      scale: 1,
+      borderRadius: 0
     };
   },
   methods: {
@@ -34205,7 +34229,7 @@ exports = module.exports = __webpack_require__(/*! ../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "\ncanvas {\n    width: 300px;\n    height: 300px;\n}\n.cursorPointer{\n    cursor: pointer;\n}\n.cursorGrab{\n    cursor: grab;\n    cursor: -webkit-grab;\n    cursor: -moz-grab;\n}\n.cursorGrabbing{\n    cursor: grabbing;\n    cursor: -webkit-grabbing;\n    cursor: -moz-grabbing;\n}\n", ""]);
+exports.push([module.i, "\ncanvas {\n    width: 300px;\n    height: 300px;\n    border-radius:50%;\n}\n.cursorPointer{\n    cursor: pointer;\n}\n.cursorGrab{\n    cursor: grab;\n    cursor: -webkit-grab;\n    cursor: -moz-grab;\n}\n.cursorGrabbing{\n    cursor: grabbing;\n    cursor: -webkit-grabbing;\n    cursor: -moz-grabbing;\n}\n", ""]);
 
 // exports
 
@@ -66643,6 +66667,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -66652,7 +66677,7 @@ __webpack_require__.r(__webpack_exports__);
         },
         border: {
             type: Number,
-            default: 25
+            default: 0
         },
         borderRadius: {
             type: Number,
@@ -67900,8 +67925,115 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {}
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("vue-avatar", {
+        ref: "vueavatar",
+        attrs: {
+          width: 400,
+          height: 400,
+          rotation: _vm.rotation,
+          borderRadius: _vm.borderRadius,
+          scale: _vm.scale
+        },
+        on: { "vue-avatar-editor:image-ready": _vm.onImageReady }
+      }),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("label", [
+        _vm._v("\n        Zoom : " + _vm._s(_vm.scale) + "x\n        "),
+        _c("br"),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.scale,
+              expression: "scale"
+            }
+          ],
+          attrs: { type: "range", min: "1", max: "3", step: "0.02" },
+          domProps: { value: _vm.scale },
+          on: {
+            __r: function($event) {
+              _vm.scale = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("label", [
+        _vm._v("\n        Rotation : " + _vm._s(_vm.rotation) + "°\n        "),
+        _c("br"),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.rotation,
+              expression: "rotation"
+            }
+          ],
+          attrs: { type: "range", min: "0", max: "360", step: "1" },
+          domProps: { value: _vm.rotation },
+          on: {
+            __r: function($event) {
+              _vm.rotation = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("label", [
+        _vm._v(
+          "\n        Radius : " + _vm._s(_vm.borderRadius) + "px\n        "
+        ),
+        _c("br"),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.borderRadius,
+              expression: "borderRadius"
+            }
+          ],
+          attrs: { type: "range", min: "0", max: "200", step: "1" },
+          domProps: { value: _vm.borderRadius },
+          on: {
+            __r: function($event) {
+              _vm.borderRadius = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("button", { on: { click: _vm.saveClicked } }, [_vm._v("Get image")]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("img", { ref: "image" })
+    ],
+    1
+  )
+}
 var staticRenderFns = []
+render._withStripped = true
 
 
 
