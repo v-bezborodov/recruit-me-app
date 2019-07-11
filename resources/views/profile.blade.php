@@ -24,7 +24,9 @@
 
                     {{--Modal that changes avatar--}}
                     <b-modal id="avatar-profile-header-modal">
-                            <avatar-component-profile>
+                            <avatar-component-profile
+                                    :routes="{{ $routes }}"
+                            >
 
                             </avatar-component-profile>
 

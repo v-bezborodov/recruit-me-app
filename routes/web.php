@@ -24,6 +24,10 @@ Route::get('/about', function(){
 })->name('about')->middleware('auth');
 
 Route::resource('/recruitment', 'RecruitmentController');
+Route::resource('/user', 'UserController');
+
+
+
 //Route::resource('/categories', 'CategoryController');
 Route::get('/profile', 'RecruitmentController@profile')->name('profile')->middleware('auth');
 Route::post('/formsubmit', 'UserController@update')->name('updateUser')->middleware('auth');

@@ -23,6 +23,11 @@ class UserController extends Controller
                 'country_id'=>$request->country['id'],
                 'updated_at'=>$time
             ]);
+
+        if($request->avatar){
+
+
+        }
         return response()->json(['success'=>true,'result'=>$request->country['id']],200);
     }
 }
