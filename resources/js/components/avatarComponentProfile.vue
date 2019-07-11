@@ -54,7 +54,7 @@
 </template>
 
 <script>
-    import {VueAvatar} from 'vue-avatar-editor-improved';
+    import {VueAvatar} from '../vendored_components/vue-avatar-editor-improved';
 
     export default {
         name: "avatar-component-profile",
@@ -82,6 +82,8 @@
     }
 </script>
 
-<style scoped>
-
+<style>
+    .modal-body {
+        text-align: center;
+    }
 </style>
