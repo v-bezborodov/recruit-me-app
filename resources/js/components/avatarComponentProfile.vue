@@ -81,28 +81,27 @@
                 // this.$refs.image.src = img.toDataURL();
                 var image = img.toDataURL();
 
-                console.log(this.routes);
+                console.log(this.routes.user);
 
                 // var file = new Blob([text], {type: type});
                 // dlbtn.href = URL.createObjectURL(file);
                 // dlbtn.download = name;
                 // axios.put(this.routes.recruitUpdate+'/'+this.editModal.content.id,
-                axios.put(this.routes.user+'/'+update', {
-                    avatar,
-                    id: this.data.id,
-                    first_name:this.first_name,
-                    last_name:this.last_name,
-                    email:this.email,
-                    position:this.position_name,
-                    company:this.company,
-                    country:this.country,
-                    updated_at:this.time,
+                axios.put(this.routes.user+'/'+1, {
+                    image:image
+                    // id: this.data.id,
+                    // first_name:this.first_name,
+                    // last_name:this.last_name,
+                    // email:this.email,
+                    // position:this.position_name,
+                    // company:this.company,
+                    // country:this.country,
+                    // updated_at:this.time,
 
                 })
                     .then(function (response) {
                         console.log(response.data);
 
-                        // this.$toasted.show('hello billo')
 
                         Vue.toasted.success('Succesfully saved!', {
                             icon : 'check',

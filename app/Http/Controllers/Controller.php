@@ -16,7 +16,7 @@ class Controller extends BaseController
     public function __construct()
     {
         $this->routes = collect([
-            'user' => route('updateUser'),
+            'user' => route('user.index'),
             'recruitUpdate' => route('recruitment.index'),
         ]);
     }
