@@ -13,19 +13,23 @@
 
     <section class="profile-header" role="header">
 {{--            <img class="profile-background w-100" src="./img/header.jpg">--}}
-        <i class="fas fa-american-sign-language-interpreting"></i>
+        @php($path_avatar=public_path().'/img/profiles/'.Auth::user()->id.'/'.Auth::user()->avatar)
             <div class="profile-img">
-{{--                @if()--}}
-                <img class="w-100" src="./img/profiles/{{Auth::user()->id}}/slawek.jpeg" alt="avatar"/>
+
+                @if(Auth::user()->avatar && file_exists($path_avatar))
+                    <img class="w-100" src="{{asset('img/profiles/'.Auth::user()->id.'/'.Auth::user()->avatar)}}" alt="avatar {{Auth::user()->name}}"/>
+                @else
+                    <img class="w-100" src="{{asset('/img/no-avatar.png')}}" alt="avatar {{Auth::user()->name}}"/>
+                @endif
+
                 <div class="profile-update-avatar">
-{{--                    <i class="fa fa-edit"></i>--}}
-{{--                    <input type="file" name="file"/>--}}
                     <div v-b-modal.avatar-profile-header-modal><i class="fa fa-edit"></i></div>
 
                     {{--Modal that changes avatar--}}
                     <b-modal id="avatar-profile-header-modal">
                             <avatar-component-profile
                                     :routes="{{ $routes }}"
+                                    :id="{{Auth::user()->id}}"
                             >
 
                             </avatar-component-profile>

@@ -16,6 +16,7 @@
       <p>Upload picture</p>
     </div>
     <input
+      id="test"
       type="file"
       ref="input"
       @change="fileSelected"
@@ -128,6 +129,7 @@ export default {
         }
     },
     mounted () {
+
         let self = this;
         this.canvas = this.$refs.avatarEditorCanvas;
         this.context = this.canvas.getContext('2d');
@@ -487,6 +489,18 @@ export default {
         fileSelected (e) {
             var files = e.target.files || e.dataTransfer.files;
             this.$emit('select-file', files);
+            console.log(files[0].size);
+            if(files[0].size>150000){
+                Vue.toasted.error('Uploaded file exceeds maximum file-size 15 MB',{
+                    action : {
+                        text : 'OK',
+                        onClick : (e, toastObject) => {
+                            toastObject.goAway(0);
+                        }
+                    }
+                });
+                return;
+            }
 
             if (!files.length) {
                 return;
@@ -498,6 +512,19 @@ export default {
             this.changed = true;
             reader.onload = (e) => this.loadImage(e.target.result);
             reader.readAsDataURL(files[0]);
+
+            Vue.toasted.success('Avatar was choosen!', {
+                icon : 'check',
+                position: "bottom-right",
+                duration : 5000,
+                action : {
+                    text : 'OK',
+                    onClick : (e, toastObject) => {
+                        toastObject.goAway(0);
+                    }
+                }
+            });
+
         }
     },
     watch: {

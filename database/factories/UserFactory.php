@@ -26,7 +26,6 @@ $factory->define(User::class, function (Faker $faker) {
         'created_at' => $faker->dateTimeThisYear,
         'updated_at'=>$faker->dateTimeThisMonth,
         'admin'=>0,
-        'avatar'=>'/img/no-avatar.png'
     ];
 });
 

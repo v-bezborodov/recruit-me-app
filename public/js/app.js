@@ -2121,6 +2121,9 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     routes: {
       require: true
+    },
+    id: {
+      require: true
     }
   },
   data: function data() {
@@ -2135,23 +2138,10 @@ __webpack_require__.r(__webpack_exports__);
       var img = this.$refs.vueavatar.getImageScaled(); // this.$refs.image.src = img.toDataURL();
 
       var image = img.toDataURL();
-      console.log(this.routes.user); // var file = new Blob([text], {type: type});
-      // dlbtn.href = URL.createObjectURL(file);
-      // dlbtn.download = name;
-      // axios.put(this.routes.recruitUpdate+'/'+this.editModal.content.id,
-
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.put(this.routes.user + '/' + 1, {
-        image: image // id: this.data.id,
-        // first_name:this.first_name,
-        // last_name:this.last_name,
-        // email:this.email,
-        // position:this.position_name,
-        // company:this.company,
-        // country:this.country,
-        // updated_at:this.time,
-
+      console.log(this.$refs);
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.put(this.routes.user + '/' + this.id, {
+        image: image
       }).then(function (response) {
-        console.log(response.data);
         Vue.toasted.success('Succesfully saved!', {
           icon: 'check',
           theme: "bubble",
@@ -2403,6 +2393,7 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+//
 //
 //
 //
@@ -2895,6 +2886,19 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
       var files = e.target.files || e.dataTransfer.files;
       this.$emit('select-file', files);
+      console.log(files[0].size);
+
+      if (files[0].size > 150000) {
+        Vue.toasted.error('Uploaded file exceeds maximum file-size 15 MB', {
+          action: {
+            text: 'OK',
+            onClick: function onClick(e, toastObject) {
+              toastObject.goAway(0);
+            }
+          }
+        });
+        return;
+      }
 
       if (!files.length) {
         return;
@@ -2909,6 +2913,17 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       };
 
       reader.readAsDataURL(files[0]);
+      Vue.toasted.success('Avatar was choosen!', {
+        icon: 'check',
+        position: "bottom-right",
+        duration: 5000,
+        action: {
+          text: 'OK',
+          onClick: function onClick(e, toastObject) {
+            toastObject.goAway(0);
+          }
+        }
+      });
     }
   },
   watch: {
@@ -68112,7 +68127,7 @@ var render = function() {
     _c("input", {
       ref: "input",
       staticStyle: { display: "none" },
-      attrs: { type: "file" },
+      attrs: { id: "test", type: "file" },
       on: { change: _vm.fileSelected }
     })
   ])
@@ -81028,8 +81043,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/developer/WEB_PROJECTS/recruitme/recruit_app/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/developer/WEB_PROJECTS/recruitme/recruit_app/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

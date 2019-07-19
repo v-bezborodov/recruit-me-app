@@ -64,6 +64,9 @@
         props: {
             routes:{
                 require:true
+            },
+            id:{
+                require:true
             }
         },
         data: function data() {
@@ -80,27 +83,14 @@
 
                 // this.$refs.image.src = img.toDataURL();
                 var image = img.toDataURL();
+                console.log(this.$refs);
 
-                console.log(this.routes.user);
 
-                // var file = new Blob([text], {type: type});
-                // dlbtn.href = URL.createObjectURL(file);
-                // dlbtn.download = name;
-                // axios.put(this.routes.recruitUpdate+'/'+this.editModal.content.id,
-                axios.put(this.routes.user+'/'+1, {
+                axios.put(this.routes.user+'/'+this.id, {
                     image:image
-                    // id: this.data.id,
-                    // first_name:this.first_name,
-                    // last_name:this.last_name,
-                    // email:this.email,
-                    // position:this.position_name,
-                    // company:this.company,
-                    // country:this.country,
-                    // updated_at:this.time,
 
                 })
                     .then(function (response) {
-                        console.log(response.data);
 
 
                         Vue.toasted.success('Succesfully saved!', {

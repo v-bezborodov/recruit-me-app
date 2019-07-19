@@ -29,21 +29,34 @@ class UserController extends Controller
 //                'updated_at'=>$time,
 //                'avatar'=>$request->image
 //            ]);
-//        debug($profile);
+
     if($profile){
-        $file = './img/profiles/'.$profile->id.'/'.$profile->first_name.'.jpg';
-        file_put_contents($file, $request->image);
+        $fileName=strtolower($profile->first_name.'.jpg');
+        $file = public_path().'/img/profiles/'.$profile->id.'/'.$fileName;
+        $data_img = base64_decode($request->image);
+
+        $fileBin = file_get_contents($request->image);
+        $mimeType = mime_content_type($request->image);
+        file_put_contents($file, $fileBin);
+        debug($file);
     }
+
+        //$request->file('image')->store('images');
+
         $data = request()->only([
-            'first_name',
+                'first_name',
+                'last_name',
+                'email',
+                'position_name',
+                'company',
         ]);
 
-        $data['avatar']=$file;
-
-        debug($data);
+        $data['avatar']=$fileName;
+        $request->has('updated_at')??$data['updated_at']=$time;
+        $request->has('country')??$data['country_id']=$request->country['id'];
+//        debug($request->image);
         $profile->fill($data)->save();
 
-
-        return response()->json(['success'=>true,'result'=>$request->country['id']],200);
+        return response()->json(['success'=>true],200);
     }
 }
