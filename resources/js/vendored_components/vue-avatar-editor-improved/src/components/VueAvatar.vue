@@ -490,7 +490,7 @@ export default {
             var files = e.target.files || e.dataTransfer.files;
             this.$emit('select-file', files);
             console.log(files[0].size);
-            if(files[0].size>150000){
+            if(files[0].size>1500000){
                 Vue.toasted.error('Uploaded file exceeds maximum file-size 15 MB',{
                     action : {
                         text : 'OK',
@@ -514,7 +514,6 @@ export default {
             reader.readAsDataURL(files[0]);
 
             Vue.toasted.success('Avatar was choosen!', {
-                icon : 'check',
                 position: "bottom-right",
                 duration : 5000,
                 action : {

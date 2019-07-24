@@ -2888,7 +2888,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       this.$emit('select-file', files);
       console.log(files[0].size);
 
-      if (files[0].size > 150000) {
+      if (files[0].size > 1500000) {
         Vue.toasted.error('Uploaded file exceeds maximum file-size 15 MB', {
           action: {
             text: 'OK',
@@ -2914,7 +2914,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
       reader.readAsDataURL(files[0]);
       Vue.toasted.success('Avatar was choosen!', {
-        icon: 'check',
         position: "bottom-right",
         duration: 5000,
         action: {
@@ -81043,8 +81042,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/developer/WEB_PROJECTS/recruitme/recruit_app/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/developer/WEB_PROJECTS/recruitme/recruit_app/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
