@@ -56,7 +56,7 @@ card-download img{
     border-radius:50%;
     overflow: hidden;
     /*z-index: 2;*/
-    margin:  3% auto;
+    margin:  0 auto;
     position: relative;
 }
 .profile-header .profile-img:hover .profile-update-avatar{
@@ -77,4 +77,23 @@ card-download img{
     width:150px;
     text-align: center;
     background: lightcyan;
+}
+
+.nav-pills .nav-link{
+    color: lightgray;
+    border:1px solid transparent;
+    min-width:115px;
+    text-align:center;
+}
+.nav-pills .nav-link:hover{
+    border:1px solid lightgray;
+    opacity:.9;
+
+}
+.nav-pills .nav-link.active{
+    background-color:darkgray!important;
+}
+#v-pills-tabContent{
+    min-height:350px;
+    padding: 1em 1em 1em 1em;
 }

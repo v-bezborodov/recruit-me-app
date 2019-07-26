@@ -12,62 +12,52 @@
 @section('content')
 
     <section class="profile-header" role="header">
-{{--            <img class="profile-background w-100" src="./img/header.jpg">--}}
         @php($path_avatar=public_path().'/img/profiles/'.Auth::user()->id.'/'.Auth::user()->avatar)
-            <div class="profile-img">
+            <div class="d-flex justify-content-center align-items-center w-100 h-100">
+                <div>
+                    <div class="profile-img">
 
-                @if(Auth::user()->avatar && file_exists($path_avatar))
-                    <img class="w-100" src="{{asset('img/profiles/'.Auth::user()->id.'/'.Auth::user()->avatar)}}" alt="avatar {{Auth::user()->name}}"/>
-                @else
-                    <img class="w-100" src="{{asset('/img/no-avatar.png')}}" alt="avatar {{Auth::user()->name}}"/>
-                @endif
+                            @if(Auth::user()->avatar && file_exists($path_avatar))
+                                <img class="w-100" src="{{asset('img/profiles/'.Auth::user()->id.'/'.Auth::user()->avatar)}}" alt="avatar {{Auth::user()->name}}"/>
+                            @else
+                                <img class="w-100" src="{{asset('/img/no-avatar.png')}}" alt="avatar {{Auth::user()->name}}"/>
+                            @endif
 
-                <div class="profile-update-avatar">
-                    <div v-b-modal.avatar-profile-header-modal><i class="fa fa-edit"></i></div>
+                                <div class="profile-update-avatar">
+                                    <div v-b-modal.avatar-profile-header-modal><i class="fa fa-edit"></i></div>
 
-                    {{--Modal that changes avatar--}}
-                    <b-modal id="avatar-profile-header-modal">
-                            <avatar-component-profile
-                                    :routes="{{ $routes }}"
-                                    :id="{{Auth::user()->id}}"
-                            >
+                                    {{--Modal that changes avatar--}}
+                                    <b-modal id="avatar-profile-header-modal">
+                                            <avatar-component-profile
+                                                    :routes="{{ $routes }}"
+                                                    :id="{{Auth::user()->id}}"
+                                            >
+                                            </avatar-component-profile>
 
-                            </avatar-component-profile>
+                                    </b-modal>
+                                    {{--End modal that changes avatar--}}
 
-                    </b-modal>
-                    {{--End modal that changes avatar--}}
-
-                </div>
-                <h5>
-                    {{Auth::user()->first_name.' '.Auth::user()->last_name}}
-                </h5>
-            </div>
-    </section>
-    <section>
-        <div class="emp-profile">
-
-                <div class="row">
-                    <div class="col-2">
-
-                        <div class="profile-img">
-                            <img class="w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-                            <div class="file btn btn-lg btn-primary w-100">
-                                Change Photo
-                                <input type="file" name="file"/>
+                                </div>
                             </div>
-                        </div>
-
                         <h5>
                             {{Auth::user()->first_name.' '.Auth::user()->last_name}}
                         </h5>
                         <h6>
                             {!!Auth::user()->position_name??'<p class="text-secondary">Position name<p>'!!}
                         </h6>
-                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    </div>
+        </div>
+    </section>
+    <section>
+        <div class="emp-profile">
+
+                <div class="row no-gutters">
+                    <div class="col-2 pills-col bg-secondary">
+                        <div class="nav flex-column nav-pills justify-content-center align-items-center w-100 pt-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 {{--                            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>--}}
-                            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
-                            <a class="nav-link" id="v-pills-recrutation-tab" data-toggle="pill" href="#v-pills-recrutation" role="tab" aria-controls="v-pills-recrutation" aria-selected="false">Recrutation</a>
-                            <a class="nav-link" id="v-pills-timeline-tab" data-toggle="pill" href="#v-pills-timeline" role="tab" aria-controls="v-pills-timeline" aria-selected="false">Timeline</a>
+                            <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile">Profile</a>
+                            <a class="nav-link" id="v-pills-recrutation-tab" data-toggle="pill" href="#v-pills-recrutation" role="tab" aria-controls="v-pills-recrutation">Recrutation</a>
+                            <a class="nav-link" id="v-pills-timeline-tab" data-toggle="pill" href="#v-pills-timeline" role="tab" aria-controls="v-pills-timeline">Timeline</a>
 
 {{--                            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="true">Messages</a>--}}
 {{--                            <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>--}}
@@ -83,7 +73,7 @@
 
 
 {{--                            </div>--}}
-                            <div class="tab-pane fade active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                            <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                             Profile summary
                                 {{--Vue component--}}
                                 <div class="mt-2 text-center">
