@@ -84,6 +84,7 @@ card-download img{
     border:1px solid transparent;
     min-width:115px;
     text-align:center;
+    margin: 1em;
 }
 .nav-pills .nav-link:hover{
     border:1px solid lightgray;
@@ -96,4 +97,7 @@ card-download img{
 #v-pills-tabContent{
     min-height:350px;
     padding: 1em 1em 1em 1em;
+}
+.pills-col{
+    border-right: 1px solid lightgray;
 }

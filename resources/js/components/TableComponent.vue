@@ -85,8 +85,8 @@
                 },
                 fields: [
                     {key: 'id', sortable: true},
-                    {key: 'user.last_name', sortable: true, label: 'Last Name'},
-                    {key: 'user.first_name', sortable: true, label: 'First name'},
+                    // {key: 'user.last_name', sortable: true, label: 'Last Name'},
+                    // {key: 'user.first_name', sortable: true, label: 'First name'},
                     {key: 'user.company', sortable: true, label: 'Company name'},
                     {key: 'user.country.long_name', sortable: true, label: 'Country'},
                     // {key: 'email', sortable: true},
@@ -120,6 +120,9 @@
                 this.infoModal.title = ''
                 this.infoModal.content = ''
             },
+        },
+        mounted(){
+            console.log(this.data);
         }
     }
 </script>
