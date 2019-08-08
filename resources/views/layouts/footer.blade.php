@@ -1,10 +1,11 @@
-<footer class="bg-dark pt-0 pt-5">
+<footer class="footer bg-dark pt-0 pt-5">
 
     <div class="row">
         <div class="col-4">
             <nav class="navbar navbar-footer text-white">
                 <a class="navbar-brand" href="/">
-                    <img src="/img/slawek.jpeg" width="30" height="30" alt="">
+                    <img src="/img/slawekdev.png" alt="{{config('app.name')}}">
+
                 </a>
 
                 <div class="collapse navbar-collapse">
@@ -35,6 +36,10 @@
         <div class="col-8">
 
 
+        </div>
+        <div class="credentials col-12">
+            <p>Recruit Me Application, 2019</p>
+            <p>By {!!config('app.autor')  !!}</p>
         </div>
 
     </div>

@@ -101,3 +101,18 @@ card-download img{
 .pills-col{
     border-right: 1px solid lightgray;
 }
+.footer{
+    position: fixed;
+    width: 100%;
+    bottom:0;
+}
+.footer .navbar-brand img{
+    width:30%;
+    height: auto;
+}
+
+.footer .credentials p{
+    text-align: center;
+    color:darkgray;
+    margin:0;
+}
