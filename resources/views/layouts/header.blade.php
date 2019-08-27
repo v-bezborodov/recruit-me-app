@@ -14,9 +14,9 @@
                         @endauth
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('download')}}">Download CV</a>
-                </li>
+                {{--<li class="nav-item">--}}
+                    {{--<a class="nav-link" href="{{route('download')}}">Download CV</a>--}}
+                {{--</li>--}}
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('about')}}">About APP</a>
                 </li>

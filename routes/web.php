@@ -26,6 +26,11 @@ Route::get('/about', function(){
 Route::resource('/recruitment', 'RecruitmentController');
 Route::resource('/user', 'UserController');
 
+Route::group(['prefix' => 'manage', 'middleware' => 'auth'], function () {
+    Route::resource('/', 'Manage\Manage');
+    Route::resource('/recrutation-flow', 'Manage\RecrutationFlow');
+});
+
 
 
 //Route::resource('/categories', 'CategoryController');

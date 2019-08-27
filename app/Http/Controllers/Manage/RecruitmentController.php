@@ -17,15 +17,16 @@ class RecruitmentController extends Controller
         $actions=view('layouts.actions._actions');
         return view('index',  compact('recruitments','actions'));
     }
+
     public function download(){
         return view('download');
     }
     public function profile(){
-//        $profile=User::all();
-//        dd(Auth::user()->id);
-        $recruitment=Recruitment::where('user_id', 1)->get();
-        return view('profile', ['recruitment'=>$recruitment,
-                                    'routes' => $this->routes]);
+////        $profile=User::all();
+////        dd(Auth::user()->id);
+//        $recruitment=Recruitment::where('user_id', 1)->get();
+//        return view('manage.index', ['recruitment'=>$recruitment,
+//                                    'routes' => $this->routes]);
     }
     public function update(Request $request, $id){
 //        dd($id);

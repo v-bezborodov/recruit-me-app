@@ -27,14 +27,14 @@
                                     <div v-b-modal.avatar-profile-header-modal><i class="fa fa-edit"></i></div>
 
                                     {{--Modal that changes avatar--}}
-                                    <b-modal id="avatar-profile-header-modal">
-                                            <avatar-component-profile
-                                                    :routes="{{ $routes }}"
-                                                    :id="{{Auth::user()->id}}"
-                                            >
-                                            </avatar-component-profile>
+                                    {{--<b-modal id="avatar-profile-header-modal">--}}
+                                            {{--<avatar-component-profile--}}
+                                                    {{--:routes="{{ $routes }}"--}}
+                                                    {{--:id="{{Auth::user()->id}}"--}}
+                                            {{-->--}}
+                                            {{--</avatar-component-profile>--}}
 
-                                    </b-modal>
+                                    {{--</b-modal>--}}
                                     {{--End modal that changes avatar--}}
 
                                 </div>
@@ -49,20 +49,12 @@
         </div>
     </section>
     <section>
+
         <div class="emp-profile">
 
                 <div class="row no-gutters">
-                    <div class="col-2 pills-col">
-                        <div class="nav flex-column nav-pills justify-content-center align-items-center w-100 pt-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-{{--                            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>--}}
-                            <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile">Profile</a>
-                            <a class="nav-link" id="v-pills-recrutation-tab" data-toggle="pill" href="#v-pills-recrutation" role="tab" aria-controls="v-pills-recrutation">Recrutation</a>
-                            <a class="nav-link" id="v-pills-timeline-tab" data-toggle="pill" href="#v-pills-timeline" role="tab" aria-controls="v-pills-timeline">Timeline</a>
+                    @include('manage.sidebar')
 
-{{--                            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="true">Messages</a>--}}
-{{--                            <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>--}}
-                        </div>
-                    </div>
 
                     {{--  pills content --}}
                     <div class="col-10">
@@ -73,16 +65,17 @@
 
 
 {{--                            </div>--}}
+                            @include('manage.tabs.flow')
                             <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                             Profile summary
                                 {{--Vue component--}}
                                 <div class="mt-2 text-center">
                                     <b-button id="show-btn" @click="$bvModal.show('bv-modal-example')">Edit Profile</b-button>
-                                    <modal-component
-                                            :routes="{{ $routes }}"
-                                            :data="{{ Auth::user()}}"
-                                            :countries="{{\App\Country::get(['id','long_name'])}}"
-                                    ></modal-component>
+                                    {{--<modal-component--}}
+                                            {{--:routes="{{ $routes }}"--}}
+                                            {{--:data="{{ Auth::user()}}"--}}
+                                            {{--:countries="{{\App\Country::get(['id','long_name'])}}"--}}
+                                    {{--></modal-component>--}}
                                 </div>
 
                                 <div class="profile-work mt-4">
@@ -164,15 +157,15 @@
                             <div class="tab-pane fade" id="v-pills-recrutation" role="tabpanel" aria-labelledby="v-pills-recrutation-tab">
 
                                 <div class="row">
-                                    @if($recruitment->count())
-                                        <table-component-profile
-                                                :routes="{{ $routes }}"
-                                                data="{{ $recruitment }}"
-                                        >
-                                        </table-component-profile>
-                                    @else
-                                        <p class="text-center">You have not submitted application yet</p>
-                                    @endif
+                                    {{--@if($recruitment->count())--}}
+                                        {{--<table-component-profile--}}
+                                                {{--:routes="{{ $routes }}"--}}
+                                                {{--data="{{ $recruitment }}"--}}
+                                        {{-->--}}
+                                        {{--</table-component-profile>--}}
+                                    {{--@else--}}
+                                        {{--<p class="text-center">You have not submitted application yet</p>--}}
+                                    {{--@endif--}}
                                 </div>
 
                             </div>
