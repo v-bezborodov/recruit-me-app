@@ -66,7 +66,7 @@
 
 {{--                            </div>--}}
                             @include('manage.tabs.flow')
-                            <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                             Profile summary
                                 {{--Vue component--}}
                                 <div class="mt-2 text-center">

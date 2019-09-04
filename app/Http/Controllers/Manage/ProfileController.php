@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Manage;
 
 use App\Recruitment;
-use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
-class Manage extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +16,12 @@ class Manage extends Controller
      */
     public function index()
     {
-//        $profile=User::all();
-//        $recruitment=Recruitment::where('user_id', 1)->get();
-dd(123);
-        return view('manage.index', ['routes' => $this->routes]);
+        $id=Auth::user()->id;
+        if($id){
+        $recruitment=Recruitment::where('user_id', $id)->get();
+        return view('manage.index', ['recruitments'=>$recruitment,
+            'routes' => $this->routes]);
+        }
     }
 
     /**
@@ -51,7 +53,9 @@ dd(123);
      */
     public function show($id)
     {
-        dd(123);
+//        $recruitment=Recruitment::where('user_id', 1)->get();
+//        return view('manage.index', ['recruitment'=>$recruitment,
+//            'routes' => $this->routes]);
     }
 
     /**

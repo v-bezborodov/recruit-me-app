@@ -28,13 +28,17 @@ Route::resource('/user', 'UserController');
 
 Route::group(['prefix' => 'manage', 'middleware' => 'auth'], function () {
     Route::resource('/', 'Manage\Manage');
+    Route::resource('/profile', 'Manage\ProfileController');
+//    Route::get('/profile', 'RecruitmentController@profile');
     Route::resource('/recrutation-flow', 'Manage\RecrutationFlow');
+    Route::resource('/recrutation-flow', 'Manage\RecrutationFlow');
+
 });
 
 
 
 //Route::resource('/categories', 'CategoryController');
-Route::get('/profile', 'RecruitmentController@profile')->name('profile')->middleware('auth');
+//Route::get('/profile', 'RecruitmentController@profile')->name('profile')->middleware('auth');
 Route::post('/formsubmit', 'UserController@update')->name('updateUser')->middleware('auth');
 
 

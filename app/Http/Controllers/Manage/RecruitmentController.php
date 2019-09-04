@@ -22,11 +22,12 @@ class RecruitmentController extends Controller
         return view('download');
     }
     public function profile(){
-////        $profile=User::all();
-////        dd(Auth::user()->id);
-//        $recruitment=Recruitment::where('user_id', 1)->get();
-//        return view('manage.index', ['recruitment'=>$recruitment,
-//                                    'routes' => $this->routes]);
+dd(12344);
+//        $profile=User::all();
+//        dd(Auth::user()->id);
+        $recruitment=Recruitment::where('user_id', 1)->get();
+        return view('manage.index', ['recruitment'=>$recruitment,
+                                    'routes' => $this->routes]);
     }
     public function update(Request $request, $id){
 //        dd($id);

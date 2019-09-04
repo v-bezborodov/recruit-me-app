@@ -22,10 +22,23 @@
                     :hover="hover"
                     :borderless="borderless"
                     striped
-                    primary-key="id"
+                    primary-key="index"
                     :tbody-transition-props="transProps"
                     caption-top
             >
+
+            <!-- A custom formatted column -->
+<!--            <template slot="[first_name]" slot-scope="data">-->
+<!--                <b>{{ data.value.last_name }}</b>, Test {{ data.value.first_name }}-->
+<!--            </template>-->
+                <template slot="index" slot-scope="data">
+                    {{ data.index + 1 }}
+                </template>
+
+                <template slot="name" slot-scope="data">
+                    {{data.item.user.first_name}} {{data.item.user.last_name}}
+                </template>
+
                 <template slot="table-caption">List of all recrutations</template>
                 <template slot="actions" slot-scope="row">
                     <b-button size="sm" @click="info(row.item, $event.target)" class="btn btn-action btn-success">
@@ -73,8 +86,12 @@
         },
         computed: {
             items: function () {
-                // console.log(this.data)
+                console.log('JSON.parse(this.data)', JSON.parse(this.data));
+                // this.data.forEach(function(element) {
+                //     console.log(element);
+                // });
                 return JSON.parse(this.data)
+
             }
         },
         data() {
@@ -84,15 +101,17 @@
                     name: 'flip-list'
                 },
                 fields: [
-                    {key: 'id', sortable: true},
-                    // {key: 'user.last_name', sortable: true, label: 'Last Name'},
+                    {key:'index', label: '#'},
+                    {key:'name', label: 'Name'},
+                    // {key:'user.last_name', sortable: true, label: 'Name'},
                     // {key: 'user.first_name', sortable: true, label: 'First name'},
+                    {key: 'offered_position', sortable: true, label: 'Position'},
                     {key: 'user.company', sortable: true, label: 'Company name'},
                     {key: 'user.country.long_name', sortable: true, label: 'Country'},
                     // {key: 'email', sortable: true},
                     {key: 'user.phone', sortable: true, label: 'Phone'},
                     // {key: 'created_at', sortable: true},
-                    {key: 'updated_at', sortable: true},
+                    {key: 'created_at', sortable: true},
                     {key: 'actions', label: 'Actions'},
 
                 ],

@@ -1,4 +1,4 @@
-<div class="tab-pane fade" id="v-pills-flow" role="tabpanel" aria-labelledby="v-pills-flow-tab">
+<div class="tab-pane fade active show" id="v-pills-flow" role="tabpanel" aria-labelledby="v-pills-flow-tab">
     <div class="row">
         @if($recruitments->count())
             <table-component data="{{ $recruitments }}"></table-component>
