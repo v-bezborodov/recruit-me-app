@@ -29,7 +29,7 @@ Route::resource('/user', 'UserController');
 Route::group(['prefix' => 'manage', 'middleware' => 'auth'], function () {
     Route::resource('/', 'Manage\Manage');
     Route::resource('/profile', 'Manage\ProfileController');
-//    Route::get('/profile', 'RecruitmentController@profile');
+    Route::get('/profile', 'RecruitmentController@profile');
     Route::resource('/recrutation-flow', 'Manage\RecrutationFlow');
     Route::resource('/recrutation-flow', 'Manage\RecrutationFlow');
 

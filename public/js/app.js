@@ -1769,13 +1769,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: {
@@ -1784,10 +1777,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     items: function items() {
-      console.log('JSON.parse(this.data)', JSON.parse(this.data)); // this.data.forEach(function(element) {
-      //     console.log(element);
-      // });
-
       return JSON.parse(this.data);
     }
   },
@@ -67342,9 +67331,9 @@ var render = function() {
                   fn: function(data) {
                     return [
                       _vm._v(
-                        "\n                    " +
+                        "\n                " +
                           _vm._s(data.index + 1) +
-                          "\n                "
+                          "\n            "
                       )
                     ]
                   }
@@ -67354,11 +67343,11 @@ var render = function() {
                   fn: function(data) {
                     return [
                       _vm._v(
-                        "\n                    " +
+                        "\n                " +
                           _vm._s(data.item.user.first_name) +
                           " " +
                           _vm._s(data.item.user.last_name) +
-                          "\n                "
+                          "\n            "
                       )
                     ]
                   }
@@ -67378,11 +67367,7 @@ var render = function() {
                             }
                           }
                         },
-                        [
-                          _vm._v(
-                            "\n                        Show\n                    "
-                          )
-                        ]
+                        [_vm._v("\n                    Show\n                ")]
                       )
                     ]
                   }
@@ -67429,7 +67414,7 @@ var render = function() {
             _c("img", {
               staticClass: "avatar d-block mx-auto",
               attrs: {
-                src: _vm.infoModal.user.avatar,
+                src: _vm.infoModal.user.avatar || "/img/no-avatar.png",
                 alt: _vm.infoModal.user.first_name
               }
             })
@@ -67437,7 +67422,9 @@ var render = function() {
           _vm._v(" "),
           _c("p", [
             _vm._v("Offered position: "),
-            _c("strong", [_vm._v(_vm._s(_vm.infoModal.content.position))])
+            _c("strong", [
+              _vm._v(_vm._s(_vm.infoModal.content.offered_position))
+            ])
           ]),
           _vm._v(" "),
           _c("p", [
@@ -80449,20 +80436,24 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_toasted__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-toasted */ "./node_modules/vue-toasted/dist/vue-toasted.min.js");
-/* harmony import */ var vue_toasted__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_toasted__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
-/* harmony import */ var bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.css */ "./node_modules/bootstrap/dist/css/bootstrap.css");
-/* harmony import */ var bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var bootstrap_vue_dist_bootstrap_vue_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! bootstrap-vue/dist/bootstrap-vue.css */ "./node_modules/bootstrap-vue/dist/bootstrap-vue.css");
-/* harmony import */ var bootstrap_vue_dist_bootstrap_vue_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(bootstrap_vue_dist_bootstrap_vue_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _services_services_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./services/services.plugin */ "./resources/js/services/services.plugin.js");
+/* harmony import */ var _services_services_plugin__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_services_services_plugin__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_toasted__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-toasted */ "./node_modules/vue-toasted/dist/vue-toasted.min.js");
+/* harmony import */ var vue_toasted__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_toasted__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
+/* harmony import */ var bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.css */ "./node_modules/bootstrap/dist/css/bootstrap.css");
+/* harmony import */ var bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var bootstrap_vue_dist_bootstrap_vue_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! bootstrap-vue/dist/bootstrap-vue.css */ "./node_modules/bootstrap-vue/dist/bootstrap-vue.css");
+/* harmony import */ var bootstrap_vue_dist_bootstrap_vue_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(bootstrap_vue_dist_bootstrap_vue_css__WEBPACK_IMPORTED_MODULE_5__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
@@ -80477,10 +80468,10 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('table-component', __webpack_require__(/*! ./components/TableComponent.vue */ "./resources/js/components/TableComponent.vue")["default"]);
-vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('modal-component', __webpack_require__(/*! ./components/modalComponent.vue */ "./resources/js/components/modalComponent.vue")["default"]);
-vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('table-component-profile', __webpack_require__(/*! ./components/TableComponentProfile.vue */ "./resources/js/components/TableComponentProfile.vue")["default"]);
-vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('avatar-component-profile', __webpack_require__(/*! ./components/avatarComponentProfile.vue */ "./resources/js/components/avatarComponentProfile.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('table-component', __webpack_require__(/*! ./components/TableComponent.vue */ "./resources/js/components/TableComponent.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('modal-component', __webpack_require__(/*! ./components/modalComponent.vue */ "./resources/js/components/modalComponent.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('table-component-profile', __webpack_require__(/*! ./components/TableComponentProfile.vue */ "./resources/js/components/TableComponentProfile.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('avatar-component-profile', __webpack_require__(/*! ./components/avatarComponentProfile.vue */ "./resources/js/components/avatarComponentProfile.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -80489,17 +80480,17 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('avatar-component-profile',
 // register the plugin on vue
 
 
-vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_toasted__WEBPACK_IMPORTED_MODULE_0___default.a); // you can also pass options, check options reference below
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_toasted__WEBPACK_IMPORTED_MODULE_1___default.a); // you can also pass options, check options reference below
 // Vue.use(Toasted, Options)
 
 
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
 
 window.onload = function () {
-  var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
+  var app = new vue__WEBPACK_IMPORTED_MODULE_2___default.a({
     el: '#app'
   });
 };
@@ -80889,6 +80880,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_modalComponent_vue_vue_type_template_id_6ca5bbdb_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_modalComponent_vue_vue_type_template_id_6ca5bbdb_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/services/services.plugin.js":
+/*!**************************************************!*\
+  !*** ./resources/js/services/services.plugin.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
 
 
 

@@ -27,10 +27,7 @@
                     caption-top
             >
 
-            <!-- A custom formatted column -->
-<!--            <template slot="[first_name]" slot-scope="data">-->
-<!--                <b>{{ data.value.last_name }}</b>, Test {{ data.value.first_name }}-->
-<!--            </template>-->
+                <!-- A custom formatted column -->
                 <template slot="index" slot-scope="data">
                     {{ data.index + 1 }}
                 </template>
@@ -56,11 +53,9 @@
 
         <!-- Info modal -->
         <b-modal :id="infoModal.id" :title="infoModal.title" ok-only @hide="resetInfoModal">
-<!--            <pre>{{ infoModal.content}}</pre>-->
-<!--            <pre>{{ infoModal.user.id}}</pre>-->
-            <div><img class="avatar d-block mx-auto" :src="infoModal.user.avatar" :alt="infoModal.user.first_name">
+            <div><img class="avatar d-block mx-auto" :src="infoModal.user.avatar||'/img/no-avatar.png'" :alt="infoModal.user.first_name">
             </div>
-            <p>Offered position: <strong>{{ infoModal.content.position }}</strong></p>
+            <p>Offered position: <strong>{{ infoModal.content.offered_position }}</strong></p>
             <p>Name: <strong>{{infoModal.user.first_name + ' ' + infoModal.user.last_name }}</strong></p>
             <p>Email: <strong>{{ infoModal.user.position_name }}</strong></p>
             <p>Company: <strong>{{ infoModal.user.company }}</strong></p>
@@ -75,8 +70,6 @@
 </template>
 
 
-
-
 <script>
     export default {
         props: {
@@ -86,12 +79,7 @@
         },
         computed: {
             items: function () {
-                console.log('JSON.parse(this.data)', JSON.parse(this.data));
-                // this.data.forEach(function(element) {
-                //     console.log(element);
-                // });
                 return JSON.parse(this.data)
-
             }
         },
         data() {

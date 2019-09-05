@@ -66,16 +66,18 @@
 
 {{--                            </div>--}}
                             @include('manage.tabs.flow')
+                            @include('manage.tabs.profile')
+
                             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                             Profile summary
                                 {{--Vue component--}}
                                 <div class="mt-2 text-center">
                                     <b-button id="show-btn" @click="$bvModal.show('bv-modal-example')">Edit Profile</b-button>
-                                    {{--<modal-component--}}
-                                            {{--:routes="{{ $routes }}"--}}
-                                            {{--:data="{{ Auth::user()}}"--}}
-                                            {{--:countries="{{\App\Country::get(['id','long_name'])}}"--}}
-                                    {{--></modal-component>--}}
+                                    <modal-component
+                                            :routes="{{ $routes }}"
+                                            :data="{{ Auth::user()}}"
+                                            :countries="{{\App\Country::get(['id','long_name'])}}"
+                                    ></modal-component>
                                 </div>
 
                                 <div class="profile-work mt-4">
