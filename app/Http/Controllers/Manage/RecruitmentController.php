@@ -22,7 +22,6 @@ class RecruitmentController extends Controller
         return view('download');
     }
     public function profile(){
-dd(12344);
 //        $profile=User::all();
 //        dd(Auth::user()->id);
         $recruitment=Recruitment::where('user_id', 1)->get();

@@ -19,7 +19,7 @@ class ProfileController extends Controller
         $id=Auth::user()->id;
         if($id){
         $recruitment=Recruitment::where('user_id', $id)->get();
-        return view('manage.tabs.profile', ['recruitments'=>$recruitment,
+        return view('manage.manage', ['recruitments'=>$recruitment,
             'routes' => $this->routes]);
         }
     }
