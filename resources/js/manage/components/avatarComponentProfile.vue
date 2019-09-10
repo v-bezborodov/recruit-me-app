@@ -54,7 +54,7 @@
 </template>
 
 <script>
-    import {VueAvatar} from '../vendored_components/vue-avatar-editor-improved';
+    import {VueAvatar} from '../../vendored_components/vue-avatar-editor-improved';
     import axios from 'axios'
     export default {
         name: "avatar-component-profile",

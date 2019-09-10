@@ -5,7 +5,7 @@
  */
 import services from './services/services.plugin';
 
-require('./bootstrap');
+require('../bootstrap');
 
 window.Vue = require('vue');
 

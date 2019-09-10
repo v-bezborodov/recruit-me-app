@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Manage;
 
 use App\Recruitment;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -17,10 +18,16 @@ class ProfileController extends Controller
     public function index()
     {
         $id=Auth::user()->id;
+
         if($id){
-        $recruitment=Recruitment::where('user_id', $id)->get();
-        return view('manage.manage', ['recruitments'=>$recruitment,
-            'routes' => $this->routes]);
+            $recruitment=Recruitment::whereUserId($id)->get();
+            if (Auth::check()) {
+                $user=User::find($id);
+                $user->updated_at=now();
+                $user->save();
+            }
+            return view('manage.manage', ['recruitments'=>$recruitment,
+                'routes' => $this->routes]);
         }
     }
 

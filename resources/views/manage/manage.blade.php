@@ -27,14 +27,13 @@
                                     <div v-b-modal.avatar-profile-header-modal><i class="fa fa-edit"></i></div>
 
                                     {{--Modal that changes avatar--}}
-                                    {{--<b-modal id="avatar-profile-header-modal">--}}
-                                            {{--<avatar-component-profile--}}
-                                                    {{--:routes="{{ $routes }}"--}}
-                                                    {{--:id="{{Auth::user()->id}}"--}}
-                                            {{-->--}}
-                                            {{--</avatar-component-profile>--}}
-
-                                    {{--</b-modal>--}}
+                                    <b-modal id="avatar-profile-header-modal">
+                                            <avatar-component-profile
+                                                    :routes="{{ $routes }}"
+                                                    :id="{{Auth::user()->id}}"
+                                            >
+                                            </avatar-component-profile>
+                                    </b-modal>
                                     {{--End modal that changes avatar--}}
 
                                 </div>
@@ -54,107 +53,100 @@
 
                 <div class="row no-gutters">
                     @include('manage.sidebar')
-
-
                     {{--  pills content --}}
                     <div class="col-10">
-
-
                         <div class="tab-content" id="v-pills-tabContent">
-{{--                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">--}}
 
-
-{{--                            </div>--}}
-                            @include('manage.tabs.flow')
+                            @include('manage.tabs.recrutation')
                             @include('manage.tabs.profile')
 
-                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                            Profile summary
-                                {{--Vue component--}}
-                                <div class="mt-2 text-center">
-                                    <b-button id="show-btn" @click="$bvModal.show('bv-modal-example')">Edit Profile</b-button>
-                                    <modal-component
-                                            :routes="{{ $routes }}"
-                                            :data="{{ Auth::user()}}"
-                                            :countries="{{\App\Country::get(['id','long_name'])}}"
-                                    ></modal-component>
-                                </div>
+{{--                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">--}}
+{{--                            Profile summary--}}
+{{--                                --}}{{--Vue component--}}
+{{--                                <div class="mt-2 text-center">--}}
+{{--                                    <b-button id="show-btn" @click="$bvModal.show('bv-modal-example')">Edit Profile</b-button>--}}
+{{--                                    <modal-component--}}
+{{--                                            :routes="{{ $routes }}"--}}
+{{--                                            :data="{{ Auth::user()}}"--}}
+{{--                                            :countries="{{\App\Country::get(['id','long_name'])}}"--}}
+{{--                                    ></modal-component>--}}
+{{--                                </div>--}}
 
-                                <div class="profile-work mt-4">
-                                    <p>LINKS</p>
-                                    {!!Auth::user()->website ?'<a href="'.Auth::user()->website.'">Website Link</a><br/>':''!!}
-                                    {!!Auth::user()->facebook ?'<a href="'.Auth::user()->facebook.'">Facebook Link</a><br/>':''!!}
-                                    {!!Auth::user()->linkedin ?'<a href="'.Auth::user()->website.'">Linkedin Link</a><br/>':''!!}
-                                </div>
+{{--                                <div class="profile-work mt-4">--}}
+{{--                                    <p>LINKS</p>--}}
+{{--                                    {!!Auth::user()->website ?'<a href="'.Auth::user()->website.'">Website Link</a><br/>':''!!}--}}
+{{--                                    {!!Auth::user()->facebook ?'<a href="'.Auth::user()->facebook.'">Facebook Link</a><br/>':''!!}--}}
+{{--                                    {!!Auth::user()->linkedin ?'<a href="'.Auth::user()->website.'">Linkedin Link</a><br/>':''!!}--}}
+{{--                                </div>--}}
 
-                                <p class="proile-rating">RANKINGS : <span>{!!Auth::user()->ranking ? Auth::user()->ranking .'/10':'<span class="text-secondary">Not rated yet<span>'!!}</span></p>
+{{--                                <p class="proile-rating">RANKINGS : <span>{!!Auth::user()->ranking ? Auth::user()->ranking .'/10':'<span class="text-secondary">Not rated yet<span>'!!}</span></p>--}}
 
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>User Id</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>{{Auth::user()->id}}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Name</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>{{Auth::user()->first_name.' '.Auth::user()->last_name}}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Email</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>{{Auth::user()->email}}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Phone</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>{{Auth::user()->phone}}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Profession</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>{{Auth::user()->position_name}}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Company</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>{{Auth::user()->company}}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Country</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>{{Auth::user()->country->long_name}}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Active campanies</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>{{\App\Recruitment::where('user_id', Auth::user()->id)->count()}}</p>
-                                    </div>
-                                </div>
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-md-6">--}}
+{{--                                        <label>User Id</label>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-md-6">--}}
+{{--                                        <p>{{Auth::user()->id}}</p>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-md-6">--}}
+{{--                                        <label>Name</label>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-md-6">--}}
+{{--                                        <p>{{Auth::user()->first_name.' '.Auth::user()->last_name}}</p>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-md-6">--}}
+{{--                                        <label>Email</label>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-md-6">--}}
+{{--                                        <p>{{Auth::user()->email}}</p>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-md-6">--}}
+{{--                                        <label>Phone</label>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-md-6">--}}
+{{--                                        <p>{{Auth::user()->phone}}</p>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-md-6">--}}
+{{--                                        <label>Profession</label>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-md-6">--}}
+{{--                                        <p>{{Auth::user()->position_name}}</p>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-md-6">--}}
+{{--                                        <label>Company</label>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-md-6">--}}
+{{--                                        <p>{{Auth::user()->company}}</p>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-md-6">--}}
+{{--                                        <label>Country</label>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-md-6">--}}
+{{--                                        <p>{{Auth::user()->country->long_name}}</p>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-md-6">--}}
+{{--                                        <label>Active campanies</label>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-md-6">--}}
+{{--                                        <p>{{\App\Recruitment::where('user_id', Auth::user()->id)->count()}}</p>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
-                            </div>
+{{--                            </div>--}}
 
                             <div class="tab-pane fade" id="v-pills-recrutation" role="tabpanel" aria-labelledby="v-pills-recrutation-tab">
 
@@ -171,26 +163,7 @@
                                 </div>
 
                             </div>
-                            <div class="tab-pane fade" id="v-pills-timeline" role="tabpanel" aria-labelledby="v-pills-timeline-tab">
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Profile created</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>{{Auth::user()->created_at}}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Last visit</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>{{Auth::user()->updated_at}}</p>
-                                    </div>
-                                </div>
-
-                            </div>
+                            @include('manage.tabs.timeline')
 {{--                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>--}}
                         </div>
                     </div>

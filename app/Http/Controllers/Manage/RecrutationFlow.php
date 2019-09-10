@@ -17,7 +17,6 @@ class RecrutationFlow extends Controller
     {
         $recruitments=Recruitment::get();
         $actions=view('layouts.actions._actions');
-//        dd(123);
         return view('manage.index',  compact('recruitments','actions'));
     }
 
