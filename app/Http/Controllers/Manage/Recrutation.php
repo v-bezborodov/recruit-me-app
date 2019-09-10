@@ -6,7 +6,7 @@ use App\Recruitment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class RecrutationFlow extends Controller
+class Recrutation extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class RecrutationFlow extends Controller
     {
         $recruitments=Recruitment::get();
         $actions=view('layouts.actions._actions');
-        return view('manage.index',  compact('recruitments','actions'));
+//        return view('manage.index',  compact('recruitments','actions'));
     }
 
     /**
@@ -49,7 +49,9 @@ class RecrutationFlow extends Controller
      */
     public function show($id)
     {
-        //
+        $recruitments=Recruitment::whereUserId($id)->get();
+//        $actions=view('layouts.actions._actions');
+        return view('manage.manage',  compact('recruitments'));
     }
 
     /**

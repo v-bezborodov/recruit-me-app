@@ -7,24 +7,27 @@
                         <b-input-group>
                             <b-form-input v-model="filter" placeholder="Type to Search"></b-form-input>
                             <b-input-group-append>
-                                <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+                                <b-button  @click="filter = ''">Clear</b-button>
                             </b-input-group-append>
                         </b-input-group>
                     </b-form-group>
                 </b-col>
+                <b-col md="6" class="my-1">
+                    <b-button class="button-add-new" @click="" variant="success">Submit new recrutation</b-button>
+                </b-col>
             </b-row>
 
             <b-table
-                    id="table-transition-example"
-                    :items="items"
-                    :fields="fields"
-                    :filter="filter"
-                    :hover="hover"
-                    :borderless="borderless"
-                    striped
-                    primary-key="index"
-                    :tbody-transition-props="transProps"
-                    caption-top
+                id="table-transition-example"
+                :items="items"
+                :fields="fields"
+                :filter="filter"
+                :hover="hover"
+                :borderless="borderless"
+                striped
+                primary-key="index"
+                :tbody-transition-props="transProps"
+                caption-top
             >
 
                 <!-- A custom formatted column -->
@@ -73,14 +76,17 @@
 <script>
     export default {
         props: {
-            data: {
+            // data: {
+            //     require:true
+            // },
+            id: {
                 require:true
-            }
+            },
         },
         computed: {
-            items: function () {
-                return JSON.parse(this.data)
-            }
+            // items: function () {
+            //     return JSON.parse(this.data)
+            // }
         },
         data() {
             return {
@@ -127,9 +133,20 @@
                 this.infoModal.title = ''
                 this.infoModal.content = ''
             },
+            getRecrutation() {
+                axios.get('/manage/recrutation/1', {
+                    id:this.id})
+                    .then(function (response) {
+                        console.log('yepp');
+                    })
+                    .catch(function (error) {
+                        console.log('testerror', error);
+                    });
+            },
         },
         mounted(){
             console.log(this.data);
+            this.getRecrutation();
         }
     }
 </script>
@@ -140,5 +157,8 @@
     }
     .avatar{
         width:50%;
+    }
+    .button-add-new{
+        float: right;
     }
 </style>
