@@ -40,7 +40,7 @@ Vue.use(Toasted, {
 });
 
 Vue.use(BootstrapVue)
-Vue.use( CKEditor );
+Vue.use(CKEditor);
 
 
 

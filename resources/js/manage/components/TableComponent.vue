@@ -119,6 +119,7 @@
 
             },
             addNewRecrutation(event){
+                console.log("event", event)
                 this.$bvModal.show('modal-recrutation');
                 // this.recrutationModal=true;
                 this.recrutationModal=event;
