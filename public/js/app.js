@@ -86,6 +86,22 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/@ckeditor/ckeditor5-vue/dist/ckeditor.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@ckeditor/ckeditor5-vue/dist/ckeditor.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*!
+ * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md.
+ */
+!function(t,e){ true?module.exports=e():undefined}(window,function(){return function(t){var e={};function n(r){if(e[r])return e[r].exports;var i=e[r]={i:r,l:!1,exports:{}};return t[r].call(i.exports,i,i.exports,n),i.l=!0,i.exports}return n.m=t,n.c=e,n.d=function(t,e,r){n.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:r})},n.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var i in t)n.d(r,i,function(e){return t[e]}.bind(null,i));return r},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,"a",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p="",n(n.s=2)}([function(t,e,n){"use strict";(function(t){var n="object"==typeof t&&t&&t.Object===Object&&t;e.a=n}).call(this,n(1))},function(t,e){var n;n=function(){return this}();try{n=n||new Function("return this")()}catch(t){"object"==typeof window&&(n=window)}t.exports=n},function(t,e,n){"use strict";n.r(e);var r=function(t){var e=typeof t;return null!=t&&("object"==e||"function"==e)},i=n(0),o="object"==typeof self&&self&&self.Object===Object&&self,u=i.a||o||Function("return this")(),a=function(){return u.Date.now()},c=u.Symbol,f=Object.prototype,s=f.hasOwnProperty,l=f.toString,d=c?c.toStringTag:void 0;var p=function(t){var e=s.call(t,d),n=t[d];try{t[d]=void 0;var r=!0}catch(t){}var i=l.call(t);return r&&(e?t[d]=n:delete t[d]),i},v=Object.prototype.toString;var y=function(t){return v.call(t)},b="[object Null]",h="[object Undefined]",m=c?c.toStringTag:void 0;var g=function(t){return null==t?void 0===t?h:b:m&&m in Object(t)?p(t):y(t)};var j=function(t){return null!=t&&"object"==typeof t},O="[object Symbol]";var w=function(t){return"symbol"==typeof t||j(t)&&g(t)==O},x=NaN,$=/^\s+|\s+$/g,S=/^[-+]0x[0-9a-f]+$/i,E=/^0b[01]+$/i,T=/^0o[0-7]+$/i,_=parseInt;var D=function(t){if("number"==typeof t)return t;if(w(t))return x;if(r(t)){var e="function"==typeof t.valueOf?t.valueOf():t;t=r(e)?e+"":e}if("string"!=typeof t)return 0===t?t:+t;t=t.replace($,"");var n=E.test(t);return n||T.test(t)?_(t.slice(2),n?2:8):S.test(t)?x:+t},M="Expected a function",P=Math.max,N=Math.min;var F=function(t,e,n){var i,o,u,c,f,s,l=0,d=!1,p=!1,v=!0;if("function"!=typeof t)throw new TypeError(M);function y(e){var n=i,r=o;return i=o=void 0,l=e,c=t.apply(r,n)}function b(t){var n=t-s;return void 0===s||n>=e||n<0||p&&t-l>=u}function h(){var t=a();if(b(t))return m(t);f=setTimeout(h,function(t){var n=e-(t-s);return p?N(n,u-(t-l)):n}(t))}function m(t){return f=void 0,v&&i?y(t):(i=o=void 0,c)}function g(){var t=a(),n=b(t);if(i=arguments,o=this,s=t,n){if(void 0===f)return function(t){return l=t,f=setTimeout(h,e),d?y(t):c}(s);if(p)return f=setTimeout(h,e),y(s)}return void 0===f&&(f=setTimeout(h,e)),c}return e=D(e)||0,r(n)&&(d=!!n.leading,u=(p="maxWait"in n)?P(D(n.maxWait)||0,e):u,v="trailing"in n?!!n.trailing:v),g.cancel=function(){void 0!==f&&clearTimeout(f),l=0,i=s=o=f=void 0},g.flush=function(){return void 0===f?c:m(a())},g};var U={name:"ckeditor",render(t){return t(this.tagName,{domProps:{innerHTML:this.value||""}})},props:{editor:{type:Function,default:null},value:{type:String,default:""},config:{type:Object,default:()=>({})},tagName:{type:String,default:"div"},disabled:{type:Boolean,default:!1}},data:()=>({instance:null,$_lastEditorData:{type:String,default:""}}),mounted(){this.editor.create(this.$el,this.config).then(t=>{this.instance=t,t.isReadOnly=this.disabled,this.$_setUpEditorEvents(),this.$emit("ready",t)}).catch(t=>{console.error(t)})},beforeDestroy(){this.instance&&(this.instance.destroy(),this.instance=null),this.$emit("destroy",this.instance)},watch:{value(t,e){t!==e&&t!==this.$_lastEditorData&&this.instance.setData(t)},disabled(t){this.instance.isReadOnly=t}},methods:{$_setUpEditorEvents(){const t=this.instance;t.model.document.on("change:data",F(e=>{const n=this.$_lastEditorData=t.getData();this.$emit("input",n,e,t)},300)),t.editing.view.document.on("focus",e=>{this.$emit("focus",e,t)}),t.editing.view.document.on("blur",e=>{this.$emit("blur",e,t)})}}};const k={install(t){t.component("ckeditor",U)},component:U};e.default=k}]).default});
+//# sourceMappingURL=ckeditor.js.map
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -1768,6 +1784,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 //info(row.item, $event.target)
 
 
@@ -1786,7 +1808,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       recrutationViewModal: null,
-      recrutationModal: false,
+      recrutationModal: null,
       transProps: {
         // Transition name
         name: 'flip-list'
@@ -1798,9 +1820,7 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         key: 'name',
         label: 'Name'
-      }, // {key:'user.last_name', sortable: true, label: 'Name'},
-      // {key: 'user.first_name', sortable: true, label: 'First name'},
-      {
+      }, {
         key: 'offered_position',
         sortable: true,
         label: 'Position'
@@ -1817,8 +1837,7 @@ __webpack_require__.r(__webpack_exports__);
         key: 'user.phone',
         sortable: true,
         label: 'Phone'
-      }, // {key: 'created_at', sortable: true},
-      {
+      }, {
         key: 'created_at',
         sortable: true
       }, {
@@ -1831,9 +1850,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    addNewRecrutation: function addNewRecrutation() {
-      this.$bvModal.show('modal-recrutation');
-      this.recrutationModal = true;
+    addRow: function addRow() {},
+    addNewRecrutation: function addNewRecrutation(event) {
+      this.$bvModal.show('modal-recrutation'); // this.recrutationModal=true;
+
+      this.recrutationModal = event;
     },
     ViewRecrutation: function ViewRecrutation(event) {
       this.$bvModal.show('modal-info');
@@ -2220,10 +2241,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "modal-add-recrutation.component",
+  props: {
+    value: {}
+  },
   mounted: function mounted() {
-    console.log('add modal component');
+    console.log('add modal component', this.value);
   }
 });
 
@@ -2238,7 +2285,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -9989,7 +10035,7 @@ var components = {
 /*!****************************************************************!*\
   !*** ./node_modules/bootstrap-vue/esm/components/index.esm.js ***!
   \****************************************************************/
-/*! exports provided: BVModalPlugin, BVToastPlugin, AlertPlugin, BadgePlugin, BreadcrumbPlugin, ButtonPlugin, ButtonGroupPlugin, ButtonToolbarPlugin, InputGroupPlugin, CardPlugin, CarouselPlugin, LayoutPlugin, CollapsePlugin, DropdownPlugin, EmbedPlugin, FormPlugin, FormGroupPlugin, FormCheckboxPlugin, FormRadioPlugin, FormInputPlugin, FormTextareaPlugin, FormFilePlugin, FormSelectPlugin, ImagePlugin, JumbotronPlugin, LinkPlugin, ListGroupPlugin, MediaPlugin, ModalPlugin, NavPlugin, NavbarPlugin, PaginationPlugin, PaginationNavPlugin, PopoverPlugin, ProgressPlugin, SpinnerPlugin, TablePlugin, TabsPlugin, ToastPlugin, TooltipPlugin, BAlert, BBadge, BBreadcrumb, BBreadcrumbItem, BBreadcrumbLink, BButton, BButtonClose, BButtonGroup, BButtonToolbar, BInputGroup, BInputGroupAddon, BInputGroupPrepend, BInputGroupAppend, BInputGroupText, BCard, BCardHeader, BCardBody, BCardTitle, BCardSubTitle, BCardFooter, BCardImg, BCardImgLazy, BCardText, BCardGroup, BCarousel, BCarouselSlide, BContainer, BRow, BCol, BFormRow, BCollapse, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownHeader, BDropdownDivider, BDropdownForm, BDropdownText, BDropdownGroup, BEmbed, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, BFormGroup, BFormCheckbox, BFormCheckboxGroup, BFormRadio, BFormRadioGroup, BFormInput, BFormTextarea, BFormFile, BFormSelect, BImg, BImgLazy, BJumbotron, BLink, BListGroup, BListGroupItem, BMedia, BMediaAside, BMediaBody, BModal, BNav, BNavItem, BNavText, BNavForm, BNavItemDropdown, BNavbar, BNavbarNav, BNavbarBrand, BNavbarToggle, BPagination, BPaginationNav, BPopover, BProgress, BProgressBar, BSpinner, BTable, BTabs, BTab, BToast, BToaster, BTooltip, componentsPlugin */
+/*! exports provided: componentsPlugin, BVModalPlugin, BVToastPlugin, AlertPlugin, BadgePlugin, BreadcrumbPlugin, ButtonPlugin, ButtonGroupPlugin, ButtonToolbarPlugin, InputGroupPlugin, CardPlugin, CarouselPlugin, LayoutPlugin, CollapsePlugin, DropdownPlugin, EmbedPlugin, FormPlugin, FormGroupPlugin, FormCheckboxPlugin, FormRadioPlugin, FormInputPlugin, FormTextareaPlugin, FormFilePlugin, FormSelectPlugin, ImagePlugin, JumbotronPlugin, LinkPlugin, ListGroupPlugin, MediaPlugin, ModalPlugin, NavPlugin, NavbarPlugin, PaginationPlugin, PaginationNavPlugin, PopoverPlugin, ProgressPlugin, SpinnerPlugin, TablePlugin, TabsPlugin, ToastPlugin, TooltipPlugin, BAlert, BBadge, BBreadcrumb, BBreadcrumbItem, BBreadcrumbLink, BButton, BButtonClose, BButtonGroup, BButtonToolbar, BInputGroup, BInputGroupAddon, BInputGroupPrepend, BInputGroupAppend, BInputGroupText, BCard, BCardHeader, BCardBody, BCardTitle, BCardSubTitle, BCardFooter, BCardImg, BCardImgLazy, BCardText, BCardGroup, BCarousel, BCarouselSlide, BContainer, BRow, BCol, BFormRow, BCollapse, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownHeader, BDropdownDivider, BDropdownForm, BDropdownText, BDropdownGroup, BEmbed, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, BFormGroup, BFormCheckbox, BFormCheckboxGroup, BFormRadio, BFormRadioGroup, BFormInput, BFormTextarea, BFormFile, BFormSelect, BImg, BImgLazy, BJumbotron, BLink, BListGroup, BListGroupItem, BMedia, BMediaAside, BMediaBody, BModal, BNav, BNavItem, BNavText, BNavForm, BNavItemDropdown, BNavbar, BNavbarNav, BNavbarBrand, BNavbarToggle, BPagination, BPaginationNav, BPopover, BProgress, BProgressBar, BSpinner, BTable, BTabs, BTab, BToast, BToaster, BTooltip */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20378,7 +20424,7 @@ var NAME = 'BTooltip'; // @vue/component
 /*!****************************************************************!*\
   !*** ./node_modules/bootstrap-vue/esm/directives/index.esm.js ***!
   \****************************************************************/
-/*! exports provided: VBTogglePlugin, VBModalPlugin, VBScrollspyPlugin, VBTooltipPlugin, VBPopoverPlugin, VBToggle, VBModal, VBScrollspy, VBTooltip, VBPopover, directivesPlugin */
+/*! exports provided: directivesPlugin, VBTogglePlugin, VBModalPlugin, VBScrollspyPlugin, VBTooltipPlugin, VBPopoverPlugin, VBToggle, VBModal, VBScrollspy, VBTooltip, VBPopover */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21893,7 +21939,7 @@ var removeTooltip = function removeTooltip(el) {
 /*!*************************************************!*\
   !*** ./node_modules/bootstrap-vue/esm/index.js ***!
   \*************************************************/
-/*! exports provided: BVConfigPlugin, BVConfig, BootstrapVue, install, setConfig, default, BVModalPlugin, BVToastPlugin, AlertPlugin, BadgePlugin, BreadcrumbPlugin, ButtonPlugin, ButtonGroupPlugin, ButtonToolbarPlugin, InputGroupPlugin, CardPlugin, CarouselPlugin, LayoutPlugin, CollapsePlugin, DropdownPlugin, EmbedPlugin, FormPlugin, FormGroupPlugin, FormCheckboxPlugin, FormRadioPlugin, FormInputPlugin, FormTextareaPlugin, FormFilePlugin, FormSelectPlugin, ImagePlugin, JumbotronPlugin, LinkPlugin, ListGroupPlugin, MediaPlugin, ModalPlugin, NavPlugin, NavbarPlugin, PaginationPlugin, PaginationNavPlugin, PopoverPlugin, ProgressPlugin, SpinnerPlugin, TablePlugin, TabsPlugin, ToastPlugin, TooltipPlugin, BAlert, BBadge, BBreadcrumb, BBreadcrumbItem, BBreadcrumbLink, BButton, BButtonClose, BButtonGroup, BButtonToolbar, BInputGroup, BInputGroupAddon, BInputGroupPrepend, BInputGroupAppend, BInputGroupText, BCard, BCardHeader, BCardBody, BCardTitle, BCardSubTitle, BCardFooter, BCardImg, BCardImgLazy, BCardText, BCardGroup, BCarousel, BCarouselSlide, BContainer, BRow, BCol, BFormRow, BCollapse, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownHeader, BDropdownDivider, BDropdownForm, BDropdownText, BDropdownGroup, BEmbed, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, BFormGroup, BFormCheckbox, BFormCheckboxGroup, BFormRadio, BFormRadioGroup, BFormInput, BFormTextarea, BFormFile, BFormSelect, BImg, BImgLazy, BJumbotron, BLink, BListGroup, BListGroupItem, BMedia, BMediaAside, BMediaBody, BModal, BNav, BNavItem, BNavText, BNavForm, BNavItemDropdown, BNavbar, BNavbarNav, BNavbarBrand, BNavbarToggle, BPagination, BPaginationNav, BPopover, BProgress, BProgressBar, BSpinner, BTable, BTabs, BTab, BToast, BToaster, BTooltip, componentsPlugin, VBTogglePlugin, VBModalPlugin, VBScrollspyPlugin, VBTooltipPlugin, VBPopoverPlugin, VBToggle, VBModal, VBScrollspy, VBTooltip, VBPopover, directivesPlugin */
+/*! exports provided: BVConfigPlugin, BVConfig, BootstrapVue, install, setConfig, default, componentsPlugin, directivesPlugin, BVModalPlugin, BVToastPlugin, AlertPlugin, BadgePlugin, BreadcrumbPlugin, ButtonPlugin, ButtonGroupPlugin, ButtonToolbarPlugin, InputGroupPlugin, CardPlugin, CarouselPlugin, LayoutPlugin, CollapsePlugin, DropdownPlugin, EmbedPlugin, FormPlugin, FormGroupPlugin, FormCheckboxPlugin, FormRadioPlugin, FormInputPlugin, FormTextareaPlugin, FormFilePlugin, FormSelectPlugin, ImagePlugin, JumbotronPlugin, LinkPlugin, ListGroupPlugin, MediaPlugin, ModalPlugin, NavPlugin, NavbarPlugin, PaginationPlugin, PaginationNavPlugin, PopoverPlugin, ProgressPlugin, SpinnerPlugin, TablePlugin, TabsPlugin, ToastPlugin, TooltipPlugin, BAlert, BBadge, BBreadcrumb, BBreadcrumbItem, BBreadcrumbLink, BButton, BButtonClose, BButtonGroup, BButtonToolbar, BInputGroup, BInputGroupAddon, BInputGroupPrepend, BInputGroupAppend, BInputGroupText, BCard, BCardHeader, BCardBody, BCardTitle, BCardSubTitle, BCardFooter, BCardImg, BCardImgLazy, BCardText, BCardGroup, BCarousel, BCarouselSlide, BContainer, BRow, BCol, BFormRow, BCollapse, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownHeader, BDropdownDivider, BDropdownForm, BDropdownText, BDropdownGroup, BEmbed, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, BFormGroup, BFormCheckbox, BFormCheckboxGroup, BFormRadio, BFormRadioGroup, BFormInput, BFormTextarea, BFormFile, BFormSelect, BImg, BImgLazy, BJumbotron, BLink, BListGroup, BListGroupItem, BMedia, BMediaAside, BMediaBody, BModal, BNav, BNavItem, BNavText, BNavForm, BNavItemDropdown, BNavbar, BNavbarNav, BNavbarBrand, BNavbarToggle, BPagination, BPaginationNav, BPopover, BProgress, BProgressBar, BSpinner, BTable, BTabs, BTab, BToast, BToaster, BTooltip, VBTogglePlugin, VBModalPlugin, VBScrollspyPlugin, VBTooltipPlugin, VBPopoverPlugin, VBToggle, VBModal, VBScrollspy, VBTooltip, VBPopover */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21910,6 +21956,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BVConfigPlugin", function() { return _bv_config__WEBPACK_IMPORTED_MODULE_4__["default"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BVConfig", function() { return _bv_config__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "componentsPlugin", function() { return _components_index_esm__WEBPACK_IMPORTED_MODULE_2__["componentsPlugin"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BVModalPlugin", function() { return _components_index_esm__WEBPACK_IMPORTED_MODULE_2__["BVModalPlugin"]; });
 
@@ -22161,7 +22209,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTooltip", function() { return _components_index_esm__WEBPACK_IMPORTED_MODULE_2__["BTooltip"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "componentsPlugin", function() { return _components_index_esm__WEBPACK_IMPORTED_MODULE_2__["componentsPlugin"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "directivesPlugin", function() { return _directives_index_esm__WEBPACK_IMPORTED_MODULE_3__["directivesPlugin"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBTogglePlugin", function() { return _directives_index_esm__WEBPACK_IMPORTED_MODULE_3__["VBTogglePlugin"]; });
 
@@ -22182,8 +22230,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBTooltip", function() { return _directives_index_esm__WEBPACK_IMPORTED_MODULE_3__["VBTooltip"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBPopover", function() { return _directives_index_esm__WEBPACK_IMPORTED_MODULE_3__["VBPopover"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "directivesPlugin", function() { return _directives_index_esm__WEBPACK_IMPORTED_MODULE_3__["directivesPlugin"]; });
 
 /*!
  * BoostrapVue 2.0.0-rc.22
@@ -35109,7 +35155,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\ntable#table-transition-example .flip-list-move {\n    transition: transform 1s;\n}\n.avatar{\n    width:50%;\n}\n.button-add-new{\n    float: right;\n}\n", ""]);
+exports.push([module.i, "\ntable#table-transition-example .flip-list-move {\n    transition: transform 1s;\n}\n.button-add-new{\n    float: right;\n}\n.action-wrapper{\n    display: flex;\n}\n.action-wrapper button {\n    margin: 0 3px 0 3px;\n}\n", ""]);
 
 // exports
 
@@ -35148,6 +35194,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, "\n.modal-body {\n    text-align: center;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/manage/components/modal-view-recrutation.component.vue?vue&type=style&index=0&id=09784d70&scoped=true&lang=css&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/manage/components/modal-view-recrutation.component.vue?vue&type=style&index=0&id=09784d70&scoped=true&lang=css& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.avatar-wrapper[data-v-09784d70]{\n    max-width:150px;\n    max-height:150px;\n    width:150px;\n    height:150px;\n    overflow:hidden;\n    position:relative;\n    margin: 0 auto;\n}\n.avatar-wrapper .avatar[data-v-09784d70]{\n    position:absolute;\n    width:120%;\n    left: 50%;\n    transform: translateX(-50%);\n}\n.item-name[data-v-09784d70]{\n    text-align: end;\n}\n.item-value[data-v-09784d70]{\n    text-align:start;\n}\n", ""]);
 
 // exports
 
@@ -84337,6 +84402,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/manage/components/modal-view-recrutation.component.vue?vue&type=style&index=0&id=09784d70&scoped=true&lang=css&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/manage/components/modal-view-recrutation.component.vue?vue&type=style&index=0&id=09784d70&scoped=true&lang=css& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./modal-view-recrutation.component.vue?vue&type=style&index=0&id=09784d70&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/manage/components/modal-view-recrutation.component.vue?vue&type=style&index=0&id=09784d70&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/vendored_components/vue-avatar-editor-improved/src/components/VueAvatar.vue?vue&type=style&index=0&lang=css&":
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/vendored_components/vue-avatar-editor-improved/src/components/VueAvatar.vue?vue&type=style&index=0&lang=css& ***!
@@ -85055,7 +85150,7 @@ var render = function() {
                       attrs: { variant: "success" },
                       on: {
                         click: function($event) {
-                          return _vm.addNewRecrutation()
+                          return _vm.addNewRecrutation(null)
                         }
                       }
                     },
@@ -85115,27 +85210,49 @@ var render = function() {
                   fn: function(row) {
                     return [
                       _c(
-                        "b-button",
-                        {
-                          staticClass: "btn btn-action",
-                          attrs: { size: "sm", variant: "outline-primary" },
-                          on: {
-                            click: function($event) {
-                              return _vm.ViewRecrutation(row.item)
-                            }
-                          }
-                        },
-                        [_vm._v("\n                    Show\n                ")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "b-button",
-                        {
-                          staticClass: "btn btn-action btn-success",
-                          attrs: { size: "sm" },
-                          on: { click: function($event) {} }
-                        },
-                        [_vm._v("\n                    Edit\n                ")]
+                        "div",
+                        { staticClass: "action-wrapper d-flex" },
+                        [
+                          _c(
+                            "b-button",
+                            {
+                              staticClass: "btn btn-action",
+                              attrs: { size: "sm", variant: "outline-primary" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.ViewRecrutation(row.item)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-list-alt" })]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-button",
+                            {
+                              staticClass: "btn btn-action btn-success",
+                              attrs: { size: "sm" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.addNewRecrutation(row.item)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-edit" })]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-button",
+                            {
+                              staticClass:
+                                "btn btn-action btn-outline-dark bg-white",
+                              attrs: { size: "sm" },
+                              on: { click: function($event) {} }
+                            },
+                            [_c("i", { staticClass: "fa fa-eye" })]
+                          )
+                        ],
+                        1
                       )
                     ]
                   }
@@ -85168,14 +85285,13 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("modal-add-recrutation", {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.recrutationModal,
-            expression: "recrutationModal"
-          }
-        ]
+        model: {
+          value: _vm.recrutationModal,
+          callback: function($$v) {
+            _vm.recrutationModal = $$v
+          },
+          expression: "recrutationModal"
+        }
       }),
       _vm._v(" "),
       _c("modal-view-recrutation", {
@@ -85604,7 +85720,90 @@ var render = function() {
   return _c(
     "b-modal",
     { attrs: { id: "modal-recrutation", title: "Add recrutation" } },
-    [_vm._v("\n    TEST\n\n")]
+    [
+      _c(
+        "b-form",
+        [
+          _c(
+            "label",
+            {
+              staticClass: "grey-text font-weight-light",
+              attrs: { for: "FormCardPosition" }
+            },
+            [_vm._v("Position:")]
+          ),
+          _vm._v(" "),
+          _c("b-form-input", {
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              id: "FormCardPosition",
+              placeholder: "Position Title",
+              required: ""
+            },
+            model: {
+              value: _vm.first_name,
+              callback: function($$v) {
+                _vm.first_name = $$v
+              },
+              expression: "first_name"
+            }
+          }),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass: "grey-text font-weight-light",
+              attrs: { for: "FormCardDescription" }
+            },
+            [_vm._v("Description:")]
+          ),
+          _vm._v(" "),
+          _c("b-form-input", {
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              id: "FormCardDescription",
+              placeholder: "Position Title",
+              required: ""
+            },
+            model: {
+              value: _vm.first_name,
+              callback: function($$v) {
+                _vm.first_name = $$v
+              },
+              expression: "first_name"
+            }
+          }),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("tinymce-editor"),
+          _vm._v(" "),
+          _c(
+            "b-button",
+            { attrs: { variant: "primary" }, on: { click: _vm.formSubmit } },
+            [_vm._v("Submit")]
+          ),
+          _vm._v(" "),
+          _c(
+            "b-button",
+            {
+              on: {
+                click: function($event) {
+                  return _vm.$bvModal.hide("bv-modal-example")
+                }
+              }
+            },
+            [_vm._v("Close")]
+          )
+        ],
+        1
+      )
+    ],
+    1
   )
 }
 var staticRenderFns = []
@@ -85638,22 +85837,28 @@ var render = function() {
     [
       _vm.recrutation && _vm.recrutation.user
         ? _c("div", [
-            _c("div", [
+            _c("div", { staticClass: "avatar-wrapper" }, [
               _c("img", {
                 staticClass: "avatar d-block mx-auto",
                 attrs: {
-                  src: _vm.recrutation.user.avatar || "/img/no-avatar.png",
+                  src:
+                    "/img/profiles/" +
+                      _vm.recrutation.user.id +
+                      "/" +
+                      _vm.recrutation.user.avatar || false,
                   alt: _vm.recrutation.user.first_name
                 }
               })
             ]),
-            _vm._v("\n    " + _vm._s(_vm.recrutation) + "\n\n        "),
+            _vm._v(" "),
             _c("table", { staticClass: "table table-borderless" }, [
               _c("tbody", [
                 _c("tr", [
-                  _c("td", [_c("b", [_vm._v("Name:")])]),
+                  _c("td", { staticClass: "item-name" }, [
+                    _c("b", [_vm._v("Name:")])
+                  ]),
                   _vm._v(" "),
-                  _c("td", [
+                  _c("td", { staticClass: "item-value" }, [
                     _vm._v(
                       _vm._s(
                         _vm.recrutation.user.first_name +
@@ -85665,39 +85870,63 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("tr", [
-                  _c("td", [_c("b", [_vm._v("Offered position:")])]),
+                  _c("td", { staticClass: "item-name" }, [
+                    _c("b", [_vm._v("Offered position:")])
+                  ]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(_vm.recrutation.offered_position))])
+                  _c("td", { staticClass: "item-value" }, [
+                    _vm._v(_vm._s(_vm.recrutation.offered_position))
+                  ])
                 ]),
                 _vm._v(" "),
                 _c("tr", [
-                  _c("td", [_c("b", [_vm._v("Description:")])]),
+                  _c("td", { staticClass: "item-name" }, [
+                    _c("b", [_vm._v("Description:")])
+                  ]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(_vm.recrutation.description))])
+                  _c("td", { staticClass: "item-value" }, [
+                    _vm._v(_vm._s(_vm.recrutation.description))
+                  ])
                 ]),
                 _vm._v(" "),
                 _c("tr", [
-                  _c("td", [_c("b", [_vm._v("Company:")])]),
+                  _c("td", { staticClass: "item-name" }, [
+                    _c("b", [_vm._v("Company:")])
+                  ]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(_vm.recrutation.user.company))])
+                  _c("td", { staticClass: "item-value" }, [
+                    _vm._v(_vm._s(_vm.recrutation.user.company))
+                  ])
                 ]),
                 _vm._v(" "),
                 _c("tr", [
-                  _c("td", [_c("b", [_vm._v("Email:")])]),
+                  _c("td", { staticClass: "item-name" }, [
+                    _c("b", [_vm._v("Email:")])
+                  ]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(_vm.recrutation.user.email))])
+                  _c("td", { staticClass: "item-value" }, [
+                    _vm._v(_vm._s(_vm.recrutation.user.email))
+                  ])
                 ]),
                 _vm._v(" "),
                 _c("tr", [
-                  _c("td", [_c("b", [_vm._v("Phone:")])]),
+                  _c("td", { staticClass: "item-name" }, [
+                    _c("b", [_vm._v("Phone:")])
+                  ]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(_vm.recrutation.user.phone))])
+                  _c("td", { staticClass: "item-value" }, [
+                    _vm._v(_vm._s(_vm.recrutation.user.phone))
+                  ])
                 ]),
                 _vm._v(" "),
                 _c("tr", [
-                  _c("td", [_c("b", [_vm._v("Created:")])]),
+                  _c("td", { staticClass: "item-name" }, [
+                    _c("b", [_vm._v("Created:")])
+                  ]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(_vm.recrutation.created_at))])
+                  _c("td", { staticClass: "item-value" }, [
+                    _vm._v(_vm._s(_vm.recrutation.created_at))
+                  ])
                 ])
               ])
             ])
@@ -98343,11 +98572,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap_vue_dist_bootstrap_vue_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(bootstrap_vue_dist_bootstrap_vue_css__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.css */ "./node_modules/bootstrap/dist/css/bootstrap.css");
 /* harmony import */ var bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ckeditor/ckeditor5-vue */ "./node_modules/@ckeditor/ckeditor5-vue/dist/ckeditor.js");
+/* harmony import */ var _ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_6__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+
 
 
 
@@ -98380,6 +98612,7 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_toasted__WEBPACK_IMPORTED_MOD
   duration: 3000
 });
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(_ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_6___default.a);
 
 window.onload = function () {
   var app = new vue__WEBPACK_IMPORTED_MODULE_2___default.a({
@@ -98730,7 +98963,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modal_view_recrutation_component_vue_vue_type_template_id_09784d70_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal-view-recrutation.component.vue?vue&type=template&id=09784d70&scoped=true& */ "./resources/js/manage/components/modal-view-recrutation.component.vue?vue&type=template&id=09784d70&scoped=true&");
 /* harmony import */ var _modal_view_recrutation_component_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-view-recrutation.component.vue?vue&type=script&lang=js& */ "./resources/js/manage/components/modal-view-recrutation.component.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _modal_view_recrutation_component_vue_vue_type_style_index_0_id_09784d70_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modal-view-recrutation.component.vue?vue&type=style&index=0&id=09784d70&scoped=true&lang=css& */ "./resources/js/manage/components/modal-view-recrutation.component.vue?vue&type=style&index=0&id=09784d70&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -98738,7 +98973,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _modal_view_recrutation_component_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _modal_view_recrutation_component_vue_vue_type_template_id_09784d70_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
   _modal_view_recrutation_component_vue_vue_type_template_id_09784d70_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -98767,6 +99002,22 @@ component.options.__file = "resources/js/manage/components/modal-view-recrutatio
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_modal_view_recrutation_component_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./modal-view-recrutation.component.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/manage/components/modal-view-recrutation.component.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_modal_view_recrutation_component_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/manage/components/modal-view-recrutation.component.vue?vue&type=style&index=0&id=09784d70&scoped=true&lang=css&":
+/*!**************************************************************************************************************************************!*\
+  !*** ./resources/js/manage/components/modal-view-recrutation.component.vue?vue&type=style&index=0&id=09784d70&scoped=true&lang=css& ***!
+  \**************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_modal_view_recrutation_component_vue_vue_type_style_index_0_id_09784d70_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./modal-view-recrutation.component.vue?vue&type=style&index=0&id=09784d70&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/manage/components/modal-view-recrutation.component.vue?vue&type=style&index=0&id=09784d70&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_modal_view_recrutation_component_vue_vue_type_style_index_0_id_09784d70_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_modal_view_recrutation_component_vue_vue_type_style_index_0_id_09784d70_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_modal_view_recrutation_component_vue_vue_type_style_index_0_id_09784d70_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_modal_view_recrutation_component_vue_vue_type_style_index_0_id_09784d70_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_modal_view_recrutation_component_vue_vue_type_style_index_0_id_09784d70_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -99064,8 +99315,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/developer/WEB_PROJECTS/example.loc/recruitapp/resources/js/manage/app.js */"./resources/js/manage/app.js");
-module.exports = __webpack_require__(/*! /home/developer/WEB_PROJECTS/example.loc/recruitapp/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/resources/js/manage/app.js */"./resources/js/manage/app.js");
+module.exports = __webpack_require__(/*! /home/slawek/WEB_PROJECTS/getrecruited/recruit-me-app/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

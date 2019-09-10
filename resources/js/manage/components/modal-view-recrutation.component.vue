@@ -4,39 +4,38 @@
         <div v-if=" recrutation && recrutation.user">
 
 
-        <div><img class="avatar d-block mx-auto" :src="recrutation.user.avatar||'/img/no-avatar.png'" :alt="recrutation.user.first_name">
-        </div>
-        {{recrutation}}
-
+            <div class="avatar-wrapper">
+                <img class="avatar d-block mx-auto" :src="'/img/profiles/'+recrutation.user.id+'/'+recrutation.user.avatar||'/img/no-avatar.png'" :alt="recrutation.user.first_name">
+            </div>
             <table class="table table-borderless">
                 <tbody>
                     <tr>
-                        <td><b>Name:</b></td>
-                        <td>{{recrutation.user.first_name + ' ' + recrutation.user.last_name }}</td>
+                        <td class="item-name"><b>Name:</b></td>
+                        <td class="item-value">{{recrutation.user.first_name + ' ' + recrutation.user.last_name }}</td>
                     </tr>
                     <tr>
-                        <td><b>Offered position:</b></td>
-                        <td>{{recrutation.offered_position }}</td>
+                        <td class="item-name"><b>Offered position:</b></td>
+                        <td class="item-value">{{recrutation.offered_position }}</td>
                     </tr>
                     <tr>
-                        <td><b>Description:</b></td>
-                        <td>{{ recrutation.description }}</td>
+                        <td class="item-name"><b>Description:</b></td>
+                        <td class="item-value">{{ recrutation.description }}</td>
                     </tr>
                     <tr>
-                        <td><b>Company:</b></td>
-                        <td>{{ recrutation.user.company }}</td>
+                        <td class="item-name"><b>Company:</b></td>
+                        <td class="item-value">{{ recrutation.user.company }}</td>
                     </tr>
                     <tr>
-                        <td><b>Email:</b></td>
-                        <td>{{ recrutation.user.email }}</td>
+                        <td class="item-name"><b>Email:</b></td>
+                        <td class="item-value">{{ recrutation.user.email }}</td>
                     </tr>
                     <tr>
-                        <td><b>Phone:</b></td>
-                        <td>{{ recrutation.user.phone }}</td>
+                        <td class="item-name"><b>Phone:</b></td>
+                        <td class="item-value">{{ recrutation.user.phone }}</td>
                     </tr>
                     <tr>
-                        <td><b>Created:</b></td>
-                        <td>{{ recrutation.created_at }}</td>
+                        <td class="item-name"><b>Created:</b></td>
+                        <td class="item-value">{{ recrutation.created_at }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -79,5 +78,25 @@
 </script>
 
 <style scoped>
-
+    .avatar-wrapper{
+        max-width:150px;
+        max-height:150px;
+        width:150px;
+        height:150px;
+        overflow:hidden;
+        position:relative;
+        margin: 0 auto;
+    }
+    .avatar-wrapper .avatar{
+        position:absolute;
+        width:120%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .item-name{
+        text-align: end;
+    }
+    .item-value{
+        text-align:start;
+    }
 </style>

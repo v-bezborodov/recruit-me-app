@@ -8,7 +8,9 @@ import Toasted from 'vue-toasted';
 import Vue from 'vue';
 import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
-import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.css';
+import CKEditor from '@ckeditor/ckeditor5-vue';
+
 
 require('../bootstrap');
 
@@ -38,6 +40,7 @@ Vue.use(Toasted, {
 });
 
 Vue.use(BootstrapVue)
+Vue.use( CKEditor );
 
 
 

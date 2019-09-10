@@ -1,7 +1,7 @@
-<footer class="footer bg-dark pt-0 pt-5">
+<footer class="footer bg-dark pt-0">
 
     <div class="row">
-        <div class="col-4">
+        <div class="col-3">
             <nav class="navbar navbar-footer text-white">
                 <a class="navbar-brand" href="/">
                     <img src="/img/slawekdev.png" alt="{{config('app.name')}}">
@@ -33,14 +33,14 @@
 
 
         </div>
-        <div class="col-8">
+
+        <div class="col-6 credentials">
+            <p>Recruit Me Application, 2019 By Slawek</p>
+        </div>
+
+        <div class="col-3">
 
 
         </div>
-        <div class="credentials col-12">
-            <p>Recruit Me Application, 2019</p>
-            <p>By {!!config('app.autor')  !!}</p>
-        </div>
-
     </div>
 </footer>

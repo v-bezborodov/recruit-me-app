@@ -13,7 +13,7 @@
                     </b-form-group>
                 </b-col>
                 <b-col md="6" class="my-1">
-                    <b-button class="button-add-new" @click="addNewRecrutation()" variant="success">Submit new recrutation</b-button>
+                    <b-button class="button-add-new" @click="addNewRecrutation(null)" variant="success">Submit new recrutation</b-button>
                 </b-col>
             </b-row>
 
@@ -41,12 +41,18 @@
 
                 <template slot="table-caption">List of all recrutations</template>
                 <template slot="actions" slot-scope="row">
-                    <b-button size="sm" variant="outline-primary" @click="ViewRecrutation(row.item)" class="btn btn-action">
-                        Show
-                    </b-button>
-                    <b-button size="sm" @click="" class="btn btn-action btn-success">
-                        Edit
-                    </b-button>
+                    <div class="action-wrapper d-flex">
+                        <b-button size="sm" variant="outline-primary" @click="ViewRecrutation(row.item)" class="btn btn-action">
+                            <i class="fa fa-list-alt"></i>
+                        </b-button>
+                        <b-button size="sm" @click="addNewRecrutation(row.item)" class="btn btn-action btn-success">
+                            <i class="fa fa-edit"></i>
+                        </b-button>
+                        <b-button size="sm" @click="" class="btn btn-action btn-outline-dark bg-white">
+                            <i class="fa fa-eye"></i>
+                            <!--<i class="fa fa-eye-slash"></i>-->
+                        </b-button>
+                    </div>
                 </template>
                 <template slot="empty" slot-scope="scope">
                     <h4>{{ scope.emptyText }}</h4>
@@ -57,7 +63,7 @@
             </b-table>
         </div>
 
-        <modal-add-recrutation v-show="recrutationModal">
+        <modal-add-recrutation v-model="recrutationModal">
         </modal-add-recrutation>
 
         <modal-view-recrutation v-model="recrutationViewModal">
@@ -85,7 +91,7 @@
         data() {
             return {
                 recrutationViewModal:null,
-                recrutationModal:false,
+                recrutationModal:null,
                 transProps: {
                     // Transition name
                     name: 'flip-list'
@@ -94,14 +100,11 @@
                 fields: [
                     {key:'index', label: '#'},
                     {key:'name', label: 'Name'},
-                    // {key:'user.last_name', sortable: true, label: 'Name'},
-                    // {key: 'user.first_name', sortable: true, label: 'First name'},
                     {key: 'offered_position', sortable: true, label: 'Position'},
                     {key: 'user.company', sortable: true, label: 'Company name'},
                     {key: 'user.country.long_name', sortable: true, label: 'Country'},
                     // {key: 'email', sortable: true},
                     {key: 'user.phone', sortable: true, label: 'Phone'},
-                    // {key: 'created_at', sortable: true},
                     {key: 'created_at', sortable: true},
                     {key: 'actions', label: 'Actions'},
 
@@ -112,9 +115,13 @@
             }
         },
         methods: {
-            addNewRecrutation(){
+            addRow(){
+
+            },
+            addNewRecrutation(event){
                 this.$bvModal.show('modal-recrutation');
-                this.recrutationModal=true;
+                // this.recrutationModal=true;
+                this.recrutationModal=event;
             },
             ViewRecrutation(event){
                 this.$bvModal.show('modal-info');
@@ -155,10 +162,13 @@
     table#table-transition-example .flip-list-move {
         transition: transform 1s;
     }
-    .avatar{
-        width:50%;
-    }
     .button-add-new{
         float: right;
+    }
+    .action-wrapper{
+        display: flex;
+    }
+    .action-wrapper button {
+        margin: 0 3px 0 3px;
     }
 </style>
