@@ -8,6 +8,7 @@ import Toasted from 'vue-toasted';
 import Vue from 'vue';
 import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+import 'bootstrap/dist/css/bootstrap.css'
 
 require('../bootstrap');
 
@@ -32,8 +33,13 @@ Vue.component('avatar-component-profile', require('./components/avatarComponentP
  */
 
 
-Vue.use(Toasted);
+Vue.use(Toasted, {
+    duration: 3000,
+});
+
 Vue.use(BootstrapVue)
+
+
 
 
 window.onload = function () {

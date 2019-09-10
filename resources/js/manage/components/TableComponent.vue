@@ -13,13 +13,13 @@
                     </b-form-group>
                 </b-col>
                 <b-col md="6" class="my-1">
-                    <b-button class="button-add-new" @click="" variant="success">Submit new recrutation</b-button>
+                    <b-button class="button-add-new" @click="addNewRecrutation()" variant="success">Submit new recrutation</b-button>
                 </b-col>
             </b-row>
 
             <b-table
                 id="table-transition-example"
-                :items="items"
+                :items="recruitments"
                 :fields="fields"
                 :filter="filter"
                 :hover="hover"
@@ -41,8 +41,11 @@
 
                 <template slot="table-caption">List of all recrutations</template>
                 <template slot="actions" slot-scope="row">
-                    <b-button size="sm" @click="info(row.item, $event.target)" class="btn btn-action btn-success">
+                    <b-button size="sm" variant="outline-primary" @click="ViewRecrutation(row.item)" class="btn btn-action">
                         Show
+                    </b-button>
+                    <b-button size="sm" @click="" class="btn btn-action btn-success">
+                        Edit
                     </b-button>
                 </template>
                 <template slot="empty" slot-scope="scope">
@@ -54,46 +57,40 @@
             </b-table>
         </div>
 
-        <!-- Info modal -->
-        <b-modal :id="infoModal.id" :title="infoModal.title" ok-only @hide="resetInfoModal">
-            <div><img class="avatar d-block mx-auto" :src="infoModal.user.avatar||'/img/no-avatar.png'" :alt="infoModal.user.first_name">
-            </div>
-            <p>Offered position: <strong>{{ infoModal.content.offered_position }}</strong></p>
-            <p>Name: <strong>{{infoModal.user.first_name + ' ' + infoModal.user.last_name }}</strong></p>
-            <p>Email: <strong>{{ infoModal.user.position_name }}</strong></p>
-            <p>Company: <strong>{{ infoModal.user.company }}</strong></p>
-            <p>Email: <strong>{{ infoModal.user.email }}</strong></p>
-            <p>Phone: <strong>{{ infoModal.user.phone }}</strong></p>
-            <p>Country: <strong>{{infoModal.country.long_name}}</strong></p>
-            <p>Created: <strong>{{ infoModal.content.created_at }}</strong></p>
-            <p>Last updated: <strong>{{ infoModal.content.updated_at }}</strong></p>
-        </b-modal>
+        <modal-add-recrutation v-show="recrutationModal">
+        </modal-add-recrutation>
+
+        <modal-view-recrutation v-model="recrutationViewModal">
+        </modal-view-recrutation>
 
     </b-container >
 </template>
 
 
 <script>
+    //info(row.item, $event.target)
+    import ModalAddRecrutation from './modal-add-recrutation.component';
+    import ModalViewRecrutation from './modal-view-recrutation.component';
+
     export default {
         props: {
-            // data: {
-            //     require:true
-            // },
             id: {
                 require:true
             },
         },
+        components: {ModalAddRecrutation, ModalViewRecrutation},
         computed: {
-            // items: function () {
-            //     return JSON.parse(this.data)
-            // }
+            //
         },
         data() {
             return {
+                recrutationViewModal:null,
+                recrutationModal:false,
                 transProps: {
                     // Transition name
                     name: 'flip-list'
                 },
+                recruitments:null,
                 fields: [
                     {key:'index', label: '#'},
                     {key:'name', label: 'Name'},
@@ -112,41 +109,44 @@
                 filter: null,
                 hover: true,
                 borderless: true,
-                infoModal: {
-                    id: 'info-modal',
-                    title: '',
-                    content: '',
-                    user: '',
-                    country: ''
-                }
             }
         },
         methods: {
-            info(item, button) {
-                this.infoModal.title = `Profile: ${item.user.first_name+' '+item.user.last_name}`
-                this.infoModal.content = item
-                this.infoModal.user = item.user
-                this.infoModal.country = item.user.country
-                this.$root.$emit('bv::show::modal', this.infoModal.id, button)
+            addNewRecrutation(){
+                this.$bvModal.show('modal-recrutation');
+                this.recrutationModal=true;
             },
-            resetInfoModal() {
-                this.infoModal.title = ''
-                this.infoModal.content = ''
+            ViewRecrutation(event){
+                this.$bvModal.show('modal-info');
+                this.recrutationViewModal=event;
             },
-            getRecrutation() {
-                axios.get('/manage/recrutation/1', {
-                    id:this.id})
-                    .then(function (response) {
-                        console.log('yepp');
+            getRecrutationById() {
+                axios.get('/manage/recrutation/'+this.id)
+                    .then((response) => {
+                        this.recruitments=response.data.recruitments;
                     })
-                    .catch(function (error) {
-                        console.log('testerror', error);
+                    .catch((error) => {
+                        console.log('Error', error);
+                        this.$toasted.error('Unable to get recrutation');
                     });
             },
+            getRecrutation() {
+                axios.get('/manage/recrutation')
+                    .then((response) => {
+                        this.recruitments=response.data.recruitments;
+                    })
+                    .catch((error) => {
+                        console.log('Error', error);
+                        this.$toasted.error('Unable to get recrutation');
+                    });
+            }
         },
         mounted(){
-            console.log(this.data);
-            this.getRecrutation();
+            if(this.id){
+                this.getRecrutationById();
+            }else{
+                this.getRecrutation();
+            }
         }
     }
 </script>

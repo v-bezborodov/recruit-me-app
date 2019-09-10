@@ -29,7 +29,6 @@
                                     {{--Modal that changes avatar--}}
                                     <b-modal id="avatar-profile-header-modal">
                                             <avatar-component-profile
-                                                    :routes="{{ $routes }}"
                                                     :id="{{Auth::user()->id}}"
                                             >
                                             </avatar-component-profile>

@@ -16,8 +16,7 @@ class Recrutation extends Controller
     public function index()
     {
         $recruitments=Recruitment::get();
-        $actions=view('layouts.actions._actions');
-//        return view('manage.index',  compact('recruitments','actions'));
+        return response()->json(['success' => true, 'recruitments' => $recruitments], 200);
     }
 
     /**
@@ -50,8 +49,7 @@ class Recrutation extends Controller
     public function show($id)
     {
         $recruitments=Recruitment::whereUserId($id)->get();
-//        $actions=view('layouts.actions._actions');
-        return view('manage.manage',  compact('recruitments'));
+        return response()->json(['success' => true, 'recruitments' => $recruitments], 200);
     }
 
     /**
