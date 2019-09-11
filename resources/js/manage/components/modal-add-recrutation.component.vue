@@ -7,7 +7,7 @@
                           class="form-control"
                           v-if="recrutation"
                           v-model="recrutation.offered_position"
-                          placeholder="Position Title"
+                          placeholder="Position title"
                           required
             ></b-form-input>
             <br>
@@ -16,50 +16,58 @@
                       v-if="recrutation"
                       v-model="recrutation.description">
             </ckeditor>
-
-                <b-button @click="" variant="primary">Submit</b-button>
-                <b-button @click="$bvModal.hide('bv-modal-example')">Close</b-button>
         </b-form>
+
+        <template v-slot:modal-footer>
+            <div class="w-100">
+                <b-button size="sm" class="float-right" @click="save()" variant="success">Submit</b-button>
+                <b-button size="sm" @click="$bvModal.hide('modal-recrutation')">Close</b-button>
+            </div>
+        </template>
     </b-modal>
 </template>
 
 <script>
-    import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-    export default {
-        name: "modal-add-recrutation.component",
-        props:{
-            value: {default:null}
-        },
-        data(){
-            return {
-                recrutation:null,
-                editor: ClassicEditor,
-                editorConfig: {
-                    sourcedialog:true,
-                    showToolbar:true
-                },
-            }
-        },
-        methods:{
-            sync(){
-                if(this.value!==null) {
-                    this.recrutation = Object.assign(this.value);
-                }else{
-                    this.recrutation=[];
-                }
-            },
-        },
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+export default {
+  name: 'modal-add-recrutation.component',
+  props:{
+    value: {default:null}
+  },
+  data(){
+    return {
+      recrutation:null,
+      editor: ClassicEditor,
+      editorConfig: {
+        sourcedialog:true,
+        showToolbar:true,
+        placeholder: 'Description',
+      },
+    };
+  },
+  methods:{
+    sync(){
+      if(this.value!==null) {
+        this.recrutation = Object.assign(this.value);
+      }else{
+        this.recrutation=[];
+      }
+    },
+    save(){
+      this.$emit('input', this.recrutation);
+    },
+  },
 
-        mounted() {
-            console.log('this.value', this.value);
-            this.sync();
-        },
-        watch:{
-            value(){
-                this.sync();
-            }
-        }
+  mounted() {
+    console.log('this.value', this.value);
+    this.sync();
+  },
+  watch:{
+    value(){
+      this.sync();
     }
+  }
+};
 </script>
 
 <style scoped>

@@ -84,110 +84,110 @@
 
 
 <script>
-    export default {
-        props: {
-            data:{
-                require:true
-            },
-            routes:{
-                require:true
-            }
-        },
-        computed: {
-            items () {
-                return JSON.parse(this.data)
-            },
-            // status (){
-            //     return 1
-            // },
-        },
-        data() {
-            return {
-                fields: [
-                    {key: 'offered_position', sortable:true,  label: 'Offered position'},
-                    {key: 'created_at', label: 'Offer date'},
-                    {key: 'status', label: 'Status'},
-                    {key: 'actions', label: ''},
-
-                ],
-                hover: true,
-                outlined:true,
-
-                infoModal: {
-                    id: 'showModal',
-                    title: '',
-                    content: '',
-                    user: '',
-                    country: ''
-                },
-                editModal: {
-                    id: 'editModal',
-                    test: '',
-                    content: '',
-                }
-            }
-        },
-        mounted(){
-            // console.log(this.status);
-        },
-        methods: {
-
-            // status(){
-            //     return "test"
-            // },
-           info(item, button) {
-                this.infoModal.title = `Profile: ${item.user.first_name+' '+item.user.last_name}`
-                this.infoModal.content = item
-                this.infoModal.user = item.user
-                this.infoModal.country = item.user.country
-                this.$root.$emit('bv::show::modal', 'showModal', button)
-            },
-            resetInfoModal() {
-                this.infoModal.title = ''
-                this.infoModal.content = ''
-            },
-            edit(item, button) {
-                this.editModal.test = item.id
-                this.editModal.content = item
-                this.$root.$emit('bv::show::modal', 'editModal', button)
-            },
-            resetEditModal() {
-                this.editModal.title = ''
-                this.editModal.content = ''
-            },
-            formSubmit(e) {
-                // e.preventDefault();
-                axios.put(this.routes.recruitUpdate+'/'+this.editModal.content.id, {
-                    content:this.editModal.content})
-                    .then(function (response) {
-                        Vue.toasted.success('Succesfully saved!', {
-                            icon : 'check',
-                            theme: "bubble",
-                            position: "bottom-right",
-                            duration : 5000,
-                            action : {
-                                text : 'OK',
-                                onClick : (e, toastObject) => {
-                                    toastObject.goAway(0);
-                                }
-                            }
-                        });
-                        // setTimeout("location.href = '/profile';", 1500);
-                    })
-                    .catch(function (error) {
-                        console.log('testerror', error);
-                        Vue.toasted.error('Something went wrong',{
-                            action : {
-                                text : 'OK',
-                                onClick : (e, toastObject) => {
-                                    toastObject.goAway(0);
-                                }
-                            }
-                        });
-                    });
-            },
-        }
+export default {
+  props: {
+    data:{
+      require:true
+    },
+    routes:{
+      require:true
     }
+  },
+  computed: {
+    items () {
+      return JSON.parse(this.data);
+    },
+    // status (){
+    //     return 1
+    // },
+  },
+  data() {
+    return {
+      fields: [
+        {key: 'offered_position', sortable:true,  label: 'Offered position'},
+        {key: 'created_at', label: 'Offer date'},
+        {key: 'status', label: 'Status'},
+        {key: 'actions', label: ''},
+
+      ],
+      hover: true,
+      outlined:true,
+
+      infoModal: {
+        id: 'showModal',
+        title: '',
+        content: '',
+        user: '',
+        country: ''
+      },
+      editModal: {
+        id: 'editModal',
+        test: '',
+        content: '',
+      }
+    };
+  },
+  mounted(){
+    // console.log(this.status);
+  },
+  methods: {
+
+    // status(){
+    //     return "test"
+    // },
+    info(item, button) {
+      this.infoModal.title = `Profile: ${item.user.first_name+' '+item.user.last_name}`;
+      this.infoModal.content = item;
+      this.infoModal.user = item.user;
+      this.infoModal.country = item.user.country;
+      this.$root.$emit('bv::show::modal', 'showModal', button);
+    },
+    resetInfoModal() {
+      this.infoModal.title = '';
+      this.infoModal.content = '';
+    },
+    edit(item, button) {
+      this.editModal.test = item.id;
+      this.editModal.content = item;
+      this.$root.$emit('bv::show::modal', 'editModal', button);
+    },
+    resetEditModal() {
+      this.editModal.title = '';
+      this.editModal.content = '';
+    },
+    formSubmit(e) {
+      // e.preventDefault();
+      axios.put(this.routes.recruitUpdate+'/'+this.editModal.content.id, {
+        content:this.editModal.content})
+        .then(function (response) {
+          Vue.toasted.success('Succesfully saved!', {
+            icon : 'check',
+            theme: 'bubble',
+            position: 'bottom-right',
+            duration : 5000,
+            action : {
+              text : 'OK',
+              onClick : (e, toastObject) => {
+                toastObject.goAway(0);
+              }
+            }
+          });
+          // setTimeout("location.href = '/profile';", 1500);
+        })
+        .catch(function (error) {
+          console.log('testerror', error);
+          Vue.toasted.error('Something went wrong',{
+            action : {
+              text : 'OK',
+              onClick : (e, toastObject) => {
+                toastObject.goAway(0);
+              }
+            }
+          });
+        });
+    },
+  }
+};
 </script>
 
 <style>

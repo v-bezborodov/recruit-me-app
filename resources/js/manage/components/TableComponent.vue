@@ -77,102 +77,102 @@
 
 
 <script>
-    import ModalAddRecrutation from './modal-add-recrutation.component';
-    import ModalViewRecrutation from './modal-view-recrutation.component';
+import ModalAddRecrutation from './modal-add-recrutation.component';
+import ModalViewRecrutation from './modal-view-recrutation.component';
 
-    export default {
-        props: {
-            id: {
-                require:true
-            },
-        },
-        components: {ModalAddRecrutation, ModalViewRecrutation},
-        computed: {
-            //
-        },
-        data() {
-            return {
-                recrutationModalView:null,
-                recrutationModalEdit:null,
-                recrutationModalAdd:false,
-                recrutationModalEditChecker:false,
-                transProps: {
-                    // Transition name
-                    name: 'flip-list'
-                },
-                recruitments:null,
-                fields: [
-                    {key:'index', label: '#'},
-                    {key:'name', label: 'Name'},
-                    {key: 'offered_position', sortable: true, label: 'Position'},
-                    {key: 'user.company', sortable: true, label: 'Company name'},
-                    {key: 'user.country.long_name', sortable: true, label: 'Country'},
-                    // {key: 'email', sortable: true},
-                    {key: 'user.phone', sortable: true, label: 'Phone'},
-                    {key: 'created_at', sortable: true},
-                    {key: 'actions', label: 'Actions'},
+export default {
+  props: {
+    id: {
+      require:true
+    },
+  },
+  components: {ModalAddRecrutation, ModalViewRecrutation},
+  computed: {
+    //
+  },
+  data() {
+    return {
+      recrutationModalView:null,
+      recrutationModalEdit:null,
+      recrutationModalAdd:false,
+      recrutationModalEditChecker:false,
+      transProps: {
+        // Transition name
+        name: 'flip-list'
+      },
+      recruitments:null,
+      fields: [
+        {key:'index', label: '#'},
+        {key:'name', label: 'Name'},
+        {key: 'offered_position', sortable: true, label: 'Position'},
+        {key: 'user.company', sortable: true, label: 'Company name'},
+        {key: 'user.country.long_name', sortable: true, label: 'Country'},
+        // {key: 'email', sortable: true},
+        {key: 'user.phone', sortable: true, label: 'Phone'},
+        {key: 'created_at', sortable: true},
+        {key: 'actions', label: 'Actions'},
 
-                ],
-                filter: null,
-                hover: true,
-                borderless: true,
-            }
-        },
-        methods: {
-            addRow(){
+      ],
+      filter: null,
+      hover: true,
+      borderless: true,
+    };
+  },
+  methods: {
+    addRow(){
 
-            },
-            editRecrutation(event){
-                this.$bvModal.show('modal-recrutation');
-                if(event) {
-                    this.recrutationModalEdit = Object.assign(event);
-                }else{
-                    this.recrutationModalEdit=event;
-                    this.recrutationModalEditChecker=true;
-                }
-                console.log('vfsvv')
-            },
-            addRecrutation(event){
-                this.editRecrutation(event);
-                // this.$bvModal.show('modal-recrutation');
-                // this.recrutationModal = Object.assign(event);
-                // console.log("ADD")
-                // this.recrutationModalAdd=true;
+    },
+    editRecrutation(event){
+      this.$bvModal.show('modal-recrutation');
+      if(event) {
+        this.recrutationModalEdit = Object.assign(event);
+      }else{
+        this.recrutationModalEdit=event;
+        this.recrutationModalEditChecker=true;
+      }
+      console.log('vfsvv');
+    },
+    addRecrutation(event){
+      this.editRecrutation(event);
+      // this.$bvModal.show('modal-recrutation');
+      // this.recrutationModal = Object.assign(event);
+      // console.log("ADD")
+      // this.recrutationModalAdd=true;
 
-            },
-            viewRecrutation(event){
-                this.$bvModal.show('modal-info');
-                this.recrutationModalView = Object.assign(event);
-            },
-            getRecrutationById() {
-                axios.get('/manage/recrutation/'+this.id)
-                    .then((response) => {
-                        this.recruitments=response.data.recruitments;
-                    })
-                    .catch((error) => {
-                        console.log('Error', error);
-                        this.$toasted.error('Unable to get recrutation');
-                    });
-            },
-            getRecrutation() {
-                axios.get('/manage/recrutation')
-                    .then((response) => {
-                        this.recruitments=response.data.recruitments;
-                    })
-                    .catch((error) => {
-                        console.log('Error', error);
-                        this.$toasted.error('Unable to get recrutation');
-                    });
-            }
-        },
-        mounted(){
-            if(this.id){
-                this.getRecrutationById();
-            }else{
-                this.getRecrutation();
-            }
-        }
+    },
+    viewRecrutation(event){
+      this.$bvModal.show('modal-info');
+      this.recrutationModalView = Object.assign(event);
+    },
+    getRecrutationById() {
+      axios.get('/manage/recrutation/'+this.id)
+        .then((response) => {
+          this.recruitments=response.data.recruitments;
+        })
+        .catch((error) => {
+          console.log('Error', error);
+          this.$toasted.error('Unable to get recrutation');
+        });
+    },
+    getRecrutation() {
+      axios.get('/manage/recrutation')
+        .then((response) => {
+          this.recruitments=response.data.recruitments;
+        })
+        .catch((error) => {
+          console.log('Error', error);
+          this.$toasted.error('Unable to get recrutation');
+        });
     }
+  },
+  mounted(){
+    if(this.id){
+      this.getRecrutationById();
+    }else{
+      this.getRecrutation();
+    }
+  }
+};
 </script>
 
 <style>

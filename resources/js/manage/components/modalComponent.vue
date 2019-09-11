@@ -87,125 +87,125 @@
 </template>
 
 <script>
-    import axios from 'axios'
+import axios from 'axios';
 
-    export default {
-        name: "modalComponent",
-        props: {
-            data:{
-                require:true
-            },
-            countries:{
-                require:true
-            },
-            routes:{
-                require:true
-            }
-        },
-        methods: {
-            formSubmit(e) {
-                console.log('formsubmit')
-                e.preventDefault();
-                axios.post('./formsubmit', {
-                    id: this.data.id,
-                    first_name:this.first_name,
-                    last_name:this.last_name,
-                    email:this.email,
-                    position:this.position_name,
-                    company:this.company,
-                    country:this.country,
-                    updated_at:this.time,
-
-                })
-                    .then(function (response) {
-                        console.log(response.data);
-
-                        // this.$toasted.show('hello billo')
-
-                        Vue.toasted.success('Succesfully saved!', {
-                            icon : 'check',
-                            theme: "bubble",
-                            position: "bottom-right",
-                            duration : 5000,
-                            action : {
-                                text : 'OK',
-                                onClick : (e, toastObject) => {
-                                    toastObject.goAway(0);
-                                }
-                            }
-                        });
-
-
-                        // setTimeout("location.href = '/profile';", 1500);
-
-                    })
-                    .catch(function (error) {
-                        console.log('testerror', error);
-                        Vue.toasted.error('Something went wrong',{
-                            action : {
-                                text : 'OK',
-                                onClick : (e, toastObject) => {
-                                    toastObject.goAway(0);
-                                }
-                            }
-                        });
-                    });
-            },
-            fetchUser () {
-                // console.log('fetchUser', this.data)
-                // console.log('fetchUser', this.countries)
-
-                // axios.get('/api/user')...
-            }
-        },
-        data() {
-            return {
-                first_name:this.data.first_name,
-                last_name:this.data.last_name,
-                email:this.data.email,
-                position:this.data.position_name,
-                company:this.data.company,
-                country:this.data.country,
-
-
-                selected: this.data.id,
-
-            }
-        },
-        computed: {
-            options: function () {
-                // console.log(this.countries)
-                return this.countries
-            },
-            time:function(){
-
-                var date = new Date();
-                // var day = date.getDate();
-                // var month = date.getMonth();
-                // var year = date.getFullYear();
-                // var hours = date.getHours();
-                // var minutes = date.getMinutes();
-                // var seconds = date.getSeconds();
-                var OffsetInMinutes = date.getTimezoneOffset();
-
-                // console.log(OffsetInHours);
-                // return year+'-'+month+'-'+day+' '+hours+':'+minutes+':'+seconds;
-                return OffsetInMinutes;
+export default {
+  name: 'modalComponent',
+  props: {
+    data:{
+      require:true
+    },
+    countries:{
+      require:true
+    },
+    routes:{
+      require:true
     }
-        },
+  },
+  methods: {
+    formSubmit(e) {
+      console.log('formsubmit');
+      e.preventDefault();
+      axios.post('./formsubmit', {
+        id: this.data.id,
+        first_name:this.first_name,
+        last_name:this.last_name,
+        email:this.email,
+        position:this.position_name,
+        company:this.company,
+        country:this.country,
+        updated_at:this.time,
 
-        created() {
-            this.fetchUser()
-        },
-        mounted (){
-            return {
-                // first_name:'test2',
-                // last_name:this.data.id,
-                // user: {}
+      })
+        .then(function (response) {
+          console.log(response.data);
+
+          // this.$toasted.show('hello billo')
+
+          Vue.toasted.success('Succesfully saved!', {
+            icon : 'check',
+            theme: 'bubble',
+            position: 'bottom-right',
+            duration : 5000,
+            action : {
+              text : 'OK',
+              onClick : (e, toastObject) => {
+                toastObject.goAway(0);
+              }
             }
+          });
 
-        }
+
+          // setTimeout("location.href = '/profile';", 1500);
+
+        })
+        .catch(function (error) {
+          console.log('testerror', error);
+          Vue.toasted.error('Something went wrong',{
+            action : {
+              text : 'OK',
+              onClick : (e, toastObject) => {
+                toastObject.goAway(0);
+              }
+            }
+          });
+        });
+    },
+    fetchUser () {
+      // console.log('fetchUser', this.data)
+      // console.log('fetchUser', this.countries)
+
+      // axios.get('/api/user')...
     }
+  },
+  data() {
+    return {
+      first_name:this.data.first_name,
+      last_name:this.data.last_name,
+      email:this.data.email,
+      position:this.data.position_name,
+      company:this.data.company,
+      country:this.data.country,
+
+
+      selected: this.data.id,
+
+    };
+  },
+  computed: {
+    options: function () {
+      // console.log(this.countries)
+      return this.countries;
+    },
+    time:function(){
+
+      var date = new Date();
+      // var day = date.getDate();
+      // var month = date.getMonth();
+      // var year = date.getFullYear();
+      // var hours = date.getHours();
+      // var minutes = date.getMinutes();
+      // var seconds = date.getSeconds();
+      var OffsetInMinutes = date.getTimezoneOffset();
+
+      // console.log(OffsetInHours);
+      // return year+'-'+month+'-'+day+' '+hours+':'+minutes+':'+seconds;
+      return OffsetInMinutes;
+    }
+  },
+
+  created() {
+    this.fetchUser();
+  },
+  mounted (){
+    return {
+      // first_name:'test2',
+      // last_name:this.data.id,
+      // user: {}
+    };
+
+  }
+};
 </script>
 
 <style scoped>

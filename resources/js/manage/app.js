@@ -4,6 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 import services from './services/services.plugin';
+import '../bootstrap';
 import Toasted from 'vue-toasted';
 import Vue from 'vue';
 import BootstrapVue from 'bootstrap-vue';
@@ -11,10 +12,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import CKEditor from '@ckeditor/ckeditor5-vue';
 
-
-require('../bootstrap');
-
-window.Vue = require('vue');
+// window.Vue = require('vue');
 
 /**
  * The following block of code may be used to automatically register your
@@ -36,17 +34,17 @@ Vue.component('avatar-component-profile', require('./components/avatarComponentP
 
 
 Vue.use(Toasted, {
-    duration: 3000,
+  duration: 3000,
 });
 Vue.use(CKEditor);
 Vue.use(BootstrapVue);
 
 
 window.onload = function () {
-    const app = new Vue({
-        el: '#app',
-    });
-}
+  new Vue({
+    el: '#app',
+  });
+};
 
 
 

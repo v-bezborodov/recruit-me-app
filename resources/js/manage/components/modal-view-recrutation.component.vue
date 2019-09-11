@@ -47,34 +47,34 @@
 </template>
 
 <script>
-    export default {
-        name: "modal-view-recrutation.component",
-        props:{
-            value: {}
-        },
-        data(){
-            return{
-                recrutation:[],
-            }
-        },
-        methods:{
-            humanDiffTime(){
-                var moment = require('moment');
-                moment().format();
-            }
-
-        },
-        mounted() {
-            //
-        },
-        watch:{
-            value(){
-                this.recrutation=this.value;
-                this.recrutation.user=this.value.user;
-                console.log(this.recrutation)
-            },
-        }
+export default {
+  name: 'modal-view-recrutation.component',
+  props:{
+    value: {}
+  },
+  data(){
+    return{
+      recrutation:[],
+    };
+  },
+  methods:{
+    humanDiffTime(){
+      var moment = require('moment');
+      moment().format();
     }
+
+  },
+  mounted() {
+    //
+  },
+  watch:{
+    value(){
+      this.recrutation=this.value;
+      this.recrutation.user=this.value.user;
+      console.log(this.recrutation);
+    },
+  }
+};
 </script>
 
 <style scoped>

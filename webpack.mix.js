@@ -12,5 +12,20 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/manage/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+  .sass('resources/sass/app.scss', 'public/css');
 mix.copy('./node_modules/font-awesome/css/*', 'public/fonts/vendor/font-awesome/');
+
+// config eslint
+mix.webpackConfig({
+  module: {
+    rules: [
+      {
+        enforce: 'pre',
+        exclude: /node_modules/,
+        loader:g 'eslint-loader',
+        test: /\.(js|vue)?$/
+      },
+    ]
+  }
+});
+
