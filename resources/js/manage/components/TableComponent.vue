@@ -13,7 +13,7 @@
                     </b-form-group>
                 </b-col>
                 <b-col md="6" class="my-1">
-                    <b-button class="button-add-new" @click="addNewRecrutation(null)" variant="success">Submit new recrutation</b-button>
+                    <b-button class="button-add-new" @click="addRecrutation(event=null)" variant="success">Submit new recrutation</b-button>
                 </b-col>
             </b-row>
 
@@ -42,10 +42,10 @@
                 <template slot="table-caption">List of all recrutations</template>
                 <template slot="actions" slot-scope="row">
                     <div class="action-wrapper d-flex">
-                        <b-button size="sm" variant="outline-primary" @click="ViewRecrutation(row.item)" class="btn btn-action">
+                        <b-button size="sm" variant="outline-primary" @click="viewRecrutation(row.item)" class="btn btn-action">
                             <i class="fa fa-list-alt"></i>
                         </b-button>
-                        <b-button size="sm" @click="addNewRecrutation(row.item)" class="btn btn-action btn-success">
+                        <b-button size="sm" @click="editRecrutation(row.item)" class="btn btn-action btn-success">
                             <i class="fa fa-edit"></i>
                         </b-button>
                         <b-button size="sm" @click="" class="btn btn-action btn-outline-dark bg-white">
@@ -63,10 +63,13 @@
             </b-table>
         </div>
 
-        <modal-add-recrutation v-model="recrutationModal">
+        <modal-add-recrutation v-show="recrutationModalEditChecker" v-model="recrutationModalEdit">
         </modal-add-recrutation>
 
-        <modal-view-recrutation v-model="recrutationViewModal">
+<!--        <modal-add-recrutation v-if="recrutationModalAdd">-->
+<!--        </modal-add-recrutation>-->
+
+        <modal-view-recrutation v-if="recrutationModalView" v-model="recrutationModalView">
         </modal-view-recrutation>
 
     </b-container >
@@ -74,7 +77,6 @@
 
 
 <script>
-    //info(row.item, $event.target)
     import ModalAddRecrutation from './modal-add-recrutation.component';
     import ModalViewRecrutation from './modal-view-recrutation.component';
 
@@ -90,8 +92,10 @@
         },
         data() {
             return {
-                recrutationViewModal:null,
-                recrutationModal:null,
+                recrutationModalView:null,
+                recrutationModalEdit:null,
+                recrutationModalAdd:false,
+                recrutationModalEditChecker:false,
                 transProps: {
                     // Transition name
                     name: 'flip-list'
@@ -118,15 +122,27 @@
             addRow(){
 
             },
-            addNewRecrutation(event){
-                console.log("event", event)
+            editRecrutation(event){
                 this.$bvModal.show('modal-recrutation');
-                // this.recrutationModal=true;
-                this.recrutationModal=event;
+                if(event) {
+                    this.recrutationModalEdit = Object.assign(event);
+                }else{
+                    this.recrutationModalEdit=event;
+                    this.recrutationModalEditChecker=true;
+                }
+                console.log('vfsvv')
             },
-            ViewRecrutation(event){
+            addRecrutation(event){
+                this.editRecrutation(event);
+                // this.$bvModal.show('modal-recrutation');
+                // this.recrutationModal = Object.assign(event);
+                // console.log("ADD")
+                // this.recrutationModalAdd=true;
+
+            },
+            viewRecrutation(event){
                 this.$bvModal.show('modal-info');
-                this.recrutationViewModal=event;
+                this.recrutationModalView = Object.assign(event);
             },
             getRecrutationById() {
                 axios.get('/manage/recrutation/'+this.id)

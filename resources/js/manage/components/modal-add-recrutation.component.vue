@@ -5,42 +5,59 @@
             <b-form-input type="text"
                           id="FormCardPosition"
                           class="form-control"
-                          v-model="value.offered_position"
+                          v-if="recrutation"
+                          v-model="recrutation.offered_position"
                           placeholder="Position Title"
                           required
             ></b-form-input>
             <br>
+            <ckeditor :editor="editor"
+                      :config="editorConfig"
+                      v-if="recrutation"
+                      v-model="recrutation.description">
+            </ckeditor>
 
-            <!--<label for="FormCardDescription" class="grey-text font-weight-light">Description:</label>-->
-            <!--<b-form-input type="text"-->
-                          <!--id="FormCardDescription"-->
-                          <!--class="form-control"-->
-                          <!--v-model="first_name"-->
-                          <!--placeholder="Position Title"-->
-                          <!--required-->
-            <!--&gt;</b-form-input>-->
-            <br>
-            <ckeditor :editor="editor" v-model="value.description"></ckeditor>
-
-                <b-button @click="formSubmit" variant="primary">Submit</b-button>
+                <b-button @click="" variant="primary">Submit</b-button>
                 <b-button @click="$bvModal.hide('bv-modal-example')">Close</b-button>
         </b-form>
     </b-modal>
 </template>
 
 <script>
+    import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
     export default {
         name: "modal-add-recrutation.component",
         props:{
-            value: {}
+            value: {default:null}
         },
         data(){
-            return{
+            return {
+                recrutation:null,
                 editor: ClassicEditor,
+                editorConfig: {
+                    sourcedialog:true,
+                    showToolbar:true
+                },
             }
         },
+        methods:{
+            sync(){
+                if(this.value!==null) {
+                    this.recrutation = Object.assign(this.value);
+                }else{
+                    this.recrutation=[];
+                }
+            },
+        },
+
         mounted() {
-            console.log('add modal component', this.value)
+            console.log('this.value', this.value);
+            this.sync();
+        },
+        watch:{
+            value(){
+                this.sync();
+            }
         }
     }
 </script>

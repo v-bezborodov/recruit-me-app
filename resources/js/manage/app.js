@@ -38,11 +38,8 @@ Vue.component('avatar-component-profile', require('./components/avatarComponentP
 Vue.use(Toasted, {
     duration: 3000,
 });
-
-Vue.use(BootstrapVue)
 Vue.use(CKEditor);
-
-
+Vue.use(BootstrapVue);
 
 
 window.onload = function () {
