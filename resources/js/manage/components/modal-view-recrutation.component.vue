@@ -2,10 +2,8 @@
     <!-- Info modal -->
     <b-modal  id="modal-info" title="View recrutation" ok-only @hide="">
         <div v-if=" recrutation && recrutation.user">
-
-
             <div class="avatar-wrapper">
-                <img class="avatar d-block mx-auto" :src="'/img/profiles/'+recrutation.user.id+'/'+recrutation.user.avatar||'/img/no-avatar.png'" :alt="recrutation.user.first_name">
+                <img class="avatar d-block mx-auto" :src="recrutation.user.avatar?'/img/profiles/'+recrutation.user.id+'/'+recrutation.user.avatar:'/img/no-avatar.png'" :alt="recrutation.user.first_name">
             </div>
             <table class="table table-borderless">
                 <tbody>

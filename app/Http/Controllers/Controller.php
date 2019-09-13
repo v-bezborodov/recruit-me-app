@@ -17,7 +17,7 @@ class Controller extends BaseController
     {
         $this->routes = collect([
             'user' => route('user.index'),
-            'recruitUpdate' => route('recruitment.index'),
+            'recruitUpdate' => route('recrutation.index'),
         ]);
     }
 }

@@ -8,7 +8,7 @@
             <ul class="navbar-nav mr-auto text-uppercase">
 
                 <li class="nav-item">
-                    <a class="nav-link position-relative" href="{{route('recrutation')}}">Recrutation Flow
+                    <a class="nav-link position-relative" href="{{route('recrutation.index')}}">Recrutation Flow
                         @auth
                             <div class="recrutation-counter position-absolute"><p>{{\App\Recruitment::count()}}</p></div>
                         @endauth

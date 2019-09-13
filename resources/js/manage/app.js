@@ -24,7 +24,7 @@ import CKEditor from '@ckeditor/ckeditor5-vue';
 
 Vue.component('table-component', require('./components/TableComponent.vue').default);
 Vue.component('modal-component', require('./components/modalComponent.vue').default);
-Vue.component('table-component-profile', require('./components/TableComponentProfile.vue').default);
+// Vue.component('table-component-profile', require('./components/TableComponentProfile.vue').default);
 Vue.component('avatar-component-profile', require('./components/avatarComponentProfile.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to

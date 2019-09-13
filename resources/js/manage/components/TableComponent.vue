@@ -38,6 +38,12 @@
                 <template slot="name" slot-scope="data">
                     {{data.item.user.first_name}} {{data.item.user.last_name}}
                 </template>
+                <template slot="status" slot-scope="data">
+
+                    <span v-if="data.item.status==1" class="badge badge-pill badge-success">ACTIVE</span>
+                    <span v-else-if="data.item.status==0" class="badge badge-pill badge-danger">SUSPENDED</span>
+                    <span v-else class="badge badge-pill badge-light">INACTIVE</span>
+                </template>
 
                 <template slot="table-caption">List of all recrutations</template>
                 <template slot="actions" slot-scope="row">
@@ -52,6 +58,9 @@
                             <i class="fa fa-eye"></i>
                             <!--<i class="fa fa-eye-slash"></i>-->
                         </b-button>
+                        <b-button size="sm" @click="" class="btn btn-action btn-danger">
+                            <i class="fa fa-trash"></i>
+                        </b-button>
                     </div>
                 </template>
                 <template slot="empty" slot-scope="scope">
@@ -63,13 +72,11 @@
             </b-table>
         </div>
 
-        <modal-add-recrutation v-show="recrutationModalEditChecker" v-model="recrutationModalEdit">
+        <modal-add-recrutation v-show="recrutationModalEditChecker" @save="saveRecrutation()" v-model="recrutationModalEdit">
         </modal-add-recrutation>
 
-<!--        <modal-add-recrutation v-if="recrutationModalAdd">-->
-<!--        </modal-add-recrutation>-->
 
-        <modal-view-recrutation v-if="recrutationModalView" v-model="recrutationModalView">
+        <modal-view-recrutation v-model="recrutationModalView">
         </modal-view-recrutation>
 
     </b-container >
@@ -83,7 +90,7 @@ import ModalViewRecrutation from './modal-view-recrutation.component';
 export default {
   props: {
     id: {
-      require:true
+      default:null
     },
   },
   components: {ModalAddRecrutation, ModalViewRecrutation},
@@ -103,7 +110,8 @@ export default {
       recruitments:null,
       fields: [
         {key:'index', label: '#'},
-        {key:'name', label: 'Name'},
+        {key:'status', label: 'Status'},
+        {key:'name', label: 'Name',  _rowVariant: 'danger'},
         {key: 'offered_position', sortable: true, label: 'Position'},
         {key: 'user.company', sortable: true, label: 'Company name'},
         {key: 'user.country.long_name', sortable: true, label: 'Country'},
@@ -122,6 +130,16 @@ export default {
     addRow(){
 
     },
+    saveRecrutation(){
+      // axios.get('/manage/recrutation/'+this.id)
+      //   .then((response) => {
+      //     this.recruitments=response.data.recruitments;
+      //   })
+      //   .catch((error) => {
+      //     console.log('Error', error);
+      //     this.$toasted.error('Unable to get recrutation');
+      //   });
+    },
     editRecrutation(event){
       this.$bvModal.show('modal-recrutation');
       if(event) {
@@ -130,7 +148,6 @@ export default {
         this.recrutationModalEdit=event;
         this.recrutationModalEditChecker=true;
       }
-      console.log('vfsvv');
     },
     addRecrutation(event){
       this.editRecrutation(event);
@@ -158,6 +175,7 @@ export default {
       axios.get('/manage/recrutation')
         .then((response) => {
           this.recruitments=response.data.recruitments;
+          console.log('response', response)
         })
         .catch((error) => {
           console.log('Error', error);
@@ -167,8 +185,10 @@ export default {
   },
   mounted(){
     if(this.id){
+ console.log('that1')
       this.getRecrutationById();
     }else{
+        console.log('that2')
       this.getRecrutation();
     }
   }

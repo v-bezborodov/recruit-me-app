@@ -15,8 +15,13 @@ class Recrutation extends Controller
      */
     public function index()
     {
-        $recruitments=Recruitment::get();
-        return response()->json(['success' => true, 'recruitments' => $recruitments], 200);
+        $request=new Request;
+        if($request){
+//            dd(123);
+        }
+//        $recruitments=Recruitment::get();
+//        return response()->json(['success' => true, 'recruitments' => $recruitments], 200);
+        return view('index');
     }
 
     /**
