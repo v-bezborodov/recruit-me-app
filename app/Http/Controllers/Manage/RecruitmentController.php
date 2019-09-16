@@ -29,8 +29,6 @@ class RecruitmentController extends Controller
                                     'routes' => $this->routes]);
     }
     public function update(Request $request, $id){
-//        dd($id);
-//dd($request->content['offered_position']);
         if($request->content){
             Recruitment::where('id', $id)
                 ->update([

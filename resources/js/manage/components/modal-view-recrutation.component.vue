@@ -1,7 +1,7 @@
 <template>
     <!-- Info modal -->
     <b-modal  id="modal-info" title="View recrutation" ok-only @hide="">
-        <div v-if=" recrutation && recrutation.user">
+        <div v-if="recrutation && recrutation.user">
             <div class="avatar-wrapper">
                 <img class="avatar d-block mx-auto" :src="recrutation.user.avatar?'/img/profiles/'+recrutation.user.id+'/'+recrutation.user.avatar:'/img/no-avatar.png'" :alt="recrutation.user.first_name">
             </div>
@@ -37,14 +37,12 @@
                     </tr>
                 </tbody>
             </table>
-
-
-
         </div>
     </b-modal>
 </template>
 
 <script>
+import moment from 'moment';
 export default {
   name: 'modal-view-recrutation.component',
   props:{
@@ -57,7 +55,7 @@ export default {
   },
   methods:{
     humanDiffTime(){
-      var moment = require('moment');
+      // var moment = require('moment');
       moment().format();
     }
 
@@ -69,7 +67,6 @@ export default {
     value(){
       this.recrutation=this.value;
       this.recrutation.user=this.value.user;
-      console.log(this.recrutation);
     },
   }
 };

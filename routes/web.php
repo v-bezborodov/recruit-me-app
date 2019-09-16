@@ -31,7 +31,7 @@ Route::group(['prefix' => 'manage', 'middleware' => 'auth'], function () {
     Route::resource('/profile', 'Manage\ProfileController');
 //    Route::get('/profile', 'RecruitmentController@profile');
     Route::resource('/recrutation', 'Manage\Recrutation');
-    Route::resource('/recrutation', 'Manage\Recrutation@getAllRecruits');
+    Route::get('/recrutation-all', 'Manage\Recrutation@getAllRecrutation');
 //    Route::resource('/recrutation-flow', 'Manage\Recrutation');
 
 });

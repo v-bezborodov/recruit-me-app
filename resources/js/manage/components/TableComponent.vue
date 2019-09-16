@@ -131,7 +131,7 @@ export default {
 
     },
     saveRecrutation(){
-      // axios.get('/manage/recrutation/'+this.id)
+      // axios.put('/manage/recrutation/'+this.id)
       //   .then((response) => {
       //     this.recruitments=response.data.recruitments;
       //   })
@@ -172,20 +172,19 @@ export default {
         });
     },
     getRecrutation() {
-      axios.get('/manage/recrutation')
+      axios.get('/manage/recrutation-all')
         .then((response) => {
           this.recruitments=response.data.recruitments;
-          console.log('response', response)
+          console.log('response', response);
         })
         .catch((error) => {
-          console.log('Error', error);
-          this.$toasted.error('Unable to get recrutation');
+          this.$toasted.error('Unable to get list of recrutation');
         });
     }
   },
   mounted(){
     if(this.id){
- console.log('that1')
+     console.log('that1')
       this.getRecrutationById();
     }else{
         console.log('that2')

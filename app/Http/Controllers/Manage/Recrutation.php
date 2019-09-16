@@ -90,4 +90,12 @@ class Recrutation extends Controller
     {
         //
     }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getAllRecrutation(){
+        $recruitments=Recruitment::all();
+        return response()->json(['success' => true, 'recruitments' => $recruitments], 200);
+    }
 }
