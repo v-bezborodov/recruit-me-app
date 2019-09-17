@@ -104,7 +104,6 @@ export default {
   },
   methods: {
     formSubmit(e) {
-      console.log('formsubmit');
       e.preventDefault();
       axios.post('./formsubmit', {
         id: this.data.id,

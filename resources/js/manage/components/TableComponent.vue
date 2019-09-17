@@ -130,15 +130,16 @@ export default {
     addRow(){
 
     },
-    saveRecrutation(){
-      // axios.put('/manage/recrutation/'+this.id)
-      //   .then((response) => {
-      //     this.recruitments=response.data.recruitments;
-      //   })
-      //   .catch((error) => {
-      //     console.log('Error', error);
-      //     this.$toasted.error('Unable to get recrutation');
-      //   });
+    saveRecrutation(data){
+        console.log(data);
+      axios.post('/manage/recrutation ',{data})
+        .then((response) => {
+          // this.recruitments=response.data.recruitments;
+        })
+        .catch((error) => {
+          console.log('Error', error);
+          this.$toasted.error('Unable to get recrutation');
+        });
     },
     editRecrutation(event){
       this.$bvModal.show('modal-recrutation');

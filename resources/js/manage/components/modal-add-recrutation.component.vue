@@ -54,12 +54,12 @@ export default {
       }
     },
     save(){
-      this.$emit('input', this.recrutation);
+        console.log('this.recrutation', this.recrutation)
+      this.$emit('save', this.recrutation);
     },
   },
 
   mounted() {
-    console.log('this.value', this.value);
     this.sync();
   },
   watch:{
