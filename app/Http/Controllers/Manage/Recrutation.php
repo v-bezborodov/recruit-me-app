@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Manage;
 use App\Recruitment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator;
 
 class Recrutation extends Controller
 {
@@ -40,9 +41,26 @@ class Recrutation extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Recruitment $recruitments)
     {
-        dd('store', $request->all());
+        try {
+            $validator = Validator::make($request->all(), [
+                'user_id' => 'required',
+                'offered_position' => 'required',
+                'description' => 'required',
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(['error' => $validator->errors()], 400);
+            }
+
+            $recruitments->fill($request->all());
+            $recruitments->save();
+
+            return response()->json(['success' => true], 200);
+        } catch (\Throwable $e){
+            return response()->json(['error' => $e->getMessage()], 400);
+        }
     }
 
     /**

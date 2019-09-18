@@ -72,7 +72,7 @@
             </b-table>
         </div>
 
-        <modal-add-recrutation v-show="recrutationModalEditChecker" @save="saveRecrutation()" v-model="recrutationModalEdit">
+        <modal-add-recrutation v-show="recrutationModalEditChecker" @save="saveRecrutation" v-model="recrutationModalEdit">
         </modal-add-recrutation>
 
 
@@ -86,7 +86,7 @@
 <script>
 import ModalAddRecrutation from './modal-add-recrutation.component';
 import ModalViewRecrutation from './modal-view-recrutation.component';
-
+import axios from 'axios';
 export default {
   props: {
     id: {
@@ -99,6 +99,7 @@ export default {
   },
   data() {
     return {
+      options:{},
       recrutationModalView:null,
       recrutationModalEdit:null,
       recrutationModalAdd:false,
@@ -131,14 +132,20 @@ export default {
 
     },
     saveRecrutation(data){
-        console.log(data);
-      axios.post('/manage/recrutation ',{data})
+      this.options = {
+        ...data,
+        user_id:this.id,
+      };
+      axios.post('/manage/recrutation', this.options)
         .then((response) => {
           // this.recruitments=response.data.recruitments;
+          console.log('response success', response);
+          this.$toasted.success('Recrutation updated', response);
         })
-        .catch((error) => {
-          console.log('Error', error);
-          this.$toasted.error('Unable to get recrutation');
+        .catch(error => {
+          console.log('Error', error.response.data.error);
+          // console.log('Error', Object.keys(error.response.data.error));
+          this.$toasted.error(error.response.data.error);
         });
     },
     editRecrutation(event){
@@ -185,10 +192,10 @@ export default {
   },
   mounted(){
     if(this.id){
-     console.log('that1')
+      console.log('that1');
       this.getRecrutationById();
     }else{
-        console.log('that2')
+      console.log('that2');
       this.getRecrutation();
     }
   }

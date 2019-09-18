@@ -54,8 +54,13 @@ export default {
       }
     },
     save(){
-        console.log('this.recrutation', this.recrutation)
-      this.$emit('save', this.recrutation);
+      // this.$emit('save', {
+      //     this.recrutation}
+      //   });
+      this.$emit('save', {
+        offered_position:this.recrutation.offered_position,
+        description:this.recrutation.description,
+      });
     },
   },
 
