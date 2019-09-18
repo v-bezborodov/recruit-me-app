@@ -49,9 +49,8 @@ class Recrutation extends Controller
                 'offered_position' => 'required',
                 'description' => 'required',
             ]);
-
             if ($validator->fails()) {
-                return response()->json(['error' => $validator->errors()], 400);
+                return response()->json(['error' => $validator->errors()->first()], 400);
             }
 
             $recruitments->fill($request->all());

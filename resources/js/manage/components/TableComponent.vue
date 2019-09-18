@@ -139,13 +139,14 @@ export default {
       axios.post('/manage/recrutation', this.options)
         .then((response) => {
           // this.recruitments=response.data.recruitments;
-          console.log('response success', response);
           this.$toasted.success('Recrutation updated', response);
         })
         .catch(error => {
-          console.log('Error', error.response.data.error);
-          // console.log('Error', Object.keys(error.response.data.error));
-          this.$toasted.error(error.response.data.error);
+          this.$toasted.error('Something went wrong!');
+          if(error.response.data.error){
+            this.$toasted.error(error.response.data.error);
+          }
+
         });
     },
     editRecrutation(event){
