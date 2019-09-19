@@ -86,7 +86,7 @@
 <script>
 import ModalAddRecrutation from './modal-add-recrutation.component';
 import ModalViewRecrutation from './modal-view-recrutation.component';
-import axios from 'axios';
+// import axios from 'axios';
 export default {
   props: {
     id: {
@@ -136,7 +136,7 @@ export default {
         ...data,
         user_id:this.id,
       };
-      axios.post('/manage/recrutation', this.options)
+      this.$recruitService.store(this.options)
         .then((response) => {
           // this.recruitments=response.data.recruitments;
           this.$toasted.success('Recrutation updated', response);
@@ -171,17 +171,16 @@ export default {
       this.recrutationModalView = Object.assign(event);
     },
     getRecrutationById() {
-      axios.get('/manage/recrutation/'+this.id)
+      this.$recruitService.get(this.id)
         .then((response) => {
           this.recruitments=response.data.recruitments;
         })
         .catch((error) => {
-          console.log('Error', error);
           this.$toasted.error('Unable to get recrutation');
         });
     },
     getRecrutation() {
-      axios.get('/manage/recrutation-all')
+      this.$recruitService.getAll
         .then((response) => {
           this.recruitments=response.data.recruitments;
           console.log('response', response);

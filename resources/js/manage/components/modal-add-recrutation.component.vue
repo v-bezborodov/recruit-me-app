@@ -1,21 +1,41 @@
 <template>
     <b-modal id="modal-recrutation" title="Add recrutation">
         <b-form>
-            <label for="FormCardPosition" class="grey-text font-weight-light">Position:</label>
-            <b-form-input type="text"
-                          id="FormCardPosition"
-                          class="form-control"
+            <div class="form-item">
+                <label for="FormCardPosition" class="grey-text font-weight-light">Position:</label>
+                <b-form-input type="text"
+                              id="FormCardPosition"
+                              class="form-control"
+                              v-if="recrutation"
+                              v-model="recrutation.offered_position"
+                              placeholder="Position title"
+                              required
+                ></b-form-input>
+            </div>
+                <br>
+            <div class="form-item">
+                <ckeditor :editor="editor"
+                          :config="editorConfig"
                           v-if="recrutation"
-                          v-model="recrutation.offered_position"
-                          placeholder="Position title"
-                          required
-            ></b-form-input>
-            <br>
-            <ckeditor :editor="editor"
-                      :config="editorConfig"
-                      v-if="recrutation"
-                      v-model="recrutation.description">
-            </ckeditor>
+                          v-model="recrutation.description">
+                </ckeditor>
+            </div>
+                <br>
+            <div class="form-item">
+                <label for="FormCardStatus" class="grey-text font-weight-light">Status:</label>
+                <multiselect
+                    id="FormCardStatus"
+                    v-if="recrutation"
+                     v-model="recrutation.status"
+                     :options="options.status"
+                    track-by="name"
+                    label="name"
+                     :searchable="true"
+                     :close-on-select="true"
+                     :show-labels="false"
+                     placeholder="Pick a status">
+                </multiselect>
+            </div>
         </b-form>
 
         <template v-slot:modal-footer>
@@ -36,6 +56,9 @@ export default {
   },
   data(){
     return {
+      options:{
+        status:[]
+      },
       recrutation:null,
       editor: ClassicEditor,
       editorConfig: {
@@ -66,15 +89,52 @@ export default {
 
   mounted() {
     this.sync();
+    this.options={
+      status:this.$statusService.getStatusOptions()
+    };
+
+    cons
   },
   watch:{
     value(){
       this.sync();
     }
+  },
+  computed: {
+      recrutation.'status'(){
+
+
+    // get(){
+    //     if(!this.recrutation.status) {
+    //         return null;
+    //     }else{
+    //         return {
+    //             id: this.recrutation.status,
+    //             name: this.$statusService.getStatusOptions.id(this.recrutation.status),
+    //         };
+    //     }
+    // },
+    // set(value){
+    //     this.entity = {
+    //         ...this.entity,
+    //         status: value.id
+    //     };
+    // }
+
+
+
+
+
+
+
+}
+
   }
 };
 </script>
 
 <style scoped>
-
+    .form-item label{
+        float:left;
+    }
 </style>
