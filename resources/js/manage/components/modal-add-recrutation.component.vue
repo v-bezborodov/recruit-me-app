@@ -21,14 +21,15 @@
                 </ckeditor>
             </div>
                 <br>
-            <div class="form-item">
+            <div class="form-item" v-if="recrutation">
+                status {{recrutation.status}}
                 <label for="FormCardStatus" class="grey-text font-weight-light">Status:</label>
                 <multiselect
                     id="FormCardStatus"
                     v-if="recrutation"
-                     v-model="recrutation.status"
+                     v-model="setStatus"
                      :options="options.status"
-                    track-by="name"
+                    track-by="id"
                     label="name"
                      :searchable="true"
                      :close-on-select="true"
@@ -93,41 +94,62 @@ export default {
       status:this.$statusService.getStatusOptions()
     };
 
-    cons
+    // console.log(this.$statusService.getStatusOptions()[this.recrutation.status].name);
   },
   watch:{
     value(){
       this.sync();
-    }
+    },
+      'recrutation.status'(){
+          // this.recrutation.status={
+          //     id:1
+          // }
+        // console.log(this.recrutation.status)
+      }
   },
   computed: {
-      recrutation.'status'(){
+      setStatus:{
+        get(){
+            console.log('test_status is null');
+            return "ACTION"
+        },
+        set(){
+            console.log('test_status is null');
+
+        }
+      },
 
 
-    // get(){
-    //     if(!this.recrutation.status) {
-    //         return null;
-    //     }else{
-    //         return {
-    //             id: this.recrutation.status,
-    //             name: this.$statusService.getStatusOptions.id(this.recrutation.status),
-    //         };
-    //     }
-    // },
-    // set(value){
-    //     this.entity = {
-    //         ...this.entity,
-    //         status: value.id
-    //     };
-    // }
-
-
-
-
-
-
-
-}
+    'recrutation.status':{
+      get() {
+          console.log('status is null');
+          // return {
+          //         id: 1,
+          //         name: "TEST",
+          //       };
+          this.recrutation.status={
+              id: 1,
+              name: "TEST",
+          };
+        // if(!this.recrutation.status) {
+        //     console.log('status is null')
+        //   return null;
+        // }else{
+        //     console.log('status is  not null')
+        //   return {
+        //     id: this.recrutation.status,
+        //     name: this.$statusService.getStatusOptions()[this.recrutation.status].name,
+        //   };
+        // }
+      },
+      set(value) {
+          console.log('status is null');
+        // this.entity = {
+        //   ...this.entity,
+        //   status: value.id
+        // };
+      }
+    }
 
   }
 };
