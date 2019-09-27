@@ -27,7 +27,7 @@
                 <multiselect
                     id="FormCardStatus"
                     v-if="recrutation"
-                     v-model="setStatus"
+                     v-model="recrutation.status"
                      :options="options.status"
                     track-by="id"
                     label="name"
@@ -100,37 +100,22 @@ export default {
     value(){
       this.sync();
     },
-      'recrutation.status'(){
-          // this.recrutation.status={
-          //     id:1
-          // }
-        // console.log(this.recrutation.status)
-      }
+    // 'recrutation.status'(){
+    //     console.log(this.recrutation.status);
+    //   // this.recrutation.status={
+    //   //     id:1
+    //   // }
+    //
+    // }
   },
   computed: {
-      setStatus:{
-        get(){
-            console.log('test_status is null');
-            return "ACTION"
-        },
-        set(){
-            console.log('test_status is null');
-
-        }
-      },
-
-
     'recrutation.status':{
       get() {
-          console.log('status is null');
-          // return {
-          //         id: 1,
-          //         name: "TEST",
-          //       };
-          this.recrutation.status={
-              id: 1,
-              name: "TEST",
-          };
+        console.log('status is null');
+        this.recrutation.status={
+          id: 1,
+          name: 'TEST',
+        };
         // if(!this.recrutation.status) {
         //     console.log('status is null')
         //   return null;
@@ -143,7 +128,7 @@ export default {
         // }
       },
       set(value) {
-          console.log('status is null');
+        console.log('status is null');
         // this.entity = {
         //   ...this.entity,
         //   status: value.id

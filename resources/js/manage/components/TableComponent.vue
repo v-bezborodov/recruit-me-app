@@ -136,9 +136,11 @@ export default {
         ...data,
         user_id:this.id,
       };
+      console.log('this.options', this.options);
       this.$recruitService.store(this.options)
         .then((response) => {
           // this.recruitments=response.data.recruitments;
+          console.log(response);
           this.$toasted.success('Recrutation updated', response);
         })
         .catch(error => {

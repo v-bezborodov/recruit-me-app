@@ -43,23 +43,27 @@ class Recrutation extends Controller
      */
     public function store(Request $request, Recruitment $recruitments)
     {
-        try {
-            $validator = Validator::make($request->all(), [
-                'user_id' => 'required',
-                'offered_position' => 'required',
-                'description' => 'required',
-            ]);
-            if ($validator->fails()) {
-                return response()->json(['error' => $validator->errors()->first()], 400);
-            }
-
-            $recruitments->fill($request->all());
-            $recruitments->save();
-
-            return response()->json(['success' => true], 200);
-        } catch (\Throwable $e){
-            return response()->json(['error' => $e->getMessage()], 400);
-        }
+        dd($request->all());
+//        try {
+//
+//            $validator = Validator::make($request->all(), [
+//                'user_id' => 'required',
+//                'offered_position' => 'required',
+//                'description' => 'required',
+//            ]);
+//            dd($validator->errors());
+//            if ($validator->fails()) {
+//                return response()->json(['error' => $validator->errors()->first()], 400);
+//            }
+//
+//
+//            $recruitments->fill($request->all());
+//            $recruitments->save();
+//
+//            return response()->json(['success' => true], 200);
+//        } catch (\Throwable $e){
+//            return response()->json(['error' => $e->getMessage()], 400);
+//        }
     }
 
     /**
@@ -70,6 +74,7 @@ class Recrutation extends Controller
      */
     public function show($id)
     {
+        dd(123);
         $recruitments=Recruitment::whereUserId($id)->get();
         return response()->json(['success' => true, 'recruitments' => $recruitments], 200);
     }
@@ -114,5 +119,9 @@ class Recrutation extends Controller
     public function getAllRecrutation(){
         $recruitments=Recruitment::all();
         return response()->json(['success' => true, 'recruitments' => $recruitments], 200);
+    }
+
+    public function download(){
+        return view('download');
     }
 }

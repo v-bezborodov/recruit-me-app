@@ -18,8 +18,7 @@ class Manage extends Controller
     {
 //        $profile=User::all();
 //        $recruitment=Recruitment::where('user_id', 1)->get();
-dd(123);
-        return view('manage.index', ['routes' => $this->routes]);
+        return view('index', ['routes' => $this->routes]);
     }
 
     /**
