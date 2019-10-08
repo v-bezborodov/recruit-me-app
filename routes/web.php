@@ -26,7 +26,7 @@ Route::get('/about', function(){
 //Route::resource('/recruitment', 'RecruitmentController');
 Route::resource('/user', 'UserController');
 
-Route::group( function () {
+Route::namespace('Manage')->group(function () {
     Route::resource('/', 'Manage');
     Route::resource('profile', 'ProfileController');
 //    Route::get('/profile', 'RecruitmentController@profile');
@@ -35,7 +35,7 @@ Route::group( function () {
     Route::get('download', 'Recrutation@download')->name('download');
 //    Route::resource('/recrutation-flow', 'Manage\Recrutation');
 
-})->namespace('Manage');
+});
 
 
 
