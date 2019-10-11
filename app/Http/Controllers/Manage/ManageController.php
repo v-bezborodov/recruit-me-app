@@ -7,7 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class Manage extends Controller
+class ManageController extends Controller
 {
     /**
      * Display a listing of the resource.

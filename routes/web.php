@@ -11,11 +11,6 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//
-//
-//});
 Route::get('/', 'HomeController@index')->middleware('auth');
 //Route::get('/recrutation', 'RecruitmentController@index')->name('recrutation')->middleware('auth');
 //Route::get('/download', 'RecruitmentController@download')->name('download')->middleware('auth');
@@ -27,7 +22,7 @@ Route::get('/about', function(){
 Route::resource('/user', 'UserController');
 
 Route::group(['prefix'=>'manage', 'middleware'=>['auth'], 'namespace'=>'Manage'], function () {
-    Route::resource('/', 'Manage');
+    Route::resource('/', 'ManageController');
     Route::resource('profile', 'ProfileController');
 //    Route::get('/profile', 'RecruitmentController@profile');
     Route::resource('/recrutation', 'Recrutation');
