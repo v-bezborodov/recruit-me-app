@@ -23,17 +23,16 @@
                 <br>
             <div class="form-item" v-if="recrutation">
                 status {{recrutation.status}}
+                status {{recrutationStatus}}
                 <label for="FormCardStatus" class="grey-text font-weight-light">Status:</label>
                 <multiselect
                     id="FormCardStatus"
-                    v-if="recrutation"
-                     v-model="recrutation.status"
+                     v-model="recrutationStatus"
                      :options="options.status"
                     track-by="id"
                     label="name"
                      :searchable="true"
                      :close-on-select="true"
-                     :show-labels="false"
                      placeholder="Pick a status">
                 </multiselect>
             </div>
@@ -60,7 +59,7 @@ export default {
       options:{
         status:[]
       },
-      recrutation:null,
+      recrutation:{},
       editor: ClassicEditor,
       editorConfig: {
         sourcedialog:true,
@@ -93,46 +92,29 @@ export default {
     this.options={
       status:this.$statusService.getStatusOptions()
     };
-
-    // console.log(this.$statusService.getStatusOptions()[this.recrutation.status].name);
   },
   watch:{
     value(){
       this.sync();
     },
-    // 'recrutation.status'(){
-    //     console.log(this.recrutation.status);
-    //   // this.recrutation.status={
-    //   //     id:1
-    //   // }
-    //
-    // }
   },
   computed: {
-    'recrutation.status':{
+    recrutationStatus:{
       get() {
-        console.log('status is null');
-        this.recrutation.status={
-          id: 1,
-          name: 'TEST',
-        };
-        // if(!this.recrutation.status) {
-        //     console.log('status is null')
-        //   return null;
-        // }else{
-        //     console.log('status is  not null')
-        //   return {
-        //     id: this.recrutation.status,
-        //     name: this.$statusService.getStatusOptions()[this.recrutation.status].name,
-        //   };
-        // }
+        if(this.recrutation.status==null){
+          return null;
+        }else{
+          return {
+            id: this.recrutation.status,
+            name: this.$statusService.getStatusOptions()[this.recrutation.status].name,
+          };
+        }
       },
-      set(value) {
-        console.log('status is null');
-        // this.entity = {
-        //   ...this.entity,
-        //   status: value.id
-        // };
+      set(newValue) {
+        this.recrutation = {
+          ...this.recrutation,
+          status: newValue.id
+        };
       }
     }
 
