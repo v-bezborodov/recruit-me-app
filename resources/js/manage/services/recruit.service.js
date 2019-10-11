@@ -6,7 +6,7 @@ export default class RecruitService {
   get(id){
     return axios.get(`${this.endpoint}/${id}`);
   }
-  getAll(id){
+  getAll(){
     return axios.get('/manage/recrutation-all');
   }
   store(){

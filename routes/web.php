@@ -16,7 +16,7 @@
 //
 //
 //});
-//Route::get('/', 'RecruitmentController@index')->middleware('auth');
+Route::get('/', 'HomeController@index')->middleware('auth');
 //Route::get('/recrutation', 'RecruitmentController@index')->name('recrutation')->middleware('auth');
 //Route::get('/download', 'RecruitmentController@download')->name('download')->middleware('auth');
 Route::get('/about', function(){
@@ -26,7 +26,7 @@ Route::get('/about', function(){
 //Route::resource('/recruitment', 'RecruitmentController');
 Route::resource('/user', 'UserController');
 
-Route::namespace('Manage')->group(function () {
+Route::group(['prefix'=>'manage', 'middleware'=>['auth'], 'namespace'=>'Manage'], function () {
     Route::resource('/', 'Manage');
     Route::resource('profile', 'ProfileController');
 //    Route::get('/profile', 'RecruitmentController@profile');

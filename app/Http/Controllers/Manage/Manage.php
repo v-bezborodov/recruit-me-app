@@ -16,9 +16,7 @@ class Manage extends Controller
      */
     public function index()
     {
-//        $profile=User::all();
-//        $recruitment=Recruitment::where('user_id', 1)->get();
-        return view('index', ['routes' => $this->routes]);
+        //
     }
 
     /**
@@ -50,7 +48,6 @@ class Manage extends Controller
      */
     public function show($id)
     {
-        dd(123);
     }
 
     /**

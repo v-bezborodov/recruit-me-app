@@ -16,6 +16,7 @@ class Recrutation extends Controller
      */
     public function index()
     {
+        dd(123);
         $request=new Request;
         if($request){
 //            dd(123);
@@ -74,7 +75,6 @@ class Recrutation extends Controller
      */
     public function show($id)
     {
-        dd(123);
         $recruitments=Recruitment::whereUserId($id)->get();
         return response()->json(['success' => true, 'recruitments' => $recruitments], 200);
     }

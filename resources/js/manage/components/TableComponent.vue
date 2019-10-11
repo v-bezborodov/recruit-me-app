@@ -182,10 +182,9 @@ export default {
         });
     },
     getRecrutation() {
-      this.$recruitService.getAll
+      this.$recruitService.getAll()
         .then((response) => {
           this.recruitments=response.data.recruitments;
-          console.log('response', response);
         })
         .catch((error) => {
           this.$toasted.error('Unable to get list of recrutation');
