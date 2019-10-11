@@ -1,15 +1,16 @@
 <template>
-    <b-modal id="modal-recrutation" title="Add recrutation">
+    <b-modal hide-footer id="modal-recrutation" title="Add recrutation">
         <b-form>
             <div class="form-item">
+                {{recrutation}}
                 <label for="FormCardPosition" class="grey-text font-weight-light">Position:</label>
-                <b-form-input type="text"
+                <b-form-input required type="text"
                               id="FormCardPosition"
                               class="form-control"
                               v-if="recrutation"
                               v-model="recrutation.offered_position"
                               placeholder="Position title"
-                              required
+
                 ></b-form-input>
             </div>
                 <br>
@@ -22,8 +23,6 @@
             </div>
                 <br>
             <div class="form-item" v-if="recrutation">
-                status {{recrutation.status}}
-                status {{recrutationStatus}}
                 <label for="FormCardStatus" class="grey-text font-weight-light">Status:</label>
                 <multiselect
                     id="FormCardStatus"
@@ -36,14 +35,12 @@
                      placeholder="Pick a status">
                 </multiselect>
             </div>
-        </b-form>
 
-        <template v-slot:modal-footer>
-            <div class="w-100">
-                <b-button size="sm" class="float-right" @click="save()" variant="success">Submit</b-button>
+            <div class="w-100 modal-footer">
+                <b-button size="sm" class="float-right" type="submit" @click="save()" variant="success">Submit</b-button>
                 <b-button size="sm" @click="$bvModal.hide('modal-recrutation')">Close</b-button>
             </div>
-        </template>
+        </b-form>
     </b-modal>
 </template>
 
@@ -59,7 +56,7 @@ export default {
       options:{
         status:[]
       },
-      recrutation:{},
+      recrutation:null,
       editor: ClassicEditor,
       editorConfig: {
         sourcedialog:true,

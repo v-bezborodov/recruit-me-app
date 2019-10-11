@@ -25,9 +25,9 @@ Route::group(['prefix'=>'manage', 'middleware'=>['auth'], 'namespace'=>'Manage']
     Route::resource('/', 'ManageController');
     Route::resource('profile', 'ProfileController');
 //    Route::get('/profile', 'RecruitmentController@profile');
-    Route::resource('/recrutation', 'Recrutation');
-    Route::get('recrutation-all', 'Recrutation@getAllRecrutation');
-    Route::get('download', 'Recrutation@download')->name('download');
+    Route::resource('/recrutation', 'RecrutationController');
+    Route::get('recrutation-all', 'RecrutationController@getAllRecrutation');
+    Route::get('download', 'RecrutationController@download')->name('download');
 //    Route::resource('/recrutation-flow', 'Manage\Recrutation');
 
 });

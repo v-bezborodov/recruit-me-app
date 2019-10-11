@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
 
-class Recrutation extends Controller
+class RecrutationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,6 @@ class Recrutation extends Controller
      */
     public function index()
     {
-        dd(123);
         $request=new Request;
         if($request){
 //            dd(123);
@@ -45,26 +44,26 @@ class Recrutation extends Controller
     public function store(Request $request, Recruitment $recruitments)
     {
         dd($request->all());
-//        try {
-//
-//            $validator = Validator::make($request->all(), [
-//                'user_id' => 'required',
-//                'offered_position' => 'required',
-//                'description' => 'required',
-//            ]);
-//            dd($validator->errors());
-//            if ($validator->fails()) {
-//                return response()->json(['error' => $validator->errors()->first()], 400);
-//            }
-//
-//
-//            $recruitments->fill($request->all());
-//            $recruitments->save();
-//
-//            return response()->json(['success' => true], 200);
-//        } catch (\Throwable $e){
-//            return response()->json(['error' => $e->getMessage()], 400);
-//        }
+        try {
+
+            $validator = Validator::make($request->all(), [
+                'user_id' => 'required',
+                'offered_position' => 'required',
+                'description' => 'required',
+                'status' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return response()->json(['error' => $validator->errors()->first()], 400);
+            }
+
+
+            $recruitments->fill($request->all());
+            $recruitments->save();
+
+            return response()->json(['success' => true], 200);
+        } catch (\Throwable $e){
+            return response()->json(['error' => $e->getMessage()], 400);
+        }
     }
 
     /**
