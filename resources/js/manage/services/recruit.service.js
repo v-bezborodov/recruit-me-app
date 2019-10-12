@@ -9,7 +9,10 @@ export default class RecruitService {
   getAll(){
     return axios.get('/manage/recrutation-all');
   }
-  store(){
-    return axios.post(`${this.endpoint}`);
+  store(data){
+    return axios.post(`${this.endpoint}`, data);
+  }
+  put(id, data){
+      return axios.put(`${this.endpoint}/${id}`, data);
   }
 }

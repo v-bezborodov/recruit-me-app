@@ -132,26 +132,69 @@ export default {
 
     },
     saveRecrutation(data){
-      this.options = {
-        ...data,
-        user_id:this.id,
-      };
-      this.$recruitService.store(this.options)
-        .then((response) => {
-          // this.recruitments=response.data.recruitments;
-          this.$toasted.success('Recrutation updated', response);
-        })
-        .catch(error => {
-          this.$toasted.error('Something went wrong!');
-          if(error.response.data.error){
-            this.$toasted.error(error.response.data.error);
-          }
+        console.log('data', data)
+    switch(data.modal) {
+        case 'add':
+            this.add(data);
+            break;
+        case 'edit':
+            this.edit(data);
+            break;
+        default:
+            this.$toasted.error("Can't save");
+    }
 
-        });
+
+      console.log(this.options)
+
     },
+
+      edit(data){
+          this.options = {
+              ...data,
+          };
+          this.$recruitService.put(this.id, data)
+              .then((response) => {
+                  console.log(response)
+                  // this.recruitments=response.data.recruitments;
+                  this.$toasted.success('Recrutation updated', response);
+                  this.$bvModal.hide('modal-recrutation')
+              })
+              .catch(error => {
+                  this.$toasted.error('Something went wrong!');
+                  if(error.response.data.error){
+                      this.$toasted.error(error.response.data.error);
+                  }
+
+              });
+      },
+      add(data){
+          this.options = {
+              ...data,
+              user_id:this.id,
+          };
+          this.$recruitService.store(data)
+              .then((response) => {
+                  console.log(response)
+                  // this.recruitments=response.data.recruitments;
+                  this.$toasted.success('Recrutation added', response);
+                  this.$bvModal.hide('modal-recrutation')
+              })
+              .catch(error => {
+                  this.$toasted.error('Something went wrong!');
+                  if(error.response.data.error){
+                      this.$toasted.error(error.response.data.error);
+                  }
+
+              });
+      },
     editRecrutation(event){
       this.$bvModal.show('modal-recrutation');
       if(event) {
+          event={
+              ...event,
+              modal:'edit'
+          }
         this.recrutationModalEdit = Object.assign(event);
       }else{
         this.recrutationModalEdit=event;
@@ -159,16 +202,17 @@ export default {
       }
     },
     addRecrutation(event){
-      this.editRecrutation(event);
-      // this.$bvModal.show('modal-recrutation');
-      // this.recrutationModal = Object.assign(event);
-      // console.log("ADD")
-      // this.recrutationModalAdd=true;
-
+        this.$bvModal.show('modal-recrutation');
+        event={
+            ...event,
+            modal:'add'
+        };
+        this.recrutationModalEdit = Object.assign(event);
     },
     viewRecrutation(event){
+        console.log('')
       this.$bvModal.show('modal-info');
-      this.recrutationModalView = Object.assign(event);
+      this.recrutationModalView= Object.assign(event);
     },
     getRecrutationById() {
       this.$recruitService.get(this.id)

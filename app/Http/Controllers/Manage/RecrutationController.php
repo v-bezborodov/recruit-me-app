@@ -43,9 +43,7 @@ class RecrutationController extends Controller
      */
     public function store(Request $request, Recruitment $recruitments)
     {
-        dd($request->all());
         try {
-
             $validator = Validator::make($request->all(), [
                 'user_id' => 'required',
                 'offered_position' => 'required',
@@ -55,7 +53,6 @@ class RecrutationController extends Controller
             if ($validator->fails()) {
                 return response()->json(['error' => $validator->errors()->first()], 400);
             }
-
 
             $recruitments->fill($request->all());
             $recruitments->save();
@@ -98,7 +95,25 @@ class RecrutationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+//        dd($request->all());
+        try {
+            $validator = Validator::make($request->all(), [
+                'offered_position' => 'required',
+                'description' => 'required',
+                'status' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return response()->json(['error' => $validator->errors()->first()], 400);
+            }
+            $recruitment= Recruitment::findOrFail($id);
+//            dd( $recruitment);
+            $recruitment->update($request->only('offered_position','description', 'status'));
+            $recruitment->save();
+
+            return response()->json(['success' => true], 200);
+        } catch (\Throwable $e){
+            return response()->json(['error' => $e->getMessage()], 400);
+        }
     }
 
     /**

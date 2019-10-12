@@ -2,8 +2,7 @@
     <b-modal hide-footer id="modal-recrutation" title="Add recrutation">
         <b-form>
             <div class="form-item">
-                {{recrutation}}
-                <label for="FormCardPosition" class="grey-text font-weight-light">Position:</label>
+                <label for="FormCardPosition" class="form-item-label grey-text font-weight-light">Position:</label>
                 <b-form-input required type="text"
                               id="FormCardPosition"
                               class="form-control"
@@ -23,7 +22,7 @@
             </div>
                 <br>
             <div class="form-item" v-if="recrutation">
-                <label for="FormCardStatus" class="grey-text font-weight-light">Status:</label>
+                <p class="form-item-label grey-text font-weight-light">Status:</p>
                 <multiselect
                     id="FormCardStatus"
                      v-model="recrutationStatus"
@@ -67,6 +66,7 @@ export default {
   },
   methods:{
     sync(){
+        console.log('this.value', this.value)
       if(this.value!==null) {
         this.recrutation = Object.assign(this.value);
       }else{
@@ -74,13 +74,33 @@ export default {
       }
     },
     save(){
-      // this.$emit('save', {
-      //     this.recrutation}
-      //   });
-      this.$emit('save', {
-        offered_position:this.recrutation.offered_position,
-        description:this.recrutation.description,
-      });
+        var ok=true;
+        event.preventDefault();
+
+        if(!this.recrutation.offered_position){
+            this.$toasted.error('Can\'t save, position is empty');
+            ok=false;
+        }
+        if(!this.recrutation.description){
+            this.$toasted.error('Can\'t save, description is empty');
+            ok=false;
+        }
+        if(this.recrutation.status!==null && !this.recrutation.status){
+            this.$toasted.error('Can\'t save, status is empty');
+            ok=false;
+        }
+
+        if(ok){
+          this.$emit('save', {
+            offered_position:this.recrutation.offered_position,
+            description:this.recrutation.description,
+            status:this.recrutation.status,
+            modal:this.recrutation.modal
+          });
+            // this.$emit('save',
+            //     this.recrutation
+            //   );
+        }
     },
   },
 
@@ -98,6 +118,7 @@ export default {
   computed: {
     recrutationStatus:{
       get() {
+          console.log(this.recrutation.status)
         if(this.recrutation.status==null){
           return null;
         }else{
@@ -122,5 +143,9 @@ export default {
 <style scoped>
     .form-item label{
         float:left;
+    }
+    .form-item .form-item-label{
+        text-align:left;
+        margin:0;
     }
 </style>
