@@ -18,4 +18,7 @@ export default class RecruitService {
   remove(id){
     return axios.delete(`${this.endpoint}/${id}`);
   }
+  setStatus(id){
+    return axios.put(`/manage/set-status/${id}`);
+  }
 }

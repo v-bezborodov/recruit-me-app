@@ -42,7 +42,7 @@
 
                     <span v-if="data.item.status==1" class="badge badge-pill badge-success">ACTIVE</span>
                     <span v-else-if="data.item.status==0" class="badge badge-pill badge-danger">SUSPENDED</span>
-                    <span v-else class="badge badge-pill badge-light">INACTIVE</span>
+                    <span v-else-if="data.item.status==2" class="badge badge-pill badge-light">INACTIVE</span>
                 </template>
 
                 <template slot="table-caption">List of all recrutations</template>
@@ -54,7 +54,7 @@
                         <b-button size="sm" @click="saveRecrutation(row.item, 'edit')" class="btn btn-action btn-success">
                             <i class="fa fa-edit"></i>
                         </b-button>
-                        <b-button size="sm" @click="" class="btn btn-action btn-outline-dark bg-white">
+                        <b-button size="sm" @click="setStatus(row, row.item.id)" class="btn btn-action btn-outline-dark bg-white">
                             <i class="fa fa-eye"></i>
                             <!--<i class="fa fa-eye-slash"></i>-->
                         </b-button>
@@ -72,7 +72,7 @@
             </b-table>
         </div>
 
-        <modal-recrutation :modal="modal" v-model="recrutationModalEdit">
+        <modal-recrutation v-if="recrutationModalEdit" :modal="modal" v-model="recrutationModalEdit">
         </modal-recrutation>
 
 
@@ -98,6 +98,7 @@ export default {
   },
   data() {
     return {
+      test:'test',
       modal:null,
       options:{},
       recrutationModalView:null,
@@ -111,7 +112,7 @@ export default {
       fields: [
         {key:'index', label: '#'},
         {key:'status', label: 'Status'},
-        {key:'name', label: 'Name',  _rowVariant: 'danger'},
+        {key:'name', label: 'Name'},
         {key: 'offered_position', sortable: true, label: 'Position'},
         {key: 'user.company', sortable: true, label: 'Company name'},
         {key: 'user.country.long_name', sortable: true, label: 'Country'},
@@ -154,10 +155,33 @@ export default {
           }
         });
     },
+    setStatus(event, eventId){
+      // this.recruitments[0]={
+      //     ...this.recruitments[0],
+      //     tdClass: 'danger',
+      // }
+      //   console.log(event.index)
+        // this.recruitments[event.index].status=1;
+      this.$recruitService.setStatus(eventId)
+        .then((response) => {
+          (this.recruitments[event.index].status===3 || this.recruitments[event.index].status===null)?this.$set(this.recruitments[event.index], 'status', 1 ):this.$set(this.recruitments[event.index], 'status', 3 );
+          //   this.recruitments[eventId].status=1;
+          //   this.getRecrutationById();
+            console.log(this.recruitments[event.index])
+          this.$toasted.success('Status successfully updated', response);
+        })
+        .catch(error => {
+          this.$toasted.error('Something went wrong!', error);
+          // if(error.response.data.error){
+          //   this.$toasted.error(error.response.data.error);
+          // }
+        });
+    },
 
     editRecrutation(event){
       this.$bvModal.show('modal-recrutation');
-      this.recrutationModalEdit = Object.assign(event);
+      this.recrutationModalEdit = Object.assign({},event);
+      console.log( this.recrutationModalEdit)
     },
     addRecrutation(){
       this.$bvModal.show('modal-recrutation');
@@ -173,7 +197,7 @@ export default {
           this.recruitments=response.data.recruitments;
         })
         .catch((error) => {
-          this.$toasted.error('Unable to get recrutation');
+          this.$toasted.error('Unable to get recrutation', error);
         });
     },
     getRecrutation() {
@@ -194,6 +218,12 @@ export default {
     }
   },
   watch:{
+    //   recruitments(){
+    //       this.recruitments[0]={
+    //           ...this.recruitments[0],
+    //           tdClass: 'inactv',
+    //       }
+    // }
     // recrutationModalEdit(){
     //     console.log('recrutationModalEdit', this.recrutationModalEdit);
     // }
@@ -214,5 +244,8 @@ export default {
     }
     .action-wrapper button {
         margin: 0 3px 0 3px;
+    }
+    .inactv {
+        opacity:.7;
     }
 </style>

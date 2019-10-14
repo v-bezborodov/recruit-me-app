@@ -139,4 +139,17 @@ class RecrutationController extends Controller
     public function download(){
         return view('download');
     }
+
+    public function setStatus($id){
+
+            $recruitment= Recruitment::findOrFail($id);
+            ($recruitment->status==null || $recruitment->status==0 || $recruitment->status==1)?$recruitment->status=2:$recruitment->status=0;
+            $recruitment->save();
+
+            if(!$recruitment->status){
+                return response()->json(['error' => "Can't update status"], 400);
+            }
+
+
+    }
 }

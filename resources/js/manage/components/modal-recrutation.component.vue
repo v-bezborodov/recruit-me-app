@@ -21,6 +21,7 @@
                 </ckeditor>
             </div>
                 <br>
+            Test {{this.recrutation.status}}
             <div class="form-item" v-if="recrutation">
                 <p class="form-item-label grey-text font-weight-light">Status:</p>
                 <multiselect
@@ -46,7 +47,7 @@
 <script>
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 export default {
-  name: 'modal-add-recrutation.component',
+  name: 'modal-recrutation.component',
   props:{
     value: {default:null},
     modal: {default:null},
@@ -57,7 +58,9 @@ export default {
       options:{
         status:[]
       },
-      recrutation:null,
+      recrutation:{
+          status:0,
+      },
       editor: ClassicEditor,
       editorConfig: {
         sourcedialog:true,
@@ -68,6 +71,7 @@ export default {
   },
   methods:{
     sync(){
+        console.log('sync', this.value);
       this.recrutation = Object.assign({},this.value);
     },
     save(){
@@ -164,7 +168,7 @@ export default {
   computed: {
     recrutationStatus:{
       get() {
-        console.log(this.recrutation.status);
+        console.log('SETTER this.recrutation.status',this.recrutation.status);
         if(this.recrutation.status==null){
           return null;
         }else{

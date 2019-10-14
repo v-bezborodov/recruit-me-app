@@ -28,6 +28,7 @@ Route::group(['prefix'=>'manage', 'middleware'=>['auth'], 'namespace'=>'Manage']
     Route::resource('/recrutation', 'RecrutationController');
     Route::get('recrutation-all', 'RecrutationController@getAllRecrutation');
     Route::get('download', 'RecrutationController@download')->name('download');
+    Route::put('set-status/{id}', 'RecrutationController@setStatus')->name('set-status');
 //    Route::resource('/recrutation-flow', 'Manage\Recrutation');
 
 });
