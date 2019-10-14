@@ -24,8 +24,9 @@ import Multiselect from 'vue-multiselect';
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-Vue.component('table-component', require('./components/TableComponent.vue').default);
-Vue.component('modal-component', require('./components/modalComponent.vue').default);
+// Vue.component('table-component', require('./components/TableComponent.vue').default);
+Vue.component('recrutation-component', require('./components/Recrutation.component.vue').default);
+Vue.component('profile-component', require('./components/ProfileComponent.vue').default);
 // Vue.component('table-component-profile', require('./components/TableComponentProfile.vue').default);
 Vue.component('avatar-component-profile', require('./components/avatarComponentProfile.vue').default);
 /**

@@ -21,7 +21,6 @@
                 </ckeditor>
             </div>
                 <br>
-            Test {{this.recrutation.status}}
             <div class="form-item" v-if="recrutation">
                 <p class="form-item-label grey-text font-weight-light">Status:</p>
                 <multiselect
@@ -30,7 +29,7 @@
                      :options="options.status"
                     track-by="id"
                     label="name"
-                     :searchable="true"
+                     :searchable="false"
                      :close-on-select="true"
                      placeholder="Pick a status">
                 </multiselect>
@@ -47,7 +46,7 @@
 <script>
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 export default {
-  name: 'modal-recrutation.component',
+  name: 'modal-recrutation-component',
   props:{
     value: {default:null},
     modal: {default:null},
@@ -71,7 +70,6 @@ export default {
   },
   methods:{
     sync(){
-        console.log('sync', this.value);
       this.recrutation = Object.assign({},this.value);
     },
     save(){
@@ -135,7 +133,6 @@ export default {
     add(){
       this.$recruitService.store(this.recrutation)
         .then((response) => {
-          console.log(response);
           // this.recruitments=response.data.recruitments;
           this.$toasted.success('Recrutation added', response);
           this.$bvModal.hide('modal-recrutation');
@@ -168,7 +165,6 @@ export default {
   computed: {
     recrutationStatus:{
       get() {
-        console.log('SETTER this.recrutation.status',this.recrutation.status);
         if(this.recrutation.status==null){
           return null;
         }else{
