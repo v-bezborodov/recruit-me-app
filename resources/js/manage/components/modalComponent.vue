@@ -117,10 +117,6 @@ export default {
 
       })
         .then(function (response) {
-          console.log(response.data);
-
-          // this.$toasted.show('hello billo')
-
           Vue.toasted.success('Succesfully saved!', {
             icon : 'check',
             theme: 'bubble',
@@ -139,7 +135,6 @@ export default {
 
         })
         .catch(function (error) {
-          console.log('testerror', error);
           Vue.toasted.error('Something went wrong',{
             action : {
               text : 'OK',

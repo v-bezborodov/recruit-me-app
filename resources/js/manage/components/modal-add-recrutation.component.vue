@@ -66,7 +66,6 @@ export default {
   },
   methods:{
     sync(){
-        console.log('this.value', this.value)
       if(this.value!==null) {
         this.recrutation = Object.assign(this.value);
       }else{
@@ -74,33 +73,33 @@ export default {
       }
     },
     save(){
-        var ok=true;
-        event.preventDefault();
+      var ok=true;
+      event.preventDefault();
 
-        if(!this.recrutation.offered_position){
-            this.$toasted.error('Can\'t save, position is empty');
-            ok=false;
-        }
-        if(!this.recrutation.description){
-            this.$toasted.error('Can\'t save, description is empty');
-            ok=false;
-        }
-        if(this.recrutation.status!==null && !this.recrutation.status){
-            this.$toasted.error('Can\'t save, status is empty');
-            ok=false;
-        }
+      if(!this.recrutation.offered_position){
+        this.$toasted.error('Can\'t save, position is empty');
+        ok=false;
+      }
+      if(!this.recrutation.description){
+        this.$toasted.error('Can\'t save, description is empty');
+        ok=false;
+      }
+      if(this.recrutation.status!==null && !this.recrutation.status){
+        this.$toasted.error('Can\'t save, status is empty');
+        ok=false;
+      }
 
-        if(ok){
-          this.$emit('save', {
-            offered_position:this.recrutation.offered_position,
-            description:this.recrutation.description,
-            status:this.recrutation.status,
-            modal:this.recrutation.modal
-          });
-            // this.$emit('save',
-            //     this.recrutation
-            //   );
-        }
+      if(ok){
+        this.$emit('save', {
+          offered_position:this.recrutation.offered_position,
+          description:this.recrutation.description,
+          status:this.recrutation.status,
+          modal:this.recrutation.modal
+        });
+        // this.$emit('save',
+        //     this.recrutation
+        //   );
+      }
     },
   },
 
@@ -118,7 +117,7 @@ export default {
   computed: {
     recrutationStatus:{
       get() {
-          console.log(this.recrutation.status)
+        console.log(this.recrutation.status);
         if(this.recrutation.status==null){
           return null;
         }else{

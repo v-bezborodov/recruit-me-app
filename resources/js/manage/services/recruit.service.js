@@ -13,6 +13,6 @@ export default class RecruitService {
     return axios.post(`${this.endpoint}`, data);
   }
   put(id, data){
-      return axios.put(`${this.endpoint}/${id}`, data);
+    return axios.put(`${this.endpoint}/${id}`, data);
   }
 }

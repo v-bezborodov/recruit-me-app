@@ -111,7 +111,6 @@ export default {
 
         })
         .catch(function (error) {
-          console.log('testerror', error);
           Vue.toasted.error('Something went wrong',{
             action : {
               text : 'OK',

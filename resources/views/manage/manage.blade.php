@@ -46,8 +46,7 @@
                     </div>
         </div>
     </section>
-    <section>
-
+    <section class="content">
         <div class="emp-profile">
 
                 <div class="row no-gutters">

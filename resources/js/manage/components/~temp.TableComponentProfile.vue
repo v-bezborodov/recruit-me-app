@@ -128,7 +128,6 @@ export default {
     };
   },
   mounted(){
-    // console.log(this.status);
   },
   methods: {
 
@@ -175,7 +174,6 @@ export default {
           // setTimeout("location.href = '/profile';", 1500);
         })
         .catch(function (error) {
-          console.log('testerror', error);
           Vue.toasted.error('Something went wrong',{
             action : {
               text : 'OK',

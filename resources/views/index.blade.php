@@ -15,9 +15,11 @@
 {{--@endforeach--}}
 
 @section('content')
-                <table-component>
+    <section class="content">
+        <table-component>
 
-                </table-component>
+        </table-component>
+    </section>
 @stop
 
 
