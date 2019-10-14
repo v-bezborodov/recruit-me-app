@@ -15,4 +15,7 @@ export default class RecruitService {
   put(id, data){
     return axios.put(`${this.endpoint}/${id}`, data);
   }
+  remove(id){
+    return axios.delete(`${this.endpoint}/${id}`);
+  }
 }

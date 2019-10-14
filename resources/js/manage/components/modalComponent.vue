@@ -71,18 +71,12 @@
                     <!--<option slot="first" :value="null">Choose country</option>-->
                 </b-form-select>
                 <br>
-
-
                 <div class="text-center py-4 mt-3">
                     <b-button @click="formSubmit" variant="primary">Submit</b-button>
                     <b-button @click="$bvModal.hide('bv-modal-example')">Close</b-button>
                 </div>
             </b-form>
-
-
-
         </div>
-
     </b-modal>
 </template>
 
@@ -145,12 +139,6 @@ export default {
           });
         });
     },
-    fetchUser () {
-      // console.log('fetchUser', this.data)
-      // console.log('fetchUser', this.countries)
-
-      // axios.get('/api/user')...
-    }
   },
   data() {
     return {
@@ -168,7 +156,6 @@ export default {
   },
   computed: {
     options: function () {
-      // console.log(this.countries)
       return this.countries;
     },
     time:function(){

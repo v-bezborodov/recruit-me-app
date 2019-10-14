@@ -48,7 +48,9 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 export default {
   name: 'modal-add-recrutation.component',
   props:{
-    value: {default:null}
+    value: {default:null},
+    modal: {default:null},
+
   },
   data(){
     return {
@@ -66,16 +68,11 @@ export default {
   },
   methods:{
     sync(){
-      if(this.value!==null) {
-        this.recrutation = Object.assign(this.value);
-      }else{
-        this.recrutation=[];
-      }
+      this.recrutation = Object.assign({},this.value);
     },
     save(){
-      var ok=true;
       event.preventDefault();
-
+      var ok=true;
       if(!this.recrutation.offered_position){
         this.$toasted.error('Can\'t save, position is empty');
         ok=false;
@@ -90,16 +87,63 @@ export default {
       }
 
       if(ok){
-        this.$emit('save', {
-          offered_position:this.recrutation.offered_position,
-          description:this.recrutation.description,
-          status:this.recrutation.status,
-          modal:this.recrutation.modal
-        });
+        switch(this.modal) {
+        case 'add':
+          this.add();
+          break;
+        case 'edit':
+          this.edit();
+          break;
+        default:
+          this.$toasted.error('Can\'t save');
+        }
+        // this.$emit('save', {
+        //   offered_position:this.recrutation.offered_position,
+        //   description:this.recrutation.description,
+        //   status:this.recrutation.status,
+        //   modal:this.recrutation.modal
+        // });
         // this.$emit('save',
         //     this.recrutation
         //   );
       }
+    },
+
+    edit(){
+      this.$recruitService.put(this.recrutation.id, this.recrutation)
+        .then((response) => {
+          // this.recruitments=response.data.recruitments;
+          this.$toasted.success('Recrutation updated', response);
+          // this.$emit('save',
+          //     this.recrutation
+          //   );
+          this.$bvModal.hide('modal-recrutation');
+          setTimeout(location.href = '/manage/profile', 1500);
+        })
+        .catch(error => {
+          this.$toasted.error('Something went wrong!');
+          if(error.response.data.error){
+            this.$toasted.error(error.response.data.error);
+          }
+
+        });
+    },
+    add(){
+      this.$recruitService.store(this.recrutation)
+        .then((response) => {
+          console.log(response);
+          // this.recruitments=response.data.recruitments;
+          this.$toasted.success('Recrutation added', response);
+          this.$bvModal.hide('modal-recrutation');
+          setTimeout(location.href = '/manage/profile', 1500);
+        })
+        .catch(error => {
+          this.$toasted.error('Something went wrong!');
+          if(error.response.data.error){
+            this.$toasted.error(error.response.data.error);
+          }
+
+        });
     },
   },
 
@@ -112,6 +156,9 @@ export default {
   watch:{
     value(){
       this.sync();
+      // this.$emit('input',
+      //   this.recrutation
+      // );
     },
   },
   computed: {

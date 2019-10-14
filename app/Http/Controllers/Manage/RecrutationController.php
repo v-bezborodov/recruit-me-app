@@ -95,7 +95,6 @@ class RecrutationController extends Controller
      */
     public function update(Request $request, $id)
     {
-//        dd($request->all());
         try {
             $validator = Validator::make($request->all(), [
                 'offered_position' => 'required',
@@ -106,7 +105,6 @@ class RecrutationController extends Controller
                 return response()->json(['error' => $validator->errors()->first()], 400);
             }
             $recruitment= Recruitment::findOrFail($id);
-//            dd( $recruitment);
             $recruitment->update($request->only('offered_position','description', 'status'));
             $recruitment->save();
 
@@ -124,7 +122,10 @@ class RecrutationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $row=Recruitment::destroy($id);
+        if (!$row){
+            return response()->json(['error' => "Can't delete this recruitment"], 400);
+        }
     }
 
     /**

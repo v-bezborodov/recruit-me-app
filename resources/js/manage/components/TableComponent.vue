@@ -13,7 +13,7 @@
                     </b-form-group>
                 </b-col>
                 <b-col md="6" class="my-1">
-                    <b-button class="button-add-new" @click="addRecrutation(event=null)" variant="success">Submit new recrutation</b-button>
+                    <b-button class="button-add-new" @click="saveRecrutation(null, 'add')" variant="success">Submit new recrutation</b-button>
                 </b-col>
             </b-row>
 
@@ -51,14 +51,14 @@
                         <b-button size="sm" variant="outline-primary" @click="viewRecrutation(row.item)" class="btn btn-action">
                             <i class="fa fa-list-alt"></i>
                         </b-button>
-                        <b-button size="sm" @click="editRecrutation(row.item)" class="btn btn-action btn-success">
+                        <b-button size="sm" @click="saveRecrutation(row.item, 'edit')" class="btn btn-action btn-success">
                             <i class="fa fa-edit"></i>
                         </b-button>
                         <b-button size="sm" @click="" class="btn btn-action btn-outline-dark bg-white">
                             <i class="fa fa-eye"></i>
                             <!--<i class="fa fa-eye-slash"></i>-->
                         </b-button>
-                        <b-button size="sm" @click="" class="btn btn-action btn-danger">
+                        <b-button size="sm" @click="remove(row.index, row.item.id)" class="btn btn-action btn-danger">
                             <i class="fa fa-trash"></i>
                         </b-button>
                     </div>
@@ -72,8 +72,8 @@
             </b-table>
         </div>
 
-        <modal-add-recrutation v-show="recrutationModalEditChecker" @save="saveRecrutation" v-model="recrutationModalEdit">
-        </modal-add-recrutation>
+        <modal-recrutation :modal="modal" v-model="recrutationModalEdit">
+        </modal-recrutation>
 
 
         <modal-view-recrutation v-model="recrutationModalView">
@@ -84,26 +84,25 @@
 
 
 <script>
-import ModalAddRecrutation from './modal-add-recrutation.component';
+import ModalRecrutation from './modal-recrutation.component';
 import ModalViewRecrutation from './modal-view-recrutation.component';
-// import axios from 'axios';
 export default {
   props: {
     id: {
       default:null
     },
   },
-  components: {ModalAddRecrutation, ModalViewRecrutation},
+  components: {ModalRecrutation, ModalViewRecrutation},
   computed: {
     //
   },
   data() {
     return {
+      modal:null,
       options:{},
       recrutationModalView:null,
       recrutationModalEdit:null,
       recrutationModalAdd:false,
-      recrutationModalEditChecker:false,
       transProps: {
         // Transition name
         name: 'flip-list'
@@ -128,88 +127,43 @@ export default {
     };
   },
   methods: {
-    addRow(){
-
-    },
-    saveRecrutation(data){
-      switch(data.modal) {
+    saveRecrutation(data, modal){
+      this.modal= modal;
+      switch(modal) {
       case 'add':
-        this.add(data);
+        this.addRecrutation();
         break;
       case 'edit':
-        this.edit(data);
+        this.editRecrutation(data);
         break;
       default:
         this.$toasted.error('Can\'t save');
       }
-
-
-      console.log(this.options);
-
     },
 
-    edit(data){
-      this.options = {
-        ...data,
-      };
-      this.$recruitService.put(this.id, data)
+    remove(event, eventId){
+      this.$recruitService.remove(eventId)
         .then((response) => {
-          console.log(response);
-          // this.recruitments=response.data.recruitments;
-          this.$toasted.success('Recrutation updated', response);
-          this.$bvModal.hide('modal-recrutation');
+          this.$toasted.success('Recrutation successfully removed', response);
+          this.recruitments.splice(event, 1);
         })
         .catch(error => {
           this.$toasted.error('Something went wrong!');
           if(error.response.data.error){
             this.$toasted.error(error.response.data.error);
           }
-
         });
     },
-    add(data){
-      this.options = {
-        ...data,
-        user_id:this.id,
-      };
-      this.$recruitService.store(data)
-        .then((response) => {
-          console.log(response);
-          // this.recruitments=response.data.recruitments;
-          this.$toasted.success('Recrutation added', response);
-          this.$bvModal.hide('modal-recrutation');
-        })
-        .catch(error => {
-          this.$toasted.error('Something went wrong!');
-          if(error.response.data.error){
-            this.$toasted.error(error.response.data.error);
-          }
 
-        });
-    },
     editRecrutation(event){
       this.$bvModal.show('modal-recrutation');
-      if(event) {
-        event={
-          ...event,
-          modal:'edit'
-        };
-        this.recrutationModalEdit = Object.assign(event);
-      }else{
-        this.recrutationModalEdit=event;
-        this.recrutationModalEditChecker=true;
-      }
-    },
-    addRecrutation(event){
-      this.$bvModal.show('modal-recrutation');
-      event={
-        ...event,
-        modal:'add'
-      };
       this.recrutationModalEdit = Object.assign(event);
     },
+    addRecrutation(){
+      this.$bvModal.show('modal-recrutation');
+      this.recrutationModalEdit = Object.assign({'user_id':this.id});
+    },
     viewRecrutation(event){
-      console.log('');
       this.$bvModal.show('modal-info');
       this.recrutationModalView= Object.assign(event);
     },
@@ -238,7 +192,13 @@ export default {
     }else{
       this.getRecrutation();
     }
+  },
+  watch:{
+    // recrutationModalEdit(){
+    //     console.log('recrutationModalEdit', this.recrutationModalEdit);
+    // }
   }
+
 };
 </script>
 
