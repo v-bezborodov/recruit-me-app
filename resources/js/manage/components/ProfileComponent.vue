@@ -6,18 +6,36 @@
             <!--Edit profile-->
         <!--</template>-->
     <div>
-        <div class="custom-control custom-switch">
-            <input type="checkbox" @click="switcherMode" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+        <div class="custom-control custom-switch custom-switch-info">
+            <input type="checkbox" @click="switcherModeInfo" class="custom-control-input" id="switch-info">
+            <label class="custom-control-label" for="switch-info">Edit information</label>
+
+            <profile-view v-if="user && !modeInfo" v-model="user">
+
+            </profile-view>
+
+            <profile-edit v-if="user && modeInfo" v-model="user">
+
+            </profile-edit>
+
         </div>
 
-        <profile-view v-if="user && !mode" v-model="user">
+        <div class="custom-control custom-switch custom-switch-links">
+            <input type="checkbox" @click="switcherModeLinks" class="custom-control-input" id="switch-links">
+            <label class="custom-control-label" for="switch-links">Edit link section</label>
 
-        </profile-view>
+            <profile-view-links v-if="user && !modeLinks" v-model="user">
 
-        <profile-edit v-if="user && mode" v-model="user">
+            </profile-view-links>
 
-        </profile-edit>
+            <profile-edit-links v-if="user && modeLinks" v-model="user">
+
+            </profile-edit-links>
+
+
+        </div>
+
+
     </div>
 
 
@@ -100,10 +118,11 @@
 // import axios from 'axios';
 import ProfileEdit from './Profile-edit.component';
 import ProfileView from './Profile-view.component';
-
+import ProfileEditLinks from './Profile-edit-links.component';
+import ProfileViewLinks from './Profile-view-links.component';
 export default {
   name: 'profile-component',
-  components:{ProfileEdit, ProfileView},
+  components:{ProfileEdit, ProfileView, ProfileEditLinks, ProfileViewLinks},
   props: {
     id:{
       require:true
@@ -116,7 +135,8 @@ export default {
 
   data() {
     return {
-      mode:false,
+      modeInfo:false,
+        modeLinks:false,
       // data:null,
       user:null,
       // first_name:this.data.first_name,
@@ -132,9 +152,14 @@ export default {
     };
   },
   methods: {
-    switcherMode(){
-      this.mode==false?this.mode=true:this.mode=false;
+    switcherModeInfo(){
+
+      this.modeInfo==false?this.modeInfo=true:this.modeInfo=false;
+      console.log(this.modeInfo)
     },
+  switcherModeLinks(){
+      this.modeLinks==false?this.modeLinks=true:this.modeLinks=false;
+  },
     get(){
       this.$userService.get(this.id)
         .then((response) => {
