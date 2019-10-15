@@ -54,7 +54,7 @@
                         <b-button size="sm" @click="saveRecrutation(row.item, 'edit')" class="btn btn-action btn-success">
                             <i class="fa fa-edit"></i>
                         </b-button>
-                        <b-button size="sm" @click="setStatus(row, row.item.id)" class="btn btn-action btn-outline-dark bg-white">
+                        <b-button size="sm" @click="setStatus(row, row.item.id)" class="btn btn-action btn-action-status btn-outline-dark bg-white">
                             <i class="fa fa-eye"></i>
                             <!--<i class="fa fa-eye-slash"></i>-->
                         </b-button>
@@ -245,7 +245,8 @@ export default {
     .action-wrapper button {
         margin: 0 3px 0 3px;
     }
-    .inactv {
-        opacity:.7;
+    .action-wrapper .btn-action-status:hover{
+        /*opacity:.7;*/
+        color:darkgray!important
     }
 </style>
