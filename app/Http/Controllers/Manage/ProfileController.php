@@ -26,8 +26,7 @@ class ProfileController extends Controller
                 $user->updated_at=now();
                 $user->save();
             }
-            return view('manage.manage', ['recruitments'=>$recruitment,
-                'routes' => $this->routes]);
+            return view('manage.manage', ['id'=>$id]);
         }
     }
 
@@ -60,9 +59,9 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-//        $recruitment=Recruitment::where('user_id', 1)->get();
-//        return view('manage.index', ['recruitment'=>$recruitment,
-//            'routes' => $this->routes]);
+        $user=User::findOrFail($id);
+
+        return response()->json(['success' => true, 'user'=>$user], 200);
     }
 
     /**

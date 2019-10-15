@@ -1,13 +1,19 @@
 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
     Profile summary
+
+    <profile-component
+            :id="{{$id}}"
+            :countries="{{\App\Country::get(['id','long_name'])}}"
+    >
+
+    </profile-component>
     {{--Vue component--}}
     <div class="mt-2 text-center">
-        <b-button id="show-btn" @click="$bvModal.show('bv-modal-example')">Edit Profile</b-button>
-{{--        <modal-component--}}
-{{--            :routes="{{ $routes }}"--}}
-{{--            :data="{{ Auth::user()}}"--}}
-{{--            :countries="{{\App\Country::get(['id','long_name'])}}"--}}
-{{--        ></modal-component>--}}
+        {{--<b-button id="show-btn" @click="$bvModal.show('bv-modal-example')">Edit Profile</b-button>--}}
+        {{--<modal-component--}}
+            {{--:data="{{ Auth::user()}}"--}}
+            {{--:countries="{{\App\Country::get(['id','long_name'])}}"--}}
+        {{--></modal-component>--}}
     </div>
 
     <div class="profile-work mt-4">

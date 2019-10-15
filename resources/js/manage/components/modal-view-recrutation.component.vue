@@ -44,7 +44,7 @@
 <script>
 import moment from 'moment';
 export default {
-  name: 'modal-view-recrutation.component',
+  name: 'modal-view-recrutation-component',
   props:{
     value: {}
   },

@@ -56,6 +56,7 @@ class RecrutationController extends Controller
 
             $recruitments->fill($request->all());
             $recruitments->save();
+            dd($recruitments);
 
             return response()->json(['success' => true], 200);
         } catch (\Throwable $e){
@@ -143,12 +144,15 @@ class RecrutationController extends Controller
     public function setStatus($id){
 
             $recruitment= Recruitment::findOrFail($id);
-            ($recruitment->status==null || $recruitment->status==0 || $recruitment->status==1)?$recruitment->status=2:$recruitment->status=0;
+
+            ($recruitment->status == null || $recruitment->status == 0 || $recruitment->status == 1) ? $recruitment->status = 2 : $recruitment->status = 0;
             $recruitment->save();
 
-            if(!$recruitment->status){
+            if(!$recruitment->save()) {
                 return response()->json(['error' => "Can't update status"], 400);
             }
+
+
 
 
     }

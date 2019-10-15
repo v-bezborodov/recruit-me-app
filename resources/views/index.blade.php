@@ -16,9 +16,9 @@
 
 @section('content')
     <section class="content">
-        <table-component>
+        <recrutation-component>
 
-        </table-component>
+        </recrutation-component>
     </section>
 @stop
 
