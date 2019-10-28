@@ -185,6 +185,7 @@ export default {
     },
     addRecrutation(){
       this.$bvModal.show('modal-recrutation');
+      console.log(this.id)
       this.recrutationModalEdit = Object.assign({'user_id':this.id});
     },
     viewRecrutation(event){
@@ -211,6 +212,7 @@ export default {
     }
   },
   mounted(){
+      console.log('on mounted', this.id)
     if(this.id){
       this.getRecrutationById();
     }else{
@@ -218,6 +220,9 @@ export default {
     }
   },
   watch:{
+      id(){
+          console.log('on watch', this.id)
+      }
     //   recruitments(){
     //       this.recruitments[0]={
     //           ...this.recruitments[0],

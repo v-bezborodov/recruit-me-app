@@ -1,5 +1,5 @@
 <template>
-    <table-recrutation>
+    <table-recrutation :id="id">
 
     </table-recrutation>
     
@@ -10,6 +10,12 @@
     export default {
         name: "recrutation-component",
         components: {TableRecrutation},
+        props: {
+            id: {
+                default:null
+            },
+        },
+
     }
 </script>
 

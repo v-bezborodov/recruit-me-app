@@ -74,7 +74,7 @@ export default {
     },
     save(){
       event.preventDefault();
-      var ok=true;
+      let ok=true;
       if(!this.recrutation.offered_position){
         this.$toasted.error('Can\'t save, position is empty');
         ok=false;
