@@ -7,8 +7,11 @@
         <!--</template>-->
     <div>
         <div class="custom-control custom-switch custom-switch-info">
-            <input type="checkbox" @click="switcherModeInfo" class="custom-control-input" id="switch-info">
-            <label class="custom-control-label" for="switch-info">Edit information</label>
+            <span class="custom-control-controls">
+                <a v-if="!modeInfo" href="" @click="switcherModeInfo">Edit</a>&nbsp&nbsp
+                <a v-if="modeInfo" href="" @click="save" >Save</a>&nbsp&nbsp
+                <a v-if="modeInfo" href="" @click="cancel" >Cancel</a>&nbsp&nbsp
+            </span>
 
             <profile-view v-if="user && !modeInfo" v-model="user">
 
@@ -152,25 +155,71 @@ export default {
     };
   },
   methods: {
-    switcherModeInfo(){
-
+    switcherModeInfo(e){
+        e.preventDefault();
       this.modeInfo==false?this.modeInfo=true:this.modeInfo=false;
       console.log(this.modeInfo)
     },
-  switcherModeLinks(){
-      this.modeLinks==false?this.modeLinks=true:this.modeLinks=false;
-  },
-    get(){
-      this.$userService.get(this.id)
-        .then((response) => {
-          this.user=response.data.user;
-          this.$toasted.success('Profile was uploaded', response);
-        })
-        .catch(error => {
-          this.$toasted.error('Something went wrong!');
-        });
+        switcherModeLinks(){
+          this.modeLinks==false?this.modeLinks=true:this.modeLinks=false;
+        },
 
-    },
+        get(){
+          this.$userService.get(this.id)
+            .then((response) => {
+              this.user=response.data.user;
+              this.$toasted.success('Profile was uploaded', response);
+            })
+            .catch(error => {
+              this.$toasted.error('Something went wrong!');
+            });
+
+        },
+
+        save(e){
+          e.preventDefault();
+            let ok=true;
+            if(!this.user.first_name){
+              ok=false;
+                this.$toasted.error('First Name can\'t be empty');
+            }
+            if(!this.user.last_name){
+                ok=false;
+                this.$toasted.error('Last Name can\'t be empty');
+            }
+            if(!this.user.email){
+                ok=false;
+                this.$toasted.error('Email can\'t be empty');
+            }
+            if(!this.user.position_name){
+                ok=false;
+                this.$toasted.error('Position Name can\'t be empty');
+            }
+
+          if(ok) {
+              this.user={
+                  first_name:this.user.first_name,
+                  last_name:this.user.last_name,
+                  email:this.user.email,
+                  position_name:this.user.position_name,
+              }
+              this.$userService.put(this.id, this.user)
+                  .then((response) => {
+                      this.modeInfo=false;
+                      this.$toasted.success('Profile was updated', response);
+                  })
+                  .catch(error => {
+                      this.$toasted.error('Something went wrong!');
+                  });
+          }
+
+        },
+      cancel(e){
+        e.preventDefault();
+        this.get();
+        this.modeInfo=false;
+
+      }
     // formSubmit(e) {
     //   e.preventDefault();
     //   axios.post('./formsubmit', {
@@ -245,5 +294,7 @@ export default {
 </script>
 
 <style scoped>
-
+ .custom-control-controls{
+     float:right;
+ }
 </style>

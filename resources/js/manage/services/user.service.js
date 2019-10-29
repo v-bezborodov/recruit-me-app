@@ -12,9 +12,9 @@ export default class RecruitService {
   // store(data){
   //   return axios.post(`${this.endpoint}`, data);
   // }
-  // put(id, data){
-  //   return axios.put(`${this.endpoint}/${id}`, data);
-  // }
+  put(id, data){
+    return axios.put(`${this.endpoint}/${id}`, data);
+  }
   // remove(id){
   //   return axios.delete(`${this.endpoint}/${id}`);
   // }

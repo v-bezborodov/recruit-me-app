@@ -59,5 +59,9 @@ export default {
 </script>
 
 <style scoped>
-
+    .table th,
+    .table td {
+        height: 4em;
+        vertical-align: middle;
+    }
 </style>

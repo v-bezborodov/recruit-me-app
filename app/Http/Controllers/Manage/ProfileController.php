@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Validator;
 
 class ProfileController extends Controller
 {
@@ -84,7 +85,23 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $validator = Validator::make($request->all(), [
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'email' => 'required',
+                'position_name' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return response()->json(['error' => $validator->errors()->first()], 400);
+            }
+            $user = User::findOrFail($id);
+            $user->update($request->all());
+            return response()->json(['success' => true], 200);
+        }catch (\Throwable $e){
+            return response()->json(['error' => $e->getMessage()], 400);
+        }
+
     }
 
     /**
